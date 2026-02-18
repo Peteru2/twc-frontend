@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
                       isActive
                         ? "text-gray-300"
                         : "text-white hover:text-white-900"
-                    }`
+                    } ${isOpen?"hidden":"flex"}`
                   }
                 >
                   {({ isActive }) => (
@@ -61,11 +61,11 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-max-height duration-300 ease-in-out ${
-          isOpen ? "max-h-[500px]" : "max-h-0"
+        className={` overflow-hidden transition-max-height duration-300 ease-in-out ${
+          isOpen ? "h-[1000px]" : "max-h-0"
         }`}
       >
-        <div className="flex flex-col px-4 py-2 space-y-2">
+        <div className="flex flex-col px-12 mt-20 tracking-[2px] py-2 space-y-2">
           {navLinks.map((link) => {
             return (
               <NavLink
@@ -73,10 +73,10 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `font-medium transition text-[16px] py-[2px] ${
+                  `font-bold transition viga text-5xl py-[10px] ${
                     isActive
-                      ? "text-[#0a6b46]"
-                      : "text-[#4AE17A] hover:text-[#0a6b46]"
+                      ? "text-gray-300"
+                        : "text-white hover:text-[#E80F1A]"
                   }`
                 }
               >
