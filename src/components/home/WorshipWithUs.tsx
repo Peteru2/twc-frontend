@@ -49,10 +49,12 @@ export default function WorshipWithUs() {
       </motion.div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70 bg-gradient-to-t from-black via-gray-900/10" />
+      <div className="absolute inset-0 bg-black/70 bg-gradient-to-t from-black via-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black" />
 
       {/* Content Wrapper */}
-      <div className="relative z-10 pt-[350px] flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div className="relative z-10 pt-[300px] flex flex-col items-center justify-center min-h-screen px-6 text-center">
         
         {/* Hero Text */}
         <motion.div
@@ -118,9 +120,9 @@ export default function WorshipWithUs() {
               className="
                 relative
                 md:w-[240px] 
-                w-[280px]          
+                w-[300px]          
                 md:h-[320px]
-                h-[360px]
+                h-[380px]
                 flex-shrink-0       
                 snap-start
                 rounded-xl
@@ -143,7 +145,7 @@ export default function WorshipWithUs() {
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/90 via-red-600/10 to-transparent opacity-90 group-hover:opacity-100 transition duration-500" />
 
               {/* Text */}
-              <div className="absolute top-58  left-4 text-white">
+              <div className="absolute md:top-58 top-74  left-4 text-white">
                 <h3 className="font-semibold text-left text-lg mb-[2px]">
                   {service.title}
                 </h3>

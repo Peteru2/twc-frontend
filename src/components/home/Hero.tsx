@@ -40,7 +40,7 @@ const Hero = () => {
             </div>
           </div>
          <motion.h1 
-      className="lg:text-5xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
+      className="lg:text-6xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible" 

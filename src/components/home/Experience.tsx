@@ -83,9 +83,9 @@ const Experience = () => {
               className="
                 relative
                 md:w-[240px]  
-                w-[280px]          
+                w-[300px]          
                 md:h-[320px]
-                h-[360px]
+                h-[380px]
                 flex-shrink-0       
                 snap-start
                 rounded-xl
@@ -107,7 +107,7 @@ const Experience = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black-600 to-transparent opacity-100 group-hover:opacity-90 transition duration-500" />
 
               {/* Text */}
-              <div className="absolute top-58  left-4 text-white">
+              <div className="absolute md:top-58 top-70  left-4 text-white">
                 <h3 className="font-semibold text-left text-lg mb-[2px]">
                   {service.title}
                 </h3>
