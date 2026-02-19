@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { X, TextAlignEnd } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const Navbar: React.FC = () => {
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
             className="cursor-pointer text-white"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} /> : <TextAlignEnd size={24} />}
           </button>
         </div>
       </div>

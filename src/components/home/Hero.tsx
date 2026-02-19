@@ -1,4 +1,4 @@
-import { Globe } from "lucide-react";
+import { Globe, Mouse } from "lucide-react";
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -96,6 +96,15 @@ className="text-3xl md:hidden block viga font-bold text-white px-2  my-8">
   </h2>
   
 </div>
+      <div className="flex  justify-center text-white mt-20">
+        <div>
+        <div className="flex justify-center mb-2">
+        <Mouse className="text-white text-center text-[14px]"/>
+      </div>
+        <h3 className="tracking-widest text-left text-[14px]">SCROLL DOWN</h3>
+
+        </div>
+      </div>
         </div>
       </div>
     </div>
