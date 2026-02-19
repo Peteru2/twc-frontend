@@ -33,13 +33,13 @@ const services = [
 
 export default function WorshipWithUs() {
   return (
-    <section className="relative lato w-full min-h-screen overflow-hidden">
+    <section className="relative lato w-full min-h-screen pb-16 overflow-hidden">
       {/* Background */}
       <motion.div
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="absolute inset-0"
+        className="absolute inset-0 "
       >
         <img
           src="/worshipWithUs.jpg"
@@ -49,10 +49,10 @@ export default function WorshipWithUs() {
       </motion.div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70 bg-gradient-to-t from-black via-black-600/40" />
+      <div className="absolute inset-0 bg-black/70 bg-gradient-to-t from-black via-gray-900/10" />
 
       {/* Content Wrapper */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      <div className="relative z-10 pt-[350px] flex flex-col items-center justify-center min-h-screen px-6 text-center">
         
         {/* Hero Text */}
         <motion.div
@@ -102,7 +102,7 @@ export default function WorshipWithUs() {
             scroll-smooth
             snap-x
             snap-mandatory
-            pb-6
+            
             px-2
           "
         >
@@ -117,8 +117,10 @@ export default function WorshipWithUs() {
               transition={{ duration: 0.5 }}
               className="
                 relative
-                w-[240px]          
-                h-[320px]
+                md:w-[240px] 
+                w-[280px]          
+                md:h-[320px]
+                h-[360px]
                 flex-shrink-0       
                 snap-start
                 rounded-xl

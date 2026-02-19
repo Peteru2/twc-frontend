@@ -1,0 +1,95 @@
+import { motion } from "framer-motion";
+import { Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="w-full bg-black text-gray-400 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+
+        {/* Top Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-12"
+        >
+          {/* Logo Section */}
+          <div>
+           <img
+           src= "/fullLogo.png" 
+           />
+          </div>
+
+          {/* Connect */}
+          <div className="flex md:justify-center">
+            <div>
+            <h3 className="text-white mb-4 font-medium">Connect</h3>
+            <ul className="space-y-2 text-sm">
+              {[
+                "Become a member",
+                "Prayer Request",
+                "First Timers",
+                "Online Community",
+                "Celebrations"
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="hover:text-white transition duration-300 cursor-pointer"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            </div>
+          </div>
+
+          {/* Media */}
+          <div>
+            <h3 className="text-white mb-4 font-medium">Media</h3>
+            <ul className="space-y-3 text-sm">
+              {["Watch Online", "Sermons"].map((item, index) => (
+                <li
+                  key={index}
+                  className="hover:text-white transition duration-300 cursor-pointer"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Spacer Column (keeps layout balanced like screenshot) */}
+          <div />
+        </motion.div>
+
+        {/* Divider */}
+        <div className="border-t border-gray-800 my-12" />
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} True Worshippers Church. All Rights Reserved.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-6">
+            {[Instagram, Twitter, Youtube, Linkedin].map(
+              (Icon, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-gray-500 hover:text-white transition duration-300 cursor-pointer"
+                >
+                  <Icon size={18} />
+                </motion.div>
+              )
+            )}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

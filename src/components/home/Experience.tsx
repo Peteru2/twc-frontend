@@ -38,7 +38,7 @@ const Experience = () => {
           viewport={{ once: true }}
     className="py-16 lato w-full px-4">
         <div className="text-center mb-6">
-            <h1 className="text-5xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
+            <h1 className="md:text-5xl text-3xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
             <h5 className="text-[14px]">
                 Where worship is heartfelt, teaching is sound, and lives are transformed.
             </h5>
@@ -82,8 +82,10 @@ const Experience = () => {
               transition={{ duration: 0.5 }}
               className="
                 relative
-                w-[240px]          
-                h-[320px]
+                md:w-[240px]  
+                w-[280px]          
+                md:h-[320px]
+                h-[360px]
                 flex-shrink-0       
                 snap-start
                 rounded-xl
