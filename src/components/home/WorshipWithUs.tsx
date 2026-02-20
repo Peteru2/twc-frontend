@@ -122,7 +122,7 @@ export default function WorshipWithUs() {
                 md:w-[240px] 
                 w-[300px]          
                 md:h-[320px]
-                h-[380px]
+                h-[400px]
                 flex-shrink-0       
                 snap-start
                 rounded-xl
