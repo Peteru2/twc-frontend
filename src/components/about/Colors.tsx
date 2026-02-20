@@ -55,7 +55,7 @@ const Colors = () => {
     id: 3,
     color: "Gold (Dignity)",
     meaning: "We carry ourselves as kings and priests — operating with excellence, skill, and honor in everything we do.",
-    bg: "bg-yellow-700",
+    bg: "bg-yellow-700 ",
     textColor:"white",
 
   },
@@ -63,7 +63,7 @@ const Colors = () => {
     id: 4,
     color: "Purity (White)",
     meaning: "We are committed to holiness and sanctity. We believe those who serve God must reflect His nature in conduct and character.",
-    bg: "",
+    bg: "border border-gray-200 white",
     textColor:"black"
 
 
