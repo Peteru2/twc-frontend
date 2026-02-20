@@ -7,7 +7,15 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "ABOUT", path: "/", icon: "" },
+    { name: "ABOUT", path: "/about", icon: "" },
+    { name: "EVENT", path: "/event", icon: "" },
+    { name: "SERMONS", path: "/sermon" },
+    { name: "MAP", path: "/map", icon: "" },
+    { name: "GIVE", path: "/give", icon: "" },
+  ];
+  const navLinksMobile = [
+    { name: "HOME", path: "/", icon: "" },
+    { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
     { name: "SERMONS", path: "/sermon" },
     { name: "MAP", path: "/map", icon: "" },
@@ -66,7 +74,7 @@ const Navbar: React.FC = () => {
         }`}
       >
         <div className="flex flex-col px-12 mt-20 tracking-[2px] py-2 space-y-2">
-          {navLinks.map((link) => {
+          {navLinksMobile.map((link) => {
             return (
               <NavLink
                 key={link.name}
@@ -75,7 +83,7 @@ const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `font-bold transition viga text-5xl py-[10px] ${
                     isActive
-                      ? "text-gray-300"
+                      ? "text-primary"
                         : "text-white hover:text-[#E80F1A]"
                   }`
                 }

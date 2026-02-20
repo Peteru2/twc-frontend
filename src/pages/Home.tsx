@@ -4,7 +4,7 @@ import WorshipWithUs from "../components/home/WorshipWithUs"
 import Welcome from "../components/home/Welcome"
 import Rna from "../components/home/Rna"
 import Vision from "../components/home/Vision"
-import NewLetterGive from "../components/home/NewLetterGive"
+
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
         <Experience />
         <Rna />
         <Vision />
-        <NewLetterGive />
+    
     </div>
   )
 }

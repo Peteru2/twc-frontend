@@ -47,6 +47,8 @@ export default function Rna() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
+              // viewport={{ once: true }}
+
               className="w-full flex justify-center"
             >
                <motion.img
@@ -81,7 +83,10 @@ export default function Rna() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="px-6 py-3 border cursor-pointer border-white text-white rounded-full hover:bg-white hover:text-black transition duration-500"
+              className="px-6 py-3 border cursor-pointer border-white text-white rounded-full hover:bg-white 
+              hover:text-black 
+              transition 
+              duration-500"
             >
               Read More
             </motion.button>

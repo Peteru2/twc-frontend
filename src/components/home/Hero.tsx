@@ -22,7 +22,7 @@ const Hero = () => {
     },
   };
   return (
-    <div className="mt-18">
+    <div className="">
       <div className="relative h-screen w-full flex items-center justify-center">
         <img
           src="/homeHero.jpg"
@@ -40,7 +40,7 @@ const Hero = () => {
             </div>
           </div>
          <motion.h1 
-      className="lg:text-6xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
+      className="lg:text-6xl md:text-5xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
@@ -76,7 +76,7 @@ variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
       viewport={{ once: true, amount: 0.5 }} 
-className="text-3xl md:hidden block viga font-bold text-white px-2  my-8">
+className="text-4xl md:hidden block viga font-bold text-white px-2  my-8">
             We Evangelize the World to
             <b className="text-[#E80F1A]"> {" "}
               Receive  Christ

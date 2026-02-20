@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
+import NewLetterGive from "../components/common/NewLetterGive";
 
 export default function Footer() {
   return (
+    <section>
+      <NewLetterGive />
     <footer className="w-full bg-black text-gray-400 overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-16">
 
@@ -91,5 +94,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </section>
   );
 }

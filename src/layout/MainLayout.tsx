@@ -10,7 +10,7 @@ const MainLayout: React.FC = () => {
       <Navbar />
 
       {/* Main content */}
-      <main className="flex-1">
+      <main className="flex-1 mt-[70px]">
         <Outlet />
       </main>
 
