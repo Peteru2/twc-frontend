@@ -2,7 +2,12 @@ import { motion } from "framer-motion";
 
 export default function Rna() {
   return (
-    <section className="w-full bg-black lato text-white overflow-hidden">
+    <motion.section 
+    initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+    className="w-full bg-black lato text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid md:grid-cols-2 items-center gap-12">
 
@@ -94,6 +99,6 @@ export default function Rna() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

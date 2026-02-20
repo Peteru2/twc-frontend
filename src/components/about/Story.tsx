@@ -27,7 +27,7 @@ const Story = () => {
           initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="md:text-[15px] text-sm lato "
+          className="md:text-[15px] text-sm lato text-justify"
         >
           <p>
             We gladly welcome you to True Worshippers Church — a community

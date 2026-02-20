@@ -80,17 +80,17 @@ const Colors = () => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }} 
-      className="overflow-hidden " 
+      className="overflow-hidden w-full" 
     >
       <motion.h1 variants={TextVariants} className="viga md:text-5xl text-4xl text-center">
         What Defines Us
       </motion.h1>
       
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center   ">
         <motion.img 
           variants={LineVariants}
           src="/line.png" 
-          className="mt-2 origin-center" 
+          className="mt-2 origin-cente w-40 md:w-50 flex justidy-center" 
         />
       </div>
     </motion.div>
@@ -108,7 +108,7 @@ const Colors = () => {
           >
             <div className={`${card.bg} h-46 rounded-xl mt-4  text-${card.textColor} p-4 `}>
                 <h2 className="viga text-3xl mb-2">{card.color}</h2>
-                <p className="lato text-[15px]">{card.meaning}</p>
+                <p className="lato md:text-[15px] text-[14px] text-justify">{card.meaning}</p>
             </div>
 
           </motion.div>

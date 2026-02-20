@@ -33,7 +33,12 @@ const services = [
 
 export default function WorshipWithUs() {
   return (
-    <section className="relative lato w-full min-h-screen pb-16 overflow-hidden">
+    <motion.section 
+    initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+    className="relative lato w-full min-h-screen pb-16 overflow-hidden">
       {/* Background */}
       <motion.div
         initial={{ scale: 1.1 }}
@@ -159,6 +164,6 @@ export default function WorshipWithUs() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

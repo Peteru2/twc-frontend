@@ -11,8 +11,13 @@ const Hero = () => {
     },
   };
   return (
-    <div className="">
-      <div className="relative h-screen w-full flex items-center justify-center">
+    <motion.div 
+      initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+    className="">
+      <div className="relative h-[500px] md:h-screen w-full flex items-center justify-center">
         <img
           src="/aboutHero.jpg"
           alt="Hero Background"
@@ -46,7 +51,7 @@ variants={childVariants}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-className="text-4xl md:hidden block viga font-bold text-white px-2  my-8">
+className="text-[42px] md:hidden block viga font-bold text-white px-2  my-8">
             Raising True Worshippers. 
         Transforming an Audience
          into an Army.
@@ -60,7 +65,7 @@ className="text-4xl md:hidden block viga font-bold text-white px-2  my-8">
      
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

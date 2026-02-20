@@ -53,7 +53,7 @@ const TextVariants:Variants = {
         <motion.img 
           variants={LineVariants}
           src="/line.png" 
-          className="mt-2 origin-center" 
+          className="mt-2  w-60 md:w-80 origin-center" 
         />
       </div>
     </motion.div>

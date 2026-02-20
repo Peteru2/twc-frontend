@@ -23,11 +23,16 @@ const Hero = () => {
   };
   return (
     <div className="">
-      <div className="relative h-screen w-full flex items-center justify-center">
+      <motion.div 
+      initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+      className="relative  h-screen w-full flex items-center justify-center">
         <img
           src="/homeHero.jpg"
           alt="Hero Background"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0  h-full w-full object-cover"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -58,7 +63,7 @@ const Hero = () => {
         <motion.span variants={childVariants} className="inline-block">Christ</motion.span>
       </span>
 
-      {" And Disciple the Church to ".split(" ").map((word, i) => (
+      {"  And Disciple the Church to ".split(" ").map((word, i) => (
         <motion.span key={i + 10} variants={childVariants} className="inline-block mx-2">
           {word}
         </motion.span>
@@ -76,7 +81,7 @@ variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
       viewport={{ once: true, amount: 0.5 }} 
-className="text-4xl md:hidden block viga font-bold text-white px-2  my-8">
+className="text-[42px] md:hidden block viga font-bold text-white px-2  my-8">
             We Evangelize the World to
             <b className="text-[#E80F1A]"> {" "}
               Receive  Christ
@@ -106,7 +111,7 @@ className="text-4xl md:hidden block viga font-bold text-white px-2  my-8">
         </div>
       </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
