@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import MainLayout from "./layout/MainLayout";
 import './index.css';
 import About from "./pages/About";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
   return (
    
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
         <Route element={<Home /> }  path = "/"/>
