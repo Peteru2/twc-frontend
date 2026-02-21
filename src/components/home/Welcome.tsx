@@ -35,7 +35,7 @@ const Welcome = () => {
           viewport={{ once: true }}
     className='lato md:px-34 px-4 my-16'>
         <h4 className='bg-gray-200 w-40 text-[10px] rounded-full mb-4 text-center py-[6px]'> WELCOME TO TWC</h4>
-        <h1 className='text-[#272475] viga md:text-5xl text-3xl text-bold'>TRUE WORSHIPPERS CHURCH</h1>
+        <h1 className='text-[#272475] viga md:text-3xl text-2xl text-bold'>TRUE WORSHIPPERS CHURCH</h1>
         <p className='md:text-[16px] text-[14px] '>Discover truth, experience worship, and grow in a community that cares.
             <br />
             Take your next step in faith with us.

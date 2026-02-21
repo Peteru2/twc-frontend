@@ -10,18 +10,21 @@ const Story = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="viga lg:text-7xl md:text-5xl text-4xl"
+          className="viga w-full lg:text-4xl md:text-3xl text-2xl"
         >
           <h2>
             Rooted in <span className="text-[#E80F1A]">Truth.</span>
           </h2>
-          <h2>
+          <h2 className="mt-4">
             Marked by <span className="text-[#E80F1A]">Grace.</span>
           </h2>
-          <img
-            src="/line.png"
-            className="lg:w-[300px] md:w-[200px] w-[150px]"
-          />
+          <div className="md:ml-10 mt-2  w-full">
+            <img
+              src="/line.png"
+              className="lg:w-[300px] md:w-[200px] w-[150px]"
+            />
+          </div>
+          
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 80 }}
@@ -69,7 +72,7 @@ const Story = () => {
           className="bg-yellow-50 rounded-xl p-6 shadow-sm hover:shadow-xl transition duration-500"
         >
           <div className="w-full viga flex justify-between items-center">
-            <h1 className="text-primary md:text-5xl text-4xl">Our Story</h1>
+            <h1 className="text-primary md:text-3xl text-xl">Our Story</h1>
             <ScrollText className="text-primary2" />
           </div>
           <div className="lato mt-4 md:text-[16px] text-sm">
@@ -97,7 +100,7 @@ const Story = () => {
           className="bg-yellow-50 rounded-xl p-6 shadow-sm hover:shadow-xl transition duration-500"
         >
           <div className="w-full viga flex justify-between items-center">
-            <h1 className="text-primary md:text-5xl text-4xl">Why We Exist</h1>
+            <h1 className="text-primary md:text-3xl text-xl">Why We Exist</h1>
              <Radius  className="text-primary2" />
           </div>
           <div className="lato mt-4 md:text-[16px] text-sm">

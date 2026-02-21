@@ -11,7 +11,7 @@ const NewLetterGive = () => {
           className='flex justify-center px-4 pb-12 w-full'>
 
     <div className='w-full lato flex flex-col items-center'> 
-        <h1 className='viga text-3xl text-center'>GET INSPIRATIONAL CONTENT AND UPDATES</h1>
+        <h1 className='viga md:text-3xl text-2xl text-center'>GET INSPIRATIONAL CONTENT AND UPDATES</h1>
         
         <div className="w-full flex justify-center">
             <input 

@@ -124,7 +124,7 @@ export default function Mandate() {
                 </motion.div>
 
                
-                <h3 className="text-2xl viga mb-4">
+                <h3 className="text-2xl   mb-4">
                   {card.title}
                 </h3>
 

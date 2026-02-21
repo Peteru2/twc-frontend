@@ -34,7 +34,7 @@ export default function Vision() {
                 <span className="text-red-500 text-sm font-bold">◎</span>
                 
               </div>
-               <h3 className="md:text-3xl text-2xl font-semibold viga">
+               <h3 className="md:text-2xl text-xl font-semibold viga">
                   OUR <span className="text-red-600">VISION</span>
                 </h3>
                 </div>
@@ -66,7 +66,7 @@ export default function Vision() {
                 <span className="text-red-500 text-sm font-bold">◎</span>
                 
               </div>
-               <h3 className="md:text-3xl text-2xl font-semibold viga">
+               <h3 className="md:text-2xl text-xl font-semibold viga">
                   OUR <span className="text-red-600 ">MISSION</span>
                 </h3>
                 </div>

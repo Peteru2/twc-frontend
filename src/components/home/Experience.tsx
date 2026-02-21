@@ -38,7 +38,7 @@ const Experience = () => {
           viewport={{ once: true }}
     className="py-16 lato w-full px-4">
         <div className="text-center mb-6">
-            <h1 className="md:text-5xl text-3xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
+            <h1 className="md:text-4xl text-2xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
             <h5 className="md:text-[16px] text-[14px]">
                 Where worship is heartfelt, teaching is sound, and lives are transformed.
             </h5>

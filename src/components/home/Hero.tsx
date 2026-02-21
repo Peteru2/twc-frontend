@@ -45,7 +45,7 @@ const Hero = () => {
             </div>
           </div>
          <motion.h1 
-      className="lg:text-6xl md:text-5xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
+      className="lg:text-4xl text-2xl viga md:block hidden px-2  font-bold text-white my-8"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
@@ -58,12 +58,12 @@ const Hero = () => {
       ))}
 
       <span className="text-[#E80F1A]">
-        <motion.span variants={childVariants} className="inline-block ">Receive</motion.span>
+        <motion.span variants={childVariants} className="inline-block mb-4">Receive</motion.span>
         <br />
-        <motion.span variants={childVariants} className="inline-block">Christ</motion.span>
+        <motion.span variants={childVariants} className="inline-block md:ml-8">Christ</motion.span>
       </span>
 
-      {"  And Disciple the Church to ".split(" ").map((word, i) => (
+      {"And Disciple the Church to ".split(" ").map((word, i) => (
         <motion.span key={i + 10} variants={childVariants} className="inline-block mx-2">
           {word}
         </motion.span>
@@ -71,8 +71,8 @@ const Hero = () => {
 
       <br />
 
-      <span className="text-[#E80F1A]">
-        <motion.span variants={childVariants} className="inline-block">Reflect Christ.</motion.span>
+      <span className="text-[#E80F1A] ">
+        <motion.span variants={childVariants} className="inline-block mt-4">Reflect Christ.</motion.span>
       </span>
     </motion.h1>
 
@@ -81,11 +81,11 @@ variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
       viewport={{ once: true, amount: 0.5 }} 
-className="text-[42px] md:hidden block viga font-bold text-white px-2  my-8">
+className="text-[28px] md:hidden block viga font-bold text-white px-2  my-8">
             We Evangelize the World to
             <b className="text-[#E80F1A]"> {" "}
               Receive  Christ
-            </b>And Disciple the Church to 
+            </b> {" "}And Disciple the Church to 
             <b className="text-[#E80F1A]"> {" "}Reflect Christ.</b> 
           </motion.h1>
 

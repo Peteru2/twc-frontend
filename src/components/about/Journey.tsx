@@ -45,7 +45,7 @@ const TextVariants:Variants = {
       viewport={{ once: true, amount: 0.3 }} 
       className="overflow-hidden " 
     >
-      <motion.h1 variants={TextVariants} className="viga md:text-5xl text-4xl text-center">
+      <motion.h1 variants={TextVariants} className="viga md:text-4xl md:text-3xl text-2xl md:mb-2 text-center">
         The Journey to <span className="text-primary">Amazing Grace Garden</span>
       </motion.h1>
       

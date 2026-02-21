@@ -82,7 +82,7 @@ const Colors = () => {
       viewport={{ once: true, amount: 0.3 }} 
       className="overflow-hidden w-full" 
     >
-      <motion.h1 variants={TextVariants} className="viga md:text-5xl text-4xl text-center">
+      <motion.h1 variants={TextVariants} className="viga md:text-4xl text-2xl text-center">
         What Defines Us
       </motion.h1>
       
@@ -95,7 +95,7 @@ const Colors = () => {
       </div>
     </motion.div>
 
-<div className="grid md:gap-6  md:grid-cols-4">
+<div className="grid md:gap-6 px-4  lg:grid-cols-4 md:grid-cols-2">
         {cards.map((card, index) => (
           <motion.div
             key={card.id}
@@ -107,7 +107,7 @@ const Colors = () => {
             className=" overflow-hidden  cursor-pointer"
           >
             <div className={`${card.bg} h-46 rounded-xl mt-4  text-${card.textColor} p-4 `}>
-                <h2 className="viga text-3xl mb-2">{card.color}</h2>
+                <h2 className="viga  text-xl mb-2">{card.color}</h2>
                 <p className="lato md:text-[16px] text-[14px] text-justify">{card.meaning}</p>
             </div>
 

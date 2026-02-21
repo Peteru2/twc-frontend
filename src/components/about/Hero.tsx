@@ -34,15 +34,19 @@ const Hero = () => {
             </div>
           </div>
          <motion.h1 
-      className="lg:text-6xl md:text-5xl text-3xl viga md:block hidden px-2  font-bold text-white my-8"
+      className="lg:text-4xl  md:text-3xl viga md:block hidden px-2  font-bold text-white my-8"
       initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
     >
+      <p>
         Raising True Worshippers. 
-        <br />Transforming an Audience
-        <br /> into an Army.
+        </p>
+        <p className="my-4">
+        Transforming an Audience
+        </p>
+        <p> into an Army.</p>
      </motion.h1>
 
 <motion.h1 
@@ -51,7 +55,7 @@ variants={childVariants}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-className="text-[42px] md:hidden block viga font-bold text-white px-2  my-8">
+className="text-2xl md:hidden block viga font-bold text-white px-2  my-8">
             Raising True Worshippers. 
         Transforming an Audience
          into an Army.
