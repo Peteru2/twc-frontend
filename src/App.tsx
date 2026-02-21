@@ -4,6 +4,7 @@ import MainLayout from "./layout/MainLayout";
 import './index.css';
 import About from "./pages/About";
 import ScrollToTop from "./components/common/ScrollToTop";
+import EventCarousel from "./components/event/Hero";
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
         <Route element={<MainLayout />}>
         <Route element={<Home /> }  path = "/"/>
         <Route element={<About />} path="about" />
+        <Route element={<EventCarousel />} path="event" />
+
        </Route>
         </Routes >
         </BrowserRouter>
