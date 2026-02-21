@@ -47,7 +47,7 @@ useEffect(() => {
                   className={({ isActive }) =>
                     `group relative text-[13px] font-medium lato transition-colors tracking-[2px] duration-300 ${
                       isActive
-                        ? "text-gray-300"
+                        ? "text-gray-400"
                         : "text-white hover:text-white-900"
                     } ${isOpen?"hidden":"flex"}`
                   }
@@ -80,15 +80,15 @@ useEffect(() => {
   <div className="fixed inset-0 bg-black z-40 flex overflow-y-auto scroll-smooth transition-opacity duration-500">
     
     {/* Close Button */}
-    <div className="absolute top-5 right-2">
+    <div className="absolute top-5 right-2 md:right-14">
       <button
         onClick={() => setIsOpen(false)}
-        className="text-white"
+        className="text-white cursor-pointer"
       >
         <X size={32} />
       </button>
     </div>
-    <div className="absolute top-4 left-2">
+    <div className="absolute top-4 left-2 md:left-14">
       <img
       src="/fullLogo.png"
         className="md:w-24 w-26"
@@ -98,7 +98,7 @@ useEffect(() => {
     </div>
 
     {/* Left Big Navigation */}
-    <div className="w-full grid md:grid-cols-2  justify-start md:mt-28 mt-24 md:px-24 px-4">
+    <div className="w-full grid md:grid-cols-2  justify-start md:mt-28 mt-24 md:px-28 px-4">
       <div className="flex flex-col space-y-4">
         {navLinksMobile.map((link, index) => (
           <NavLink

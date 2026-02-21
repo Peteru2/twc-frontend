@@ -81,7 +81,7 @@ variants={containerVariants}
       initial="hidden"
       whileInView="visible" 
       viewport={{ once: true, amount: 0.5 }} 
-className="text-[28px] md:hidden block viga font-bold text-white px-2  my-8">
+className="text-[28px] md:hidden block viga font-bold text-white px-4  my-8">
             We Evangelize the World to
             <b className="text-[#E80F1A]"> {" "}
               Receive  Christ
