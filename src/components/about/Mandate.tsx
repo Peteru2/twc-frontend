@@ -129,7 +129,7 @@ export default function Mandate() {
                 </h3>
 
                
-                <div className=" md:text-[16px] text-gray-800 text-[14px] lato leading-relaxed">
+                <div className=" text-[16px] text-gray-800  lato leading-relaxed">
                   {card.content}
                 </div>
               </motion.div>

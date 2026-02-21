@@ -81,7 +81,7 @@ export default function WorshipWithUs() {
             WORSHIP WITH US!
           </h1>
 
-          <p className="text-gray-300 max-w-xl mx-auto text-sm md:text-base">
+          <p className="text-gray-300 max-w-xl mx-auto text-[16px] md:text-base">
             Rooted in God's Word. United in worship. Committed to Christ.
           </p>
         </motion.div>
@@ -156,8 +156,8 @@ export default function WorshipWithUs() {
                 </h3>
 
                 <div className="text-left">
-                <p className="text-[14px]  opacity-80">{service.time1}</p>
-                <p className="text-[14px] opacity-80">{service.time2}</p>
+                <p className="text-[16px]  opacity-80">{service.time1}</p>
+                <p className="text-[16px] opacity-80">{service.time2}</p>
                 </div>
               </div>
             </motion.div>

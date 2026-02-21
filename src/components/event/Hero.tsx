@@ -7,7 +7,6 @@ import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
 type EventItem = {
   id: number
   flier: string
-  background: string
   title: string
   dateISO: string
   dateDisplay: string
@@ -25,7 +24,6 @@ const events: EventItem[] = [
   {
     id: 1,
     flier: "/anni.jpg",
-    background: "/eventHero.jpg",
     title: "10TH YEARS ANNIVERSARY",
     dateISO: "2026-05-01T00:00:00",
     dateDisplay: "1ST MAY – 7TH MAY, 2026",
@@ -36,7 +34,6 @@ const events: EventItem[] = [
   {
     id: 2,
     flier: "/fadurayinmi.jpg",
-    background: "/eventHero.jpg",
     title: "FADURAYIMIN",
     dateISO: "",
     dateDisplay: "15TH JULY, 2026",
@@ -118,16 +115,16 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className="relative w-full min-h-[750px] overflow-hidden flex items-center justify-center">
+    <section className="relative w-full md:min-h-[650px] min-h-[550px] overflow-hidden flex items-center justify-center">
 
    
       <img
-        src={event.background}
+        src="./eventHero.jpg"
         className="absolute inset-0 w-full h-full object-cover scale-110 blur-sm"
       />
 
      
-      <div className="absolute inset-0 bg-red-800/85" />
+      <div className="absolute inset-0 bg-red-800/80" />
 
       
       <div className="relative z-10 w-full max-w-6xl px-6">
@@ -167,11 +164,11 @@ export default function EventCarousel() {
                 {event.title}
               </h2>
 
-              <p className="mt-4 text-sm lato md:text-base text-white/80">
+              <p className="mt-4 text-[15px] lato md:text-base text-white/80">
                 {event.dateDisplay}
               </p>
 
-              <p className="text-sm flex  lato md:text-base text-white/80">
+              <p className="text-[16px] flex  lato md:text-base text-white/80">
                 <MapPin /> {event.location}
               </p>
 

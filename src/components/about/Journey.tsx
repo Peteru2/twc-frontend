@@ -63,7 +63,7 @@ const TextVariants:Variants = {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-        className="mt-4 lato text-center md:text-[16px] text-sm">In 2019, as part of a divine mandate to relocate after three years, a team of elders began searching for land to establish a permanent worship center. Without lobbying or requesting assistance from anyone, the church committed the process to prayer. During this period, God independently spoke to His Excellency, Otunba Christopher Alao-Akala, who reached out to donate land to the ministry. What began as a two-plot donation became something greater — a larger parcel of land that is now home to our current worship site, Amazing Grace Garden.
+        className="mt-4 lato text-center text-[16px] ">In 2019, as part of a divine mandate to relocate after three years, a team of elders began searching for land to establish a permanent worship center. Without lobbying or requesting assistance from anyone, the church committed the process to prayer. During this period, God independently spoke to His Excellency, Otunba Christopher Alao-Akala, who reached out to donate land to the ministry. What began as a two-plot donation became something greater — a larger parcel of land that is now home to our current worship site, Amazing Grace Garden.
 On the day the documents were handed over in December 2019, he remarked that “Amazing Grace” should be added because he saw something extraordinary ahead for the commission.
 To God be the glory.
 </motion.p>

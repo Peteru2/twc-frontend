@@ -39,7 +39,7 @@ const Experience = () => {
     className="py-16 lato w-full px-4">
         <div className="text-center mb-6">
             <h1 className="md:text-4xl text-2xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
-            <h5 className="md:text-[16px] text-[14px]">
+            <h5 className="md:text-[16px] text-[16px]">
                 Where worship is heartfelt, teaching is sound, and lives are transformed.
             </h5>
         </div>
@@ -113,8 +113,8 @@ const Experience = () => {
                 </h3>
 
                 <div className="text-left">
-                <p className="text-[14px]  opacity-80">{service.desc1}</p>
-                <p className="text-[14px] opacity-80">{service.desc2}</p>
+                <p className="text-[16px]  opacity-80">{service.desc1}</p>
+                <p className="text-[16px] opacity-80">{service.desc2}</p>
                 </div>
               </div>
             </motion.div>

@@ -30,7 +30,7 @@ const Story = () => {
           initial={{ opacity: 0, x: 80 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="md:text-[16px] text-sm lato text-justify"
+          className="text-[16px]  lato text-justify"
         >
           <p>
             We gladly welcome you to True Worshippers Church — a community
@@ -75,7 +75,7 @@ const Story = () => {
             <h1 className="text-primary md:text-3xl text-xl">Our Story</h1>
             <ScrollText className="text-primary2" />
           </div>
-          <div className="lato mt-4 md:text-[16px] text-sm">
+          <div className="lato mt-4 text-[16px] ">
             <p>
               True Worshippers Church began through the divine inspiration given
               to Reverend Dr. Niyi Adebayo and Pastor Mrs. Grace Adebayo. The
@@ -103,7 +103,7 @@ const Story = () => {
             <h1 className="text-primary md:text-3xl text-xl">Why We Exist</h1>
              <Radius  className="text-primary2" />
           </div>
-          <div className="lato mt-4 md:text-[16px] text-sm">
+          <div className="lato mt-4 text-[16px] ">
             <p>We are here for one reason:</p>
             <p>To see lives genuinely transformed by Jesus Christ.</p>
             <p>
