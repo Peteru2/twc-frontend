@@ -115,7 +115,7 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className="relative w-full md:min-h-[650px] min-h-[550px] overflow-hidden flex items-center justify-center">
+    <section className="relative w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
 
    
       <img
