@@ -11,6 +11,7 @@
 .lato {
   font-family: "Lato", sans-serif;
   font-style: normal;
+  font-weight:300;
  
 }
 @layer components {

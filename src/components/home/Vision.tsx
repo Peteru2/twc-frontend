@@ -41,7 +41,7 @@ export default function Vision() {
 
               <div>
                
-                <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+                <p className="text-gray-700 mt-3 text-[14px] leading-relaxed">
                   To raise a church passionate about soul-winning and disciple
                   her members to be true worshippers in church and salt and
                   light in the world.
@@ -73,7 +73,7 @@ export default function Vision() {
 
               <div>
                
-                <p className="text-gray-600 mt-3 text-sm leading-relaxed">
+                <p className="text-gray-700 mt-3 text-[14px] leading-relaxed">
                   We evangelize the world to receive Christ and disciple the
                   church to reflect Christ.
                 </p>

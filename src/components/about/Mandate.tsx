@@ -53,7 +53,7 @@ const cards = [
 
 export default function Mandate() {
   return (
-    <section className="w-full  py-14 overflow-hidden relative">
+    <section className="w-full   py-14 overflow-hidden relative">
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
@@ -124,12 +124,12 @@ export default function Mandate() {
                 </motion.div>
 
                
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-2xl viga mb-4">
                   {card.title}
                 </h3>
 
                
-                <div className="text-gray-600 text-sm leading-relaxed">
+                <div className=" md:text-[16px] text-gray-800 text-[14px] lato leading-relaxed">
                   {card.content}
                 </div>
               </motion.div>

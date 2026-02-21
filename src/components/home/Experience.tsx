@@ -39,7 +39,7 @@ const Experience = () => {
     className="py-16 lato w-full px-4">
         <div className="text-center mb-6">
             <h1 className="md:text-5xl text-3xl text-[#272475] viga text-center mb-2 font-bold">THE TWC EXPERIENCE</h1>
-            <h5 className="text-[14px]">
+            <h5 className="md:text-[16px] text-[14px]">
                 Where worship is heartfelt, teaching is sound, and lives are transformed.
             </h5>
         </div>
@@ -107,14 +107,14 @@ const Experience = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black-600 to-transparent opacity-100 group-hover:opacity-90 transition duration-500" />
 
               {/* Text */}
-              <div className="absolute md:top-58 top-70  left-4 text-white">
+              <div className="absolute md:top-54 top-70  left-4 text-white">
                 <h3 className="font-semibold text-left text-lg mb-[2px]">
                   {service.title}
                 </h3>
 
                 <div className="text-left">
-                <p className="text-xs  opacity-80">{service.desc1}</p>
-                <p className="text-xs opacity-80">{service.desc2}</p>
+                <p className="text-[14px]  opacity-80">{service.desc1}</p>
+                <p className="text-[14px] opacity-80">{service.desc2}</p>
                 </div>
               </div>
             </motion.div>

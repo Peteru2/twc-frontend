@@ -71,7 +71,7 @@ export default function Rna() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="text-gray-300 leading-relaxed max-w-md mx-auto md:mx-0 mb-8"
+              className="text-gray-300 leading-relaxed  max-w-md mx-auto md:mx-0 mb-8"
             >
               Reverend Dr. Roly Adebayo is the Lead Pastor of True Worshippers
               Church, Ogbomoso. A transformational ministry committed to

@@ -108,7 +108,7 @@ const Colors = () => {
           >
             <div className={`${card.bg} h-46 rounded-xl mt-4  text-${card.textColor} p-4 `}>
                 <h2 className="viga text-3xl mb-2">{card.color}</h2>
-                <p className="lato md:text-[15px] text-[14px] text-justify">{card.meaning}</p>
+                <p className="lato md:text-[16px] text-[14px] text-justify">{card.meaning}</p>
             </div>
 
           </motion.div>
