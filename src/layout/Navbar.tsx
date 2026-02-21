@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { X, TextAlignEnd } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { Instagram, Twitter, Youtube, Linkedin, X, TextAlignEnd } from "lucide-react";
+
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+}, [isOpen]);
 
   const navLinks = [
     { name: "ABOUT", path: "/about", icon: "" },
@@ -67,33 +75,130 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={` overflow-hidden transition-max-height duration-300 ease-in-out ${
-          isOpen ? "h-[1000px]" : "max-h-0"
-        }`}
+      {/* For all screen Menu */}
+      {isOpen && (
+  <div className="fixed inset-0 bg-black z-40 flex overflow-y-auto scroll-smooth transition-opacity duration-500">
+    
+    {/* Close Button */}
+    <div className="absolute top-5 right-2">
+      <button
+        onClick={() => setIsOpen(false)}
+        className="text-white"
       >
-        <div className="flex flex-col px-12 mt-20 tracking-[2px] py-2 space-y-2">
-          {navLinksMobile.map((link) => {
-            return (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `font-bold transition viga text-5xl py-[10px] ${
-                    isActive
-                      ? "text-primary"
-                        : "text-white hover:text-[#E80F1A]"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            );
-          })}
-        </div>
+        <X size={32} />
+      </button>
+    </div>
+    <div className="absolute top-4 left-2">
+      <img
+      src="/fullLogo.png"
+        className="md:w-24 w-26"
+      />
+      
+
+    </div>
+
+    {/* Left Big Navigation */}
+    <div className="w-full grid md:grid-cols-2  justify-start md:mt-28 mt-24 md:px-24 px-4">
+      <div className="flex flex-col space-y-4">
+        {navLinksMobile.map((link, index) => (
+          <NavLink
+            key={link.name}
+            to={link.path}
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              `text-4xl md:text-6xl font-extrabold pb-4 viga tracking-wide transition-all duration-500 transform ${
+                isActive
+                  ? "text-red-600"
+                  : "text-white hover:text-red-500"
+              }`
+            }
+            style={{
+              animation: `slideIn 0.4s ease forwards`,
+              animationDelay: `${index * 0.08}s`,
+              opacity: 0,
+            }}
+          >
+            {link.name}
+          </NavLink>
+        ))}
       </div>
+
+
+      {/* Right Side */}
+      <div>
+        <div>
+          <img
+              src="/fullLogo.png"
+          />
+        </div>
+      <div className="grid grid-cols-2 text-white">
+
+        
+        {/* Connect */}
+        <div className="flex md:justify-center">
+            <div>
+            <h3 className="text-gray-400 mb-4 font-medium">Connect</h3>
+            <ul className="space-y-2 text-sm">
+              {[
+                "Become a member",
+                "Prayer Request",
+                "First Timers",
+                "Online Community",
+                "Celebrations"
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="hover:text-white transition duration-300 cursor-pointer"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+            </div>
+          </div>
+{/* Media */}
+                    <div>
+            <h3 className="text-gray-400 mb-4 font-medium">Media</h3>
+            <ul className="space-y-3 text-sm">
+              {["Watch Online", "Sermons"].map((item, index) => (
+                <li
+                  key={index}
+                  className="hover:text-white transition duration-300 cursor-pointer"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          </div>
+          
+
+          <div className="flex flex-col py-6 md:pl-10 md:flex-row justify-between items-center gap-6">
+
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} True Worshippers Church. All Rights Reserved.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-6">
+            {[Instagram, Twitter, Youtube, Linkedin].map(
+              (Icon, index) => (
+                <div
+                key={index}
+                  className="text-gray-500 hover:text-white transition duration-300 cursor-pointer"
+                >
+                  <Icon size={18} />
+                </div>
+              )
+            )}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+)}
     </nav>
   );
 };

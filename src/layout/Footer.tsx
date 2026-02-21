@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <section>
       <NewLetterGive />
-    <footer className="w-full bg-black text-gray-400 overflow-hidden">
+    <footer className="w-full bg-black text-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-16">
 
         {/* Top Section */}
@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Connect */}
           <div className="flex md:justify-center">
             <div>
-            <h3 className="text-white mb-4 font-medium">Connect</h3>
+            <h3 className="text-gray-400 mb-4 font-medium">Connect</h3>
             <ul className="space-y-2 text-sm">
               {[
                 "Become a member",
@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Media */}
           <div>
-            <h3 className="text-white mb-4 font-medium">Media</h3>
+            <h3 className="text-gray-400 mb-4 font-medium">Media</h3>
             <ul className="space-y-3 text-sm">
               {["Watch Online", "Sermons"].map((item, index) => (
                 <li

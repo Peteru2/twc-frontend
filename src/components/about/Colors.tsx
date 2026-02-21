@@ -72,7 +72,7 @@ const Colors = () => {
 ];
   return (
     <div>
-<div className="flex justify-center md:px-0 px-4 pb-14 max-w-5xl mx-auto">
+<div className="flex justify-center md:px-0 px-4  max-w-5xl mx-auto">
        
         <div>
                       <motion.div
