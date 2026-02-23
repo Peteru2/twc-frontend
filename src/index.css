@@ -1,10 +1,21 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-
 @import "tailwindcss";
 
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #E80F1A;
+  border-radius: 10px;
+  border: 3px solid #eeeeee; 
+}
 
 .viga {
   font-family: "Boldonse",   sans-serif;
@@ -12,9 +23,9 @@
 .lato {
   font-family: "Lato", sans-serif;
   font-style: normal;
-  font-weight:400;
- 
+  font-weight:400; 
 }
+
 @keyframes slideIn {
   from {
     opacity: 0;

@@ -4,7 +4,13 @@ import NewLetterGive from "../components/common/NewLetterGive";
 
 export default function Footer() {
   return (
-    <section>
+    <motion.section
+    initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+    
+    >
       <NewLetterGive />
     <footer className="w-full bg-black text-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -94,6 +100,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-    </section>
+    </motion.section>
   );
 }

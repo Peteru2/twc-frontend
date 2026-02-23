@@ -30,7 +30,7 @@ export default function Vision() {
           >
             <div className=" gap-4">
                 <div className="flex items-center ">
-              <div className="w-8 h-8 rounded-full px-4 mr-4 bg-red-100 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full px-4 mr-4 bg-violet-200 flex items-center justify-center">
                 <span className="text-red-500 text-sm font-bold">◎</span>
                 
               </div>
@@ -62,7 +62,7 @@ export default function Vision() {
           >
             <div className="">
               <div className="flex items-center ">
-              <div className="w-8 h-8 rounded-full px-4 mr-4 bg-red-100 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full px-4 mr-4 bg-violet-200 flex items-center justify-center">
                 <span className="text-red-500 text-sm font-bold">◎</span>
                 
               </div>

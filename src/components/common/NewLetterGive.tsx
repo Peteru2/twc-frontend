@@ -8,7 +8,7 @@ const NewLetterGive = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className='flex justify-center px-4 py-12 w-full'>
+          className='flex justify-center px-4 py-22 w-full'>
 
     <div className='w-full lato flex flex-col items-center'> 
         <h1 className='viga md:text-3xl text-2xl text-center'>GET INSPIRATIONAL CONTENT AND UPDATES</h1>
@@ -17,7 +17,7 @@ const NewLetterGive = () => {
             <input 
                 type="email"
                 placeholder='user@example.com'
-                className='w-90 rounded-full py-2 my-2 border border-gray-200 px-4 transition duration-500 focus:outline-none focus:ring-2 focus:ring-[#E80F1A]'
+                className='w-90 rounded-full py-2 my-[12px] border border-gray-300 px-4 transition duration-500 focus:outline-none focus:ring-2 focus:ring-[#E80F1A]'
             />
         </div>
 

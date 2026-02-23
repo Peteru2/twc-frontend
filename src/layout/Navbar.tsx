@@ -17,12 +17,12 @@ useEffect(() => {
   const navLinks = [
     { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
-    { name: "SERMONS", path: "/sermon" },
+    { name: "SERMONS", path: "/sermons" },
     { name: "MAP", path: "/map", icon: "" },
     { name: "GIVE", path: "/give", icon: "" },
   ];
   const navLinksMobile = [
-    { name: "HOME", path: "/", icon: "" },
+    { name: "HOME", path: "/", icon: "" },  
     { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
     { name: "SERMONS", path: "/sermon" },
@@ -43,24 +43,26 @@ useEffect(() => {
             return (
               <div key={link.name} className="relative">
                 <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `group relative text-[13px] font-medium lato transition-colors tracking-[2px] duration-300 ${
-                      isActive
-                        ? "text-gray-400"
-                        : "text-white hover:text-white-900"
-                    } ${isOpen?"hidden":"flex"}`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <h2 className="flex ">{link.name}</h2>
-                      {!isActive && (
-                        <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gray-300 transition-all duration-300 group-hover:w-full" />
-                      )}
-                    </>
-                  )}
-                </NavLink>
+  to={link.path}
+  className={({ isActive }) =>
+    `group relative text-[14px] font-extrabold lato tracking-[1px]
+    pb-1 transition-all duration-300 ${
+      isActive
+        ? "text-white border-b-[3px] rounded-[2px]   border-red-600"
+        : "text-white hover:text-white"
+    } ${isOpen ? "hidden" : "flex"}`
+  }
+>
+  {({ isActive }) => (
+    <>
+      <h2>{link.name}</h2>
+
+      {!isActive && (
+        <span className="absolute left-0 -bottom-[1px]  rounded-full h-[3px] pt-[2px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
+      )}
+    </>
+  )}
+</NavLink>
               </div>
             );
           })}
