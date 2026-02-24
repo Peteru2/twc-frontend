@@ -3,43 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
-
-type EventItem = {
-  id: number
-  flier: string
-  title: string
-  dateISO: string
-  dateDisplay: string
-  location: string
-}
-
-type TimeLeft = {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-}
-
-const events: EventItem[] = [
-  {
-    id: 1,
-    flier: "/anni.jpg",
-    title: "10TH YEARS ANNIVERSARY",
-    dateISO: "2026-05-01T00:00:00",
-    dateDisplay: "1ST MAY – 7TH MAY, 2026",
-    location:
-      "True Worshippers Church, Oke Anu Area, Ogbomoso",
-    
-  },
-  {
-    id: 2,
-    flier: "/fadurayinmi.jpg",
-    title: "FADURAYIMIN",
-    dateISO: "",
-    dateDisplay: "15TH JULY, 2026",
-    location: "Main Auditorium",
-  },
-]
+import type { TimeLeft } from "../../data/upcomingEvent"
+import { events } from "../../data/upcomingEvent"
 
 export default function EventCarousel() {
   const [[index, direction], setIndex] =
@@ -115,7 +80,7 @@ export default function EventCarousel() {
   }
 
   return (
-    <section className="relative w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
+    <section className="relative   w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
 
    
       <img
@@ -146,7 +111,7 @@ export default function EventCarousel() {
 
           
             <img
-              src={event.flier}
+              src={event.flier[0]}
               className="w-full h-[500px] md:h-[550px] object-cover"
             />
 

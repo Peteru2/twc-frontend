@@ -90,7 +90,7 @@ className="text-[28px] md:hidden block viga font-bold text-white px-4  my-8">
           </motion.h1>
 
 
-         <div className="flex flex-col items-center justify-center md:flex-row lora mt-20 gap-4">z
+         <div className="flex flex-col items-center justify-center md:flex-row lora mt-20 gap-4">
   
   <h2 className="text-[15px] flex items-center justify-center hover:bg-[#E80F1A] transition-colors duration-300 cursor-pointer hover:text-white tracking-[3px] bg-white text-black rounded-full md:w-60 w-50  text-center py-4">
     WATCH A SERMON

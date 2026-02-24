@@ -95,27 +95,27 @@ const SermonsSection: React.FC = () => {
 }
 
   return (
-    <section className="py-16 bg-gray-50">
+    <motion.section 
+     initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+    className="pt-10">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* Header */}
        
        <div className="flex justify-center ">
-       <div className="bg-red-300 flex  w-[120px] mb-2 rounded-full items-center font-bold justify-between px-6 py-[6px]">
-              <Globe className="text-[#E80F1A] mr-2" />
-              <h4 className="lato text-gray-100 text-[12px]"> Sermons</h4>
+       <div className="bg-red-300 flex lato  w-[100px] mb-2 rounded-full items-center font-bold justify-between px-4 py-[4px]">
+              <Globe className="text-[#E80F1A] mr-2 text-[14px]" />
+              <h4 className="lato text-black text-[11px]"> SERMONS</h4>
             </div>
             </div>
           <h2 className="text-xl font-bold text-center viga tracking-wide">
-            LATEST SERMONS
+            LATEST <span className="text-red-600" >SERMONS</span>
           </h2>
            <div className="text-center mb-10">
-           <div className="flex justify-center w-full">
-        <img 
-          src="/line.png" 
-          className="mt-2  w-60 md:w-80 origin-center" 
-        />
-      </div>
+           
          
         </div>
 
@@ -192,16 +192,29 @@ const SermonsSection: React.FC = () => {
 </div>
 
         {/* Sermons Grid */}
-        <motion.div layout className="grid lato gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+        initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+        layout className="grid lato gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <AnimatePresence>
             {filteredSermons.map((sermon) => (
               <motion.div
                 key={sermon.id}
-                layout
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.5 }}
                 className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden"
               >
                 {/* Image */}
@@ -242,7 +255,7 @@ const SermonsSection: React.FC = () => {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   )
 }
 

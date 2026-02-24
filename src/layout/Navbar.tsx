@@ -25,7 +25,7 @@ useEffect(() => {
     { name: "HOME", path: "/", icon: "" },  
     { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
-    { name: "SERMONS", path: "/sermon" },
+    { name: "SERMONS", path: "/sermons" },
     { name: "MAP", path: "/map", icon: "" },
     { name: "GIVE", path: "/give", icon: "" },
   ];

@@ -4,7 +4,7 @@ import MainLayout from "./layout/MainLayout";
 import './index.css';
 import About from "./pages/About";
 import ScrollToTop from "./components/common/ScrollToTop";
-import EventCarousel from "./components/event/Hero";
+import Event from "./pages/Event";
 import Sermons from "./pages/Sermons";
 
 function App() {
@@ -16,9 +16,9 @@ function App() {
     <ScrollToTop />
       <Routes>
         <Route element={<MainLayout />}>
-        <Route element={<Home /> }  path = "/"/>
+        <Route element={<Home /> }  path = "/"/>n
         <Route element={<About />} path="about" />
-        <Route element={<EventCarousel />} path="event" />
+        <Route element={<Event />} path="event" />
         <Route element={<Sermons />} path="sermons" />
 
 
