@@ -6,6 +6,7 @@ import About from "./pages/About";
 import ScrollToTop from "./components/common/ScrollToTop";
 import Event from "./pages/Event";
 import Sermons from "./pages/Sermons";
+import Give from "./pages/Giving";
 
 function App() {
 
@@ -20,6 +21,8 @@ function App() {
         <Route element={<About />} path="about" />
         <Route element={<Event />} path="event" />
         <Route element={<Sermons />} path="sermons" />
+        <Route element={<Give />} path="give" />
+        
 
 
        </Route>

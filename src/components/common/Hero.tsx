@@ -1,7 +1,9 @@
 
 import { motion } from 'framer-motion';
-
-const Hero = () => {
+type HeroProps = {
+  img: string
+}
+const Hero = ({img} :HeroProps) => {
 
 
 
@@ -12,17 +14,16 @@ const Hero = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-      className="relative  h-[250px] md:h-[400px] w-full flex items-center justify-center">
+      className="relative  h-[250px] md:h-[300px] w-full flex items-center justify-center">
         <img
-          src="/header.jpg"
+          src={img}
           alt="Hero Background"
-          className="absolute inset-0  h-full w-full object-cover"
+          className="absolute inset-0  h-full w-full "
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+      
 
       </motion.div>
-      aksdn;asd
     </div>
   );
 };

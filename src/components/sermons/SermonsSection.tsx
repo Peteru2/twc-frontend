@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react"
 import { motion, AnimatePresence} from "framer-motion"
 import { Search, X , ChevronLeft, ChevronRight, Globe } from "lucide-react"
 import { useRef } from "react"
-
+import Hero from "../common/Hero"
 
 type Sermon = {
   id: number
@@ -95,6 +95,8 @@ const SermonsSection: React.FC = () => {
 }
 
   return (
+    <>
+    <Hero img={"/sermonHeader.png"} />
     <motion.section 
      initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,13 +113,20 @@ const SermonsSection: React.FC = () => {
               <h4 className="lato text-black text-[11px]"> SERMONS</h4>
             </div>
             </div>
-          <h2 className="text-xl font-bold text-center viga tracking-wide">
-            LATEST <span className="text-red-600" >SERMONS</span>
-          </h2>
-           <div className="text-center mb-10">
-           
-         
-        </div>
+
+
+
+          <div  className="flex justify-center  mb-8 w-full">
+        <div>
+         <h2 className="text-xl font-bold text-center mb-4 viga tracking-wide">
+        LATEST <span className="text-red-600">SERMONS</span>
+      </h2>
+      <div>
+        <img src="/line.png" className="mt-2  w-60 md:w-80 origin-center" />
+      </div>
+      </div>
+      </div>
+      
 
         {/* Search Bar */}
         <div className="flex justify-center mb-6">
@@ -244,7 +253,7 @@ const SermonsSection: React.FC = () => {
                     {sermon.date}
                   </p>
 
-                  <button className="ml-auto text-sm bg-gray-200 hover:bg-gray-300 px-4 py-[2px] rounded-full transition">
+                  <button className="ml-auto text-[10px] bg-gray-200 hover:bg-gray-300 px-4 py-[2px] rounded-full transition">
                     DOWNLOAD
                   </button>
                   </div>
@@ -256,6 +265,7 @@ const SermonsSection: React.FC = () => {
 
       </div>
     </motion.section>
+    </>
   )
 }
 

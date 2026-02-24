@@ -5,7 +5,7 @@ import { Calendar, MapPin } from "lucide-react";
 const UpcomingEvents = () => {
   return (
     <div className="pt-10 bg-red px-4 lg:px-40 ">
-      <h2 className="text-xl font-bold text-center viga tracking-wide">
+      <h2 className="md:text-2xl text-xl font-bold text-center viga tracking-wide">
         UPCOMING <span className="text-red-600">EVENTS</span>
       </h2>
       <div className="flex justify-center w-full">
@@ -13,7 +13,7 @@ const UpcomingEvents = () => {
       </div>
 
 
-      <div className="  w-4xl mt-4 rounded-xl  mx-auto">
+      <div className="max-w-4xl mx-auto mt-4 rounded-xl">
         <div className="grid md:grid-cols-2 gap-6">
         {events.map((events, index) => (
           <motion.div
@@ -25,13 +25,14 @@ const UpcomingEvents = () => {
             whileHover="hover"
             className=" overflow-hidden  shadow-sm rounded-xl"
           >
-            {/* Background Image */}
+            <div className="flex justify-center ">
             <motion.img
               src={events.flier[1]}
               alt={events.title}
-              className="md:w-full h-[500px]  object-cover"
+              className=" h-[500px]  md:object-cover"
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
+            </div>
 
             <div className="lato p-4 border-gray-300">
               <p className="mb-4 font-bold">{events.title}</p>

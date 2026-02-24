@@ -53,7 +53,9 @@ const NewLetterGive = () => {
             </div>
         </motion.div>
         
-        <div>
+        <div
+               
+        >
         <img 
         src="/hand.png"
         alt="hand"
