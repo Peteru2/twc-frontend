@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export default function Vision() {
   return (
     <section className="w-full   lato  overflow-hidden">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl  mx-auto px-6">
 
         {/* Top Cards */}
         <motion.div
@@ -16,7 +16,7 @@ export default function Vision() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="grid md:grid-cols-2 gap-6 mb-16"
+          className="grid md:grid-cols-2 gap-6 my-16"
         >
           {/* Vision Card */}
           <motion.div
@@ -26,7 +26,7 @@ export default function Vision() {
             }}
             whileHover={{ y: -8 }}
             transition={{ duration: 0.4 }}
-            className="bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition duration-500"
+            className="bg-white rounded-xl  p-6 shadow-sm hover:shadow-xl transition duration-500"
           >
             <div className=" gap-4">
                 <div className="flex items-center ">
