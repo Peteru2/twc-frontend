@@ -80,7 +80,7 @@ export default function BankAccounts() {
         <AccountCard
           bank="Access (Diamond)"
           accountType="Naira Account"
-          accountNumber="0076477140"
+          accountNumber="0076447140"
           accountName="True Worshippers Revival Global Ministry Inc."
           logo="/access.png"
         />

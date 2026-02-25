@@ -18,7 +18,7 @@ const events: EventItem[] = [
   {
     id: 1,
     flier: ["/anni.jpg", "/80days.jpg"],
-    title: "10TH YEARS ANNIVERSARY",
+    title: "10TH ANNIVERSARY",
     dateISO: "2026-05-01T00:00:00",
     dateDisplay: "1ST MAY – 7TH MAY, 2026",
     location:

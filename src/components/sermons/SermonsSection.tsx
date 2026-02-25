@@ -96,7 +96,8 @@ const SermonsSection: React.FC = () => {
 
   return (
     <>
-    <Hero img={"/sermonHeader.png"} />
+         <Hero img={"/sermonHeader1.png"} className="h-[0px] md:h-[290px]"/>  
+        <Hero img={"/sermonHeader2.jpg"}  className="h-[290px] md:h-[0px]"/>  
     <motion.section 
      initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

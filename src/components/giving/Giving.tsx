@@ -5,7 +5,9 @@ import Hero from "../common/Hero"
 const Giving = () => {
   return (
     <div>
-        <Hero img={"/give.png"} />  
+        <Hero img={"/giveHeader1.png"} className="h-[0px] md:h-[290px]"/>  
+        <Hero img={"/giveHeader2.jpg"}  className="h-[290px] md:h-[0px]"/>  
+
         <div className="flex justify-center pt-10">
        <div className="bg-red-300 flex lato  w-[100px] mb-2 rounded-full items-center font-bold justify-between px-4 py-[4px]">
               <Globe className="text-[#E80F1A] mr-2 text-[14px]" />

@@ -2,8 +2,9 @@
 import { motion } from 'framer-motion';
 type HeroProps = {
   img: string
+  className:string
 }
-const Hero = ({img} :HeroProps) => {
+const Hero = ({img, className} :HeroProps) => {
 
 
 
@@ -14,11 +15,11 @@ const Hero = ({img} :HeroProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-      className="relative  h-[250px] md:h-[300px] w-full flex items-center justify-center">
+     className={`${className} relative   w-full flex items-center justify-center`}>
         <img
           src={img}
           alt="Hero Background"
-          className="absolute inset-0  h-full w-full "
+          className={`${className} absolute inset-0  h-full w-full object-cover"`}
         />
 
       

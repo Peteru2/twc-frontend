@@ -1,8 +1,16 @@
 import { motion } from "framer-motion";
 import { Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 import NewLetterGive from "../components/common/NewLetterGive";
+import { Link } from "react-router";
 
 export default function Footer() {
+   const footerLinks = [
+    { name: "Become a member", path: "/members",  },  
+    { name: "Prayer Request", path: "/prayer",},
+    { name: "First Timers", path: "/firsttimer",},
+    { name: "Online Community", path: "/map",  },
+    { name: "Celebrations", path: "/give", },
+  ];
   return (
     <motion.section
     initial={{ opacity: 0, y: 40 }}
@@ -35,18 +43,12 @@ export default function Footer() {
             <div>
             <h3 className="text-gray-400 mb-4 font-medium">Connect</h3>
             <ul className="space-y-2 text-sm">
-              {[
-                "Become a member",
-                "Prayer Request",
-                "First Timers",
-                "Online Community",
-                "Celebrations"
-              ].map((item, index) => (
+              {footerLinks.map((link, index) => (
                 <li
                   key={index}
                   className="hover:text-white transition duration-300 cursor-pointer"
                 >
-                  {item}
+                 <Link to={link.path}> {link.name} </Link>
                 </li>
               ))}
             </ul>
