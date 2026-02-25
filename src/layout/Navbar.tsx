@@ -29,6 +29,13 @@ useEffect(() => {
     { name: "MAP", path: "/map", icon: "" },
     { name: "GIVE", path: "/give", icon: "" },
   ];
+  const footerLinks = [
+    { name: "Become a member", path: "/members",  },  
+    { name: "Prayer Request", path: "/prayer",},
+    { name: "First Timers", path: "/firsttimer",},
+    { name: "Online Community", path: "/map",  },
+    { name: "Celebrations", path: "/give", },
+  ];
 
   return (
     <nav className="fixed w-full z-50  transition-colors duration-300 bg-[#000000]">
@@ -141,19 +148,17 @@ useEffect(() => {
             <div>
             <h3 className="text-gray-400 mb-4 font-medium">Connect</h3>
             <ul className="space-y-2 text-sm">
-              {[
-                "Become a member",
-                "Prayer Request",
-                "First Timers",
-                "Online Community",
-                "Celebrations"
-              ].map((item, index) => (
+              {footerLinks.map((link, index) => (
+                <Link 
+                 onClick={() => setIsOpen(false)}
+                to={link.path}>
                 <li
                   key={index}
                   className="hover:text-white transition duration-300 cursor-pointer"
                 >
-                  {item}
+                  {link.name}
                 </li>
+                </Link>
               ))}
             </ul>
             </div>
