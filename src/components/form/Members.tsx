@@ -5,9 +5,14 @@ import Input from "../common/Input";
 import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import Select from "../common/Select";
+import FormHero from "../common/FormHero";
 
 export const Members = () => {
   return (
+    <section>
+      <FormHero img={"/memberHeader1.png"} className="h-[0px] md:h-[290px] hidden md:flex" text="Membership Form"/>  
+        <FormHero img={"/memberHeader2.png"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Membership"/>  
+
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -102,5 +107,7 @@ export const Members = () => {
         </motion.button>
       </motion.div>
     </div>
+    </section>
+
   );
 };

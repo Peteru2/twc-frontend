@@ -4,10 +4,13 @@ import { motion } from "framer-motion";
 import Input from "../common/Input";
 import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
-
+import FormHero from "../common/FormHero";
 
 export const FirstTimers = () => {
   return (
+      <section>
+          <FormHero img={"/firstTimerHeader1.jpeg"} className="h-[0px] md:h-[290px] hidden md:flex" text="Welcome to True Worshippers Church"/>  
+            <FormHero img={"/firstTimerHeader2.jpg"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Welcome to True Worshippers Church"/>  
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -114,5 +117,6 @@ export const FirstTimers = () => {
         </motion.button>
       </motion.div>
     </div>
+    </section>
   );
 };

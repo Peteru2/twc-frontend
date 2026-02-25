@@ -5,9 +5,13 @@ import Input from "../common/Input";
 import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import Select from "../common/Select";
+import FormHero from "../common/FormHero";
 
 export const Prayer = () => {
   return (
+     <section>
+          <FormHero img={"/prayerHeader1.jpeg"} className="h-[0px] md:h-[290px] hidden md:flex" text="Prayer Request"/>  
+            <FormHero img={"/prayerHeader2.jpg"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Prayer Request"/>  
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -81,5 +85,6 @@ export const Prayer = () => {
         </motion.button>
       </motion.div>
     </div>
+    </section>
   );
 };
