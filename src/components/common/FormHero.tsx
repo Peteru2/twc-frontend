@@ -19,7 +19,21 @@ const FormHero = ({img, className, text} :HeroProps) => {
           alt="Hero Background"
           className={` absolute inset-0  h-full w-full object-cover"`}
         />
-        <h2 className='absolute px-4 text-white  text-center md:w-2xl viga md:text-4xl text-2xl '>{text} </h2>
+        <div className='absolute'>
+        <h2 className=' px-4 text-white  text-center md:w-2xl viga md:text-4xl text-2xl '>
+          
+          {text} </h2>
+          <div className='flex justify-center mt-2' >
+        
+         <img
+          src="whiteLine.png"
+          alt="WhiteLine"
+          className='md:w-60 w-40'
+        />
+        </div>
+          </div>
+        
+      
       </motion.div>
     </div>
   );

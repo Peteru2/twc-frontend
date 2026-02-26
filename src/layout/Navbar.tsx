@@ -18,7 +18,7 @@ useEffect(() => {
     { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
     { name: "SERMONS", path: "/sermons" },
-    { name: "MAP", path: "/map", icon: "" },
+    { name: "PASTORAL TEAM", path: "/pastoralteam", icon: "" },
     { name: "GIVE", path: "/give", icon: "" },
   ];
   const navLinksMobile = [
@@ -26,7 +26,7 @@ useEffect(() => {
     { name: "ABOUT", path: "/about", icon: "" },
     { name: "EVENT", path: "/event", icon: "" },
     { name: "SERMONS", path: "/sermons" },
-    { name: "MAP", path: "/map", icon: "" },
+    { name: "PASTORAL TEAM", path: "/pastoralteam", icon: "" },
     { name: "GIVE", path: "/give", icon: "" },
   ];
   const footerLinks = [
@@ -115,7 +115,7 @@ useEffect(() => {
             to={link.path}
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
-              `text-4xl md:text-6xl font-extrabold pb-4 viga tracking-wide transition-all duration-500 transform ${
+              `text-4xl md:text-5xl font-extrabold pb-8 viga tracking-wide transition-all duration-500 transform ${
                 isActive
                   ? "text-red-600"
                   : "text-white hover:text-red-500"
@@ -154,7 +154,7 @@ useEffect(() => {
                 to={link.path}>
                 <li
                   key={index}
-                  className="hover:text-white transition duration-300 cursor-pointer"
+                  className="hover:text-white mb-2 transition duration-300 cursor-pointer"
                 >
                   {link.name}
                 </li>

@@ -6,6 +6,7 @@ import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import Select from "../common/Select";
 import FormHero from "../common/FormHero";
+import CheckBox from "../common/CheckBox";
 
 export const Prayer = () => {
   return (
@@ -52,9 +53,11 @@ export const Prayer = () => {
       </div>
 
       {/* Preferred method of contact */}
-      <div>
+
+       <div>
        <FormRow label="Preferred Method of Contact" required>
-          <RadioGroup options={["Phone Call", "WhatsApp", "Email"]} style="flex-col"/>
+          <CheckBox options={["Phone Call", "WhatsApp", "Email"]} style="flex-col"/>
+        
         </FormRow>
       </div>
 
