@@ -9,7 +9,8 @@ const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
       text-sm
       outline-none
       transition-all duration-200
-      focus:border-red-500
+      focus:border-red-5
+      00
       focus:ring-2 focus:ring-blue-100
     "
     {...props}

@@ -9,8 +9,8 @@ import FormHero from "../common/FormHero";
 export const FirstTimers = () => {
   return (
       <section>
-          <FormHero img={"/firstTimerHeader1.jpeg"} className="h-[0px] md:h-[290px] hidden md:flex" text="Welcome to True Worshippers Church"/>  
-            <FormHero img={"/firstTimerHeader2.jpg"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Welcome to True Worshippers Church"/>  
+          <FormHero img={"/firstTimerHeader1.jpeg"} className="h-[120px] md:h-[290px] " text="Welcome to True Worshippers Church"/>  
+            
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -62,10 +62,8 @@ export const FirstTimers = () => {
         
           </div>
           <SubLabelRow labels={["Street Address"]} />
-        </FormRow>
-
-        <FormRow label="" required>
-          <div className="grid grid-cols-2 gap-4">
+       
+          <div className="grid grid-cols-2 mt-2 gap-4">
             <Input placeholder="" />
             <Input placeholder="" />
           </div>
@@ -74,7 +72,7 @@ export const FirstTimers = () => {
 
 
  {/* Others*/}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4">
 
         <FormRow label="Are you born again?" required >
           <RadioGroup options={["Yes", "No","Not Sure"]} style="flex-col"/>

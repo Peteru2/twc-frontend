@@ -7,12 +7,13 @@ import SubLabelRow from "../common/SubLevelRow";
 import Select from "../common/Select";
 import FormHero from "../common/FormHero";
 import CheckBox from "../common/CheckBox";
+import TextArea from "../common/TextArea";
 
 export const Prayer = () => {
   return (
      <section>
-          <FormHero img={"/prayerHeader1.jpeg"} className="h-[0px] md:h-[290px] hidden md:flex" text="Prayer Request"/>  
-            <FormHero img={"/prayerHeader2.jpg"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Prayer Request"/>  
+          <FormHero img={"/prayerHeader1.jpeg"} className="h-[120px] md:h-[290px] " text="Prayer Request"/>  
+           
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -64,10 +65,27 @@ export const Prayer = () => {
 
       {/*Prayer request Options  */}
       <div>
-        <FormRow label="Age Range" required>
+        <FormRow label="Prayer Request" required>
           <Select />
         </FormRow>
       </div>
+
+    {/* Text Area */}
+ <div>
+            <FormRow label="Your Prayer Request"  required>
+              <TextArea />
+            </FormRow>
+          </div>
+
+          {/* Confidential */}
+
+       <div>
+       <FormRow label="Prayer Request" required>
+          <RadioGroup options={["Prayer Request"]} style="flex-col"/>
+        
+        </FormRow>
+      </div>
+
 
 
         {/* SUBMIT */}

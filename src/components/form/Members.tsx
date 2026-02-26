@@ -10,8 +10,8 @@ import FormHero from "../common/FormHero";
 export const Members = () => {
   return (
     <section>
-      <FormHero img={"/memberHeader1.png"} className="h-[0px] md:h-[290px] hidden md:flex" text="Membership Form"/>  
-        <FormHero img={"/memberHeader2.png"}  className="h-[290px] md:h-[0px] md:hidden flex"  text="Membership"/>  
+      <FormHero img={"/memberHeader1.png"} className="h-[120px] md:h-[290px]" text="Membership Form"/>  
+      
 
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div

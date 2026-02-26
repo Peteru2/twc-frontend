@@ -8,7 +8,7 @@ export default function Footer() {
     { name: "Become a member", path: "/members",  },  
     { name: "Prayer Request", path: "/prayer",},
     { name: "First Timers", path: "/firsttimer",},
-    { name: "Online Community", path: "/map",  },
+    { name: "Online Community", path: "/onlinecommunity",  },
     { name: "Celebrations", path: "/give", },
   ];
   return (

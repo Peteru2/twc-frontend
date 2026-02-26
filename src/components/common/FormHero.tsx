@@ -32,6 +32,18 @@ const FormHero = ({img, className, text} :HeroProps) => {
         />
         </div>
           </div>
+
+          {/* <!DOCTYPE html>
+<html>
+
+<head>
+<title>My name is peter</title>
+</head>
+
+
+
+
+</html> */}
         
       
       </motion.div>

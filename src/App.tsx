@@ -10,6 +10,7 @@ import Give from "./pages/Giving";
 import MembershipForm from "./pages/MembershipForm";
 import PrayerRequest from "./pages/PrayerRequest";
 import FirstTimersForm from "./pages/FirstTimersForm";
+import OnlineCommunity from "./pages/OnlineCommunity";
 
 function App() {
 
@@ -28,6 +29,8 @@ function App() {
         <Route element={<MembershipForm />} path="members" />
         <Route element={<PrayerRequest />} path="prayer" />
         <Route element={<FirstTimersForm />} path="firsttimer" />
+        <Route element={<OnlineCommunity />} path="onlinecommunity" />
+
 
 
 
