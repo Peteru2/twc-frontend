@@ -12,6 +12,7 @@ import PrayerRequest from "./pages/PrayerRequest";
 import FirstTimersForm from "./pages/FirstTimersForm";
 import OnlineCommunity from "./pages/OnlineCommunity";
 import CelebrationRequest from "./pages/CelebrationRequest";
+import Rna from "./pages/Rna";
 
 function App() {
 
@@ -32,6 +33,8 @@ function App() {
         <Route element={<FirstTimersForm />} path="firsttimer" />
         <Route element={<OnlineCommunity />} path="onlinecommunity" />
         <Route element={<CelebrationRequest />} path="celebration" />
+        <Route element={<Rna />} path="rna" />
+
 
 
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export default function Rna() {
   return (
@@ -73,7 +74,7 @@ export default function Rna() {
               transition={{ duration: 1, delay: 0.5 }}
               className="text-gray-300 leading-relaxed  max-w-md mx-auto md:mx-0 mb-8"
             >
-              Reverend Niyi Adebayo is the Lead Pastor of True Worshippers
+              Reverend Dr. Niyi Adebayo is the Lead Pastor of True Worshippers
               Church, Ogbomoso. A transformational ministry committed to
               championing the Word of God and raising disciples who reflect
               Christ in character and impact.
@@ -84,7 +85,8 @@ export default function Rna() {
             </motion.p>
 
             {/* Button */}
-            <motion.button
+            <Link to={"/rna"}>           
+             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
@@ -95,6 +97,8 @@ export default function Rna() {
             >
               Read More
             </motion.button>
+            </Link>
+
             </div>
           </motion.div>
         </div>

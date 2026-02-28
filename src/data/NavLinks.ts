@@ -28,7 +28,7 @@ export const footerLinks: BasicLink[] = [
 ];
 
 export const media: BasicLink[] = [
-  { text: "Media", link: "" },
+  { text: "Watch Online", link: "https://www.youtube.com/@TrueWorshippersChurch" },
   { text: "Sermons", link: "/sermons" },
 ];
 

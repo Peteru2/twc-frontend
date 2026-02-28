@@ -24,7 +24,7 @@ const NewLetterGive = () => {
             />
           </div>
 
-          <button className="bg-[#E80F1A] hover:bg-white text-white hover:text-black hover:border hover:border-[#E80F1A] cursor-pointer md:w-70  px-2 w-54 rounded-full py-2 transition duration-500">
+          <button className="bg-[#E80F1A] hover:bg-white text-white hover:text-black hover:border hover:border-[#E80F1A] cursor-pointer md:w-70  px-2 w-60 rounded-full py-2 transition duration-500">
             Subscribe to our Newsletter
           </button>
         </div>

@@ -92,13 +92,14 @@ className="text-[28px] md:hidden block viga font-bold text-white px-4  my-8">
 
 
          <div className="flex flex-col items-center justify-center md:flex-row lora mt-20 gap-4">
-  
-  <h2 className="text-[15px] flex items-center justify-center hover:bg-[#E80F1A] transition-colors duration-300 cursor-pointer hover:text-white tracking-[3px] bg-white text-black rounded-full md:w-60 w-50  text-center py-4">
+  <Link to={'/sermons'}>
+  <h2 className="text-[14px] flex items-center justify-center hover:bg-[#E80F1A] transition-colors duration-300 cursor-pointer hover:text-white tracking-[3px] bg-white text-black font-bold rounded-full md:w-60 w-54  text-center py-4">
     WATCH A SERMON
   </h2>
+  </Link>
 
 <Link to={"/prayer"}>
-  <h2 className="text-[15px] flex items-center justify-center bg-transparent tracking-[3px] hover:bg-[#E80F1A] hover:border-0 transition-colors duration-300 cursor-pointer text-white border border-white rounded-full md:w-60 w-50 py-4">
+  <h2 className="text-[14px] flex items-center font-bold justify-center bg-transparent tracking-[3px] hover:bg-[#E80F1A] hover:border-0 transition-colors duration-300 cursor-pointer text-white border border-white rounded-full md:w-60 w-54 py-4">
     REQUEST PRAYER
   </h2>
   </Link>

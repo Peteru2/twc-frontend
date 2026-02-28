@@ -9,7 +9,7 @@ reverse?: boolean
 export const OurEventsCard = ({ event, reverse }: Props) => {
   return (
     <div className="my-10">
-      <div className="grid md:grid-cols-2 bg-gray-50 max-w-4xl mx-auto items-center">
+      <div className="grid md:grid-cols-2 overflow-x-hidden bg-gray-50 max-w-4xl mx-auto items-center">
 
         {/* TEXT */}
         <motion.div
