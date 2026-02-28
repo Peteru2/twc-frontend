@@ -99,7 +99,7 @@ const Welcome = () => {
 
                   <Link to={card.link}>
               <motion.button
-                className="text-white text-sm flex items-center gap-2 font-medium"
+                className="text-white cursor-pointer text-sm flex items-center gap-2 font-medium"
                 variants={{
                   hover: { x: 5 },
                 }}

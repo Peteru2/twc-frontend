@@ -144,6 +144,7 @@ const Navbar: React.FC = () => {
                       <Link
                         onClick={() => setIsOpen(false)}
                         to={`${item.link}`}
+                        target="_blank"
                       >
                         <li
                           key={index}
@@ -168,7 +169,7 @@ const Navbar: React.FC = () => {
                   {socialMedia.map((media, index) => {
                     const Icon = media.icon;
                     return (
-                      <Link to={media.link}>
+                      <Link to={media.link} target="_blank">
                         <div
                           key={index}
                           className="text-gray-500 hover:text-white transition duration-300 cursor-pointer"

@@ -49,7 +49,7 @@ export default function Footer() {
               <h3 className="text-gray-400 mb-4 font-medium">Media</h3>
               <ul className="space-y-3 text-sm">
                 {media.map((item, index) => (
-                  <Link to={`${item.link}`}>
+                  <Link to={`${item.link}`} target="_blank">
                     <li
                       key={index}
                       className="hover:text-white mb-2 transition duration-300 cursor-pointer"
@@ -80,7 +80,7 @@ export default function Footer() {
               {socialMedia.map((media, index) => {
                 const Icon = media.icon;
                 return (
-                  <Link to={media.link}>
+                  <Link to={media.link} target="_blank">
                     <motion.div
                       key={index}
                       whileHover={{ y: -4 }}
