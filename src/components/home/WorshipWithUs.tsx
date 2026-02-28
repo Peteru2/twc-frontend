@@ -150,14 +150,14 @@ export default function WorshipWithUs() {
               <div className="absolute inset-0 bg-gradient-to-t from-red-600/90 via-red-600/10 to-transparent opacity-90 group-hover:opacity-100 transition duration-500" />
 
               {/* Text */}
-              <div className="absolute md:top-54 top-74  left-4 text-white">
+              <div className="absolute md:top-56 top-74  left-4 text-white">
                 <h3 className="font-semibold text-left text-lg mb-[2px]">
                   {service.title}
                 </h3>
 
                 <div className="text-left">
-                <p className="text-[16px]  opacity-80">{service.time1}</p>
-                <p className="text-[16px] opacity-80">{service.time2}</p>
+                <p className="text-[14px]  opacity-80">{service.time1}</p>
+                <p className="text-[14px] opacity-80">{service.time2}</p>
                 </div>
               </div>
             </motion.div>

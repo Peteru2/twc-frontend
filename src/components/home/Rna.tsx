@@ -73,7 +73,7 @@ export default function Rna() {
               transition={{ duration: 1, delay: 0.5 }}
               className="text-gray-300 leading-relaxed  max-w-md mx-auto md:mx-0 mb-8"
             >
-              Reverend Dr. Roly Adebayo is the Lead Pastor of True Worshippers
+              Reverend Niyi Adebayo is the Lead Pastor of True Worshippers
               Church, Ogbomoso. A transformational ministry committed to
               championing the Word of God and raising disciples who reflect
               Christ in character and impact.

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const Welcome = () => {
     const cards = [
@@ -9,6 +10,8 @@ const Welcome = () => {
     button: "Learn More",
     image:
       "/w1.jpg",
+    link:"/about"
+
   },
   {
     id: 2,
@@ -17,6 +20,7 @@ const Welcome = () => {
     button: "Sign Up",
     image:
       "/w2.jpg",
+    link:"/onlinecommunity"
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ const Welcome = () => {
     button: "View Events",
     image:
       "/w3.jpg",
+    link:"/event"
+
   },
 ];
   return (
@@ -75,7 +81,7 @@ const Welcome = () => {
             {/* Content */}
             <div className="absolute inset-0 flex flex-col justify-between p-6">
               <div>
-                <p className="md:text-sm text-[10px]  text-gray-300 tracking-widest uppercase">
+                <p className="md:text-sm text-[10px]      text-gray-300 tracking-widest uppercase">
                   {card.subtitle}
                 </p>
 
@@ -90,6 +96,8 @@ const Welcome = () => {
                 </motion.h2>
               </div>
 
+
+                  <Link to={card.link}>
               <motion.button
                 className="text-white text-sm flex items-center gap-2 font-medium"
                 variants={{
@@ -100,6 +108,7 @@ const Welcome = () => {
                 {card.button}
                 <span>→</span>
               </motion.button>
+              </Link>
             </div>
           </motion.div>
         ))}

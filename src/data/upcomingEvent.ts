@@ -36,7 +36,7 @@ const events: EventItem[] = [
  {
     id: 3,
     flier: ["/diaspora.jpg","/diaspora.jpg"],
-    title: "DIASPORAL BRETHREN",
+    title: "DIASPORA BRETHREN",
     dateISO: "",
     dateDisplay: "22ND FEBRUARY, 2026",
     location: "Main Auditorium",

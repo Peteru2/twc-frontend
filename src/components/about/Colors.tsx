@@ -40,14 +40,14 @@ const Colors = () => {
     id: 1,
     color: "Power (Red)",
     meaning: "We are Spirit-empowered, charismatic, and dynamic. We believe in the present-day operation of the Holy Spirit.",
-    bg: "bg-red-500",
+    bg: "bg-[#e80f1a]",
     textColor:"white"
   },
    {
     id: 2   ,
     color: "Love (Blue)",
     meaning: "Church is not a place you attend; it is a family you belong to. We correct in love and build in grace.",
-    bg: "bg-violet-500",
+    bg: "bg-[#272475]",
     textColor:"white"
   },
   
@@ -55,7 +55,7 @@ const Colors = () => {
     id: 3,
     color: "Gold (Dignity)",
     meaning: "We carry ourselves as kings and priests — operating with excellence, skill, and honor in everything we do.",
-    bg: "bg-yellow-700 ",
+    bg: "bg-[#9e7a3c] ",
     textColor:"white",
 
   },

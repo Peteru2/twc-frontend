@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 const NewLetterGive = () => {
   return (
@@ -47,10 +48,13 @@ const NewLetterGive = () => {
             transforming lives.
           </div>
 
+
           <div>
+            <Link to={"/give"}>
             <button className="rounded-full px-4  hover:bg-white transition hover:text-[#E80F1A] cursor-pointer duration-400 py-2 border border-white">
               GIVE NOW
             </button>
+            </Link>
           </div>
         </motion.div>
 

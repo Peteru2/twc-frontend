@@ -1,5 +1,6 @@
 import { Globe, Mouse } from "lucide-react";
 import { motion } from 'framer-motion';
+import { Link } from "react-router";
 
 const Hero = () => {
 
@@ -96,9 +97,11 @@ className="text-[28px] md:hidden block viga font-bold text-white px-4  my-8">
     WATCH A SERMON
   </h2>
 
+<Link to={"/prayer"}>
   <h2 className="text-[15px] flex items-center justify-center bg-transparent tracking-[3px] hover:bg-[#E80F1A] hover:border-0 transition-colors duration-300 cursor-pointer text-white border border-white rounded-full md:w-60 w-50 py-4">
     REQUEST PRAYER
   </h2>
+  </Link>
   
 </div>
       <div className="flex  justify-center text-white mt-20">

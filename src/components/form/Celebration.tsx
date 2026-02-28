@@ -6,10 +6,10 @@ import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import FormHero from "../common/FormHero";
 
-export const FirstTimers = () => {
+export const Celebration = () => {
   return (
       <section>
-          <FormHero img={"/firstTimerHeader1.jpeg"} className="h-[120px] md:h-[290px] " text="Welcome to True Worshippers Church"/>  
+          <FormHero img={"/celebrationHeader.jpeg"} className="h-[120px] md:h-[290px] " text="Celebration Request"/>  
             
     <div className="min-h-screen lato  flex justify-center py-10 px-4">
       <motion.div
@@ -25,8 +25,8 @@ export const FirstTimers = () => {
         {/* NAME */}
         <FormRow label="Name" required>
           <div className="grid grid-cols-2 gap-4">
-            <Input placeholder="" />
-            <Input placeholder="" />
+            <Input placeholder="" type="text" />
+            <Input placeholder="" type="text" />
           </div>
           <SubLabelRow labels={["First Name", "Last Name"]} />
         </FormRow>
@@ -34,27 +34,46 @@ export const FirstTimers = () => {
         {/* EMAIL + PHONE */}
         <div className="grid md:grid-cols-2 md:gap-4">
           <FormRow label="Email" required>
-            <Input />
+            <Input type="email" />
           </FormRow>
 
           <FormRow label="Phone" required>
-            <Input placeholder="605-245-5499" />
+            <Input placeholder="605-245-5499" type="text" />
           </FormRow>
         </div>
 
-         {/* MEMBERSHIP */}
-        <FormRow
-          label="Have you completed Membership Class?"
-          required
-        >
-          <RadioGroup options={["Yes", "No"]} style="flex" />
-        </FormRow>
+        {/*How Long */}
+       <FormRow label="How Long Have you been in Twc?" required>
+            <Input placeholder="" type="text"/>
+          </FormRow>
+        
 
-        {/* GENDER */}
-        <FormRow label="Gender" required>
-          <RadioGroup options={["Male", "Female"]} style="flex-col"/>
+        {/* Membership */}
+         <div className="grid md:grid-cols-2">
+        <FormRow label="Have you Completed your Membership Class" required>
+           
+          <RadioGroup options={["Yes", "No"]} style="flex-col"/>
+         
         </FormRow>
+          <FormRow label="Are you a Worker?" required>
+           
+          <RadioGroup options={["Yes", "No"]} style="flex-col"/>
+         
+        </FormRow>
+          </div>
 
+     
+        {/* 
+        Select Celebration Type
+        
+        */}
+
+
+<FormRow label="Select Celebration Type" required>
+           
+          <RadioGroup options={["Wedding Thanksgiving ", "Baby Dedication" ,"Naming Ceremony", "Naming Ceremony", "Others"]} style="flex-col"/>
+         
+        </FormRow>
         {/* ADDRESS */}
         <FormRow label="Address" required>
           <div className=" gap-4">

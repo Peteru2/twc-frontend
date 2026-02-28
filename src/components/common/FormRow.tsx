@@ -6,7 +6,7 @@ interface FormRowProps {
 }
 
 const FormRow = ({ label, required, children, className }: FormRowProps) => (
-  <div className={`mb-6 ${className || ""}`}>
+  <div className={`mb-4 ${className || ""}`}>
     <label className="text-sm font-medium text-gray-700">
       {label}{" "}
       {required && <span className="text-red-500">(Required)</span>}
