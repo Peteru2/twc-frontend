@@ -29,7 +29,7 @@ const UpcomingEvents = () => {
             <motion.img
               src={events.flier[1]}
               alt={events.title}
-              className=" h-[500px]  md:object-cover"
+              className=" h-[500px]  w-full md:object-cover"
               transition={{ duration: 0.6, ease: "easeOut" }}
             />
             </div>
