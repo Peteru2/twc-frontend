@@ -13,12 +13,14 @@ import FirstTimersForm from "./pages/FirstTimersForm";
 import OnlineCommunity from "./pages/OnlineCommunity";
 import CelebrationRequest from "./pages/CelebrationRequest";
 import Rna from "./pages/Rna";
+import { AudioProvider } from "./context/AudioContext";
 
 function App() {
 
 
   return (
    
+    <AudioProvider>
     <BrowserRouter>
     <ScrollToTop />
       <Routes>
@@ -46,6 +48,7 @@ function App() {
        </Route>
         </Routes >
         </BrowserRouter>
+        </AudioProvider>
       
     
   )

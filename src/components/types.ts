@@ -28,3 +28,14 @@ export interface BasicLink {
   path?: string;
   link?: string;
 }
+export type Sermon = {
+  id: number
+  title: string
+  text: string
+  category: string
+  preacher: string
+  date: string
+  duration: string
+  image: string
+  audio: string
+}

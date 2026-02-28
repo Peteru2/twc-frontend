@@ -3,17 +3,12 @@ import { motion, AnimatePresence} from "framer-motion"
 import { Search, X , ChevronLeft, ChevronRight, Globe } from "lucide-react"
 import { useRef } from "react"
 import Hero from "../common/Hero"
+import "react-h5-audio-player/lib/styles.css";
+import { Play } from "lucide-react";
+import { useAudio } from "../../context/AudioContext";
+import type { Sermon } from "../types"
+import GlobalAudioPlayer from "../common/GlobalAudioPlayer"
 
-type Sermon = {
-  id: number
-  title: string
-  text: string
-  category: string
-  preacher: string
-  date: string
-  duration: string
-  image: string
-}
 
 const sermonsData: Sermon[] = [
   {
@@ -25,6 +20,7 @@ const sermonsData: Sermon[] = [
     date: "Jan 25th, 2026",
     duration: "1Hr 0Min",
     image: "/w1.jpg",
+    audio:"Discipline - Rev Niyi Adebayo.m4a"
   },
   {
     id: 2,
@@ -35,6 +31,9 @@ const sermonsData: Sermon[] = [
     date: "Jan 20th, 2026",
     duration: "58Mins 26Sec",
     image: "/w2.jpg",
+    audio:""
+
+
   },
   {
     id: 3,
@@ -45,6 +44,8 @@ const sermonsData: Sermon[] = [
     date: "Sep 28th, 2025",
     duration: "48Mins 11Sec",
     image: "/w3.jpg",
+    audio:""
+
   },
 ]
 
@@ -66,6 +67,7 @@ const categories = [
 ]
 
 const SermonsSection: React.FC = () => {
+  const { setTrack } = useAudio();
     const scrollRef = useRef<HTMLDivElement | null>(null)
   const [search, setSearch] = useState("")
   const [activeCategory, setActiveCategory] = useState("All")
@@ -228,16 +230,36 @@ const SermonsSection: React.FC = () => {
                 className="bg-white rounded-xl shadow-sm hover:shadow-lg transition overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative">
-                  <img
-                    src={sermon.image}
-                    alt={sermon.title}
-                    className="w-full h-56 object-cover"
-                  />
-                  <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
-                    {sermon.duration}
-                  </div>
-                </div>
+                <div className="relative group">
+  <img
+    src={sermon.image}
+    alt={sermon.title}
+    className="w-full h-56 object-cover"
+  />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+    
+    <button
+      onClick={() =>
+        setTrack({
+          title: sermon.title,
+          preacher: sermon.preacher,
+          src: sermon.audio,
+          image: sermon.image,
+        })
+      }
+      className="bg-white cursor-pointer text-black rounded-full p-4 shadow-xl hover:scale-110 transition"
+    >
+      <Play size={28} />
+    </button>
+  </div>
+
+  {/* Duration badge */}
+  <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
+    {sermon.duration}
+  </div>
+</div>
 
                 {/* Content */}
                 <div className="px-4 w-full py-2 ">
@@ -254,18 +276,26 @@ const SermonsSection: React.FC = () => {
                     {sermon.date}
                   </p>
 
-                  <button className="ml-auto text-[10px] bg-gray-200 hover:bg-gray-300 px-4 py-[2px] rounded-full transition">
-                    DOWNLOAD
-                  </button>
+                  <a
+                      href={sermon.audio}
+                      download
+                      className="ml-auto text-[10px] bg-gray-200 hover:bg-gray-300 px-4 py-[2px] rounded-full transition"
+                    >
+                      DOWNLOAD
+                    </a>
                   </div>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
+           <div className="max-w-xl mx-auto mt-8">
+     
+    </div>
         </motion.div>
 
       </div>
     </motion.section>
+    <GlobalAudioPlayer />
     </>
   )
 }

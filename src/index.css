@@ -58,3 +58,39 @@
 .bg-primary2{
   background-color:#272475
 }
+
+/* Main container background */
+.rhap_container {
+  background-color:#f8b5b8 !important; /* dark slate */
+  border-radius: 0px;
+  box-shadow: none;
+}
+
+/* Progress bar color */
+.rhap_progress-filled {
+  background-color: gray !important; /* red */
+}
+
+/* Play button color */
+.rhap_main-controls-button {
+  color: gray !important;
+}
+
+/* Volume bar color */
+.rhap_volume-filled {
+  background-color:gray !important;
+}
+/* Remove border & shadow */
+.rhap_container {
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+ 
+}
+
+/* Remove inner section borders */
+.rhap_progress-section,
+.rhap_main-controls,
+.rhap_volume-controls {
+  border: none !important;
+}

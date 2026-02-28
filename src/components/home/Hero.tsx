@@ -30,13 +30,18 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
       className="relative  h-screen w-full flex items-center justify-center">
-        <img
-          src="/homeHero.jpg"
-          alt="Hero Background"
-          className="absolute inset-0  h-full w-full object-cover"
-        />
+        <video
+              className="absolute inset-0 h-full w-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source src="/intro.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/70 "></div>
 
         <div className="relative z-10 text-center">
           <div className="w-full justify-center items-center flex">
