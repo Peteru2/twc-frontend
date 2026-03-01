@@ -61,7 +61,7 @@
 
 /* Main container background */
 .rhap_container {
-  background-color:#f8b5b8 !important; /* dark slate */
+  background-color:#e9e9f1 !important; /* dark slate */
   border-radius: 0px;
   box-shadow: none;
 }
@@ -73,7 +73,7 @@
 
 /* Play button color */
 .rhap_main-controls-button {
-  color: gray !important;
+  color: black !important;
 }
 
 /* Volume bar color */

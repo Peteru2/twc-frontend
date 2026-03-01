@@ -4,6 +4,7 @@ import { Search, X , ChevronLeft, ChevronRight, Globe } from "lucide-react"
 import { useRef } from "react"
 import Hero from "../common/Hero"
 import "react-h5-audio-player/lib/styles.css";
+
 import { Play } from "lucide-react";
 import { useAudio } from "../../context/AudioContext";
 import type { Sermon } from "../types"
