@@ -37,7 +37,9 @@ const Hero = () => {
               muted
               playsInline
             >
+              <source src="/intro.webm" type="video/mp4" />
               <source src="/intro.mp4" type="video/mp4" />
+
               Your browser does not support the video tag.
             </video>
 
