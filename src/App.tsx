@@ -14,7 +14,7 @@ import OnlineCommunity from "./pages/OnlineCommunity";
 import CelebrationRequest from "./pages/CelebrationRequest";
 import Rna from "./pages/Rna";
 import { AudioProvider } from "./context/AudioContext";
-
+import AdminRegisterPage from "./admin/pages/Register";
 function App() {
 
 
@@ -36,16 +36,16 @@ function App() {
         <Route element={<OnlineCommunity />} path="onlinecommunity" />
         <Route element={<CelebrationRequest />} path="celebration" />
         <Route element={<Rna />} path="rna" />
-
-
-
-
-
-
-        
-
-
        </Route>
+        <Route
+          path="/admin/register"
+          element={
+            <AdminRegisterPage/>
+          }
+        />
+               
+
+
         </Routes >
         </BrowserRouter>
         </AudioProvider>
