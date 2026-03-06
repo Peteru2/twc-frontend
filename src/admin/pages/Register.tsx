@@ -5,7 +5,7 @@ const AdminRegisterPage = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/admin/register`, {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

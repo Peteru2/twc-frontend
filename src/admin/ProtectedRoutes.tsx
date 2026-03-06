@@ -20,6 +20,7 @@ const ProtectedRoute = ({ children, requiredRole }: Props) => {
     if (requiredRole && role !== requiredRole) {
       return <Navigate to="/" replace />;
     }
+    
 
     return <>{children}</>;
   } catch (error) {

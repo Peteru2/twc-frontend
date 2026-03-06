@@ -6,7 +6,7 @@ const AdminLoginPage = () => {
 
   const handleLogin = async (data: any) => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/admin/login`, {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -18,6 +18,7 @@ import AdminRegisterPage from "./admin/pages/Register";
 import AdminLoginPage from "./admin/pages/Login";
 import ProtectedRoute from "./admin/ProtectedRoutes";
 import AddSermonPage from "./admin/pages/Sermon";
+import { Dashboard } from "./admin/pages/Dashboard";
 function App() {
   return (
     <AudioProvider>
@@ -46,6 +47,14 @@ function App() {
             element={
               <ProtectedRoute requiredRole="superadmin">
                 <AdminRegisterPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <Dashboard />
               </ProtectedRoute>
             }
           />
