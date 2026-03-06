@@ -38,11 +38,7 @@ function App() {
             <Route element={<CelebrationRequest />} path="celebration" />
             <Route element={<Rna />} path="rna" />
           </Route>
-
           <Route path="/admin/login" element={<AdminLoginPage />} />
-          
-          <Route path="/admin/addsermon" element={<AddSermonPage />} />
-
           <Route
             path="/admin/register"
             element={
