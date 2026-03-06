@@ -40,12 +40,13 @@ function App() {
           </Route>
 
           <Route path="/admin/login" element={<AdminLoginPage />} />
+          
           <Route path="/admin/addsermon" element={<AddSermonPage />} />
 
           <Route
             path="/admin/register"
             element={
-              <ProtectedRoute requiredRole="superadmin">
+              <ProtectedRoute allowedRoles={"superadmin"}>
                 <AdminRegisterPage />
               </ProtectedRoute>
             }
@@ -53,8 +54,16 @@ function App() {
           <Route
             path="/admin/dashboard"
             element={
-              <ProtectedRoute requiredRole="admin">
+              <ProtectedRoute allowedRoles="admin">
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+         <Route
+            path="/admin/addsermon"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                <AddSermonPage />
               </ProtectedRoute>
             }
           />

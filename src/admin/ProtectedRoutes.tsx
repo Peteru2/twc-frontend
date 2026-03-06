@@ -3,24 +3,27 @@ import { jwtDecode } from "jwt-decode";
 
 interface Props {
   children: React.ReactNode;
-  requiredRole?: string;
+  // We rename the prop to 'allowedRoles' and accept either a string or an array
+  allowedRoles?: string | string[]; 
 }
 
-const ProtectedRoute = ({ children, requiredRole }: Props) => {
+const ProtectedRoute = ({ children, allowedRoles }: Props) => {
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    return <Navigate to="/" replace />;
-  }
+  if (!token) return <Navigate to="/" replace />;
 
   try {
     const decoded: any = jwtDecode(token);
     const role = decoded.role;
 
-    if (requiredRole && role !== requiredRole) {
-      return <Navigate to="/" replace />;
+    if (allowedRoles) {
+      // Normalize allowedRoles to an array so we can always use .includes()
+      const rolesArray = Array.isArray(allowedRoles) ? allowedRoles : [allowedRoles];
+      
+      if (!rolesArray.includes(role)) {
+        return <Navigate to="/" replace />;
+      }
     }
-    
 
     return <>{children}</>;
   } catch (error) {
