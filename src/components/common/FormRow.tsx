@@ -3,16 +3,27 @@ interface FormRowProps {
   required?: boolean;
   children: React.ReactNode;
   className?: string;
+  error?: string | any;
 }
 
-const FormRow = ({ label, required, children, className }: FormRowProps) => (
+const FormRow = ({ label, required, children, className, error }: FormRowProps) => (
   <div className={`mb-4 ${className || ""}`}>
-    <label className="text-sm font-medium text-gray-700">
-      {label}{" "}
-      {required && <span className="text-red-500">(Required)</span>}
-    </label>
+    
+    <div className="flex">
+      <label className="text-sm font-medium mb-2 text-gray-700">
+        {label}{" "}
+        {required && <span className="text-red-500">(Required)</span>}
+      </label>
 
-    <div className="mt-2">{children}</div>
+      {error && (
+        <span className="text-red-500 text-sm ml-auto">
+          {error}
+        </span>
+      )}
+    </div>
+
+    <div>{children}</div>
+
   </div>
 );
 

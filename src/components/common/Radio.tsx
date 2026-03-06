@@ -1,12 +1,13 @@
 interface RadioGroupProps {
   options: string[];
-  name?: string;
-  style:string;
+  name: string;
+  register: any;
+  style: string;
 }
 
-const RadioGroup = ({ options, style, name = "radio-group" }: RadioGroupProps) => {
+const RadioGroup = ({ options, name, register, style }: RadioGroupProps) => {
   return (
-    <div className={`${style} flex  gap-3 mt-2`}>
+    <div className={`${style} flex gap-3 mt-2`}>
       {options.map((option) => (
         <label
           key={option}
@@ -14,8 +15,8 @@ const RadioGroup = ({ options, style, name = "radio-group" }: RadioGroupProps) =
         >
           <input
             type="radio"
-            name={name}
             value={option}
+            {...register(name, { required: true })}
             className="accent-blue-600"
           />
           {option}

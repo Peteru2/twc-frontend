@@ -29,7 +29,7 @@ const AdminLoginForm = ({ onSubmit }: Props) => {
         onSubmit={handleSubmit(submitHandler)}
         className="bg-white rounded-3xl shadow-lg p-8 w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold text-[#E80F1A] mb-6 text-center">
+        <h2 className="text-2xl viga font-bold text-[#E80F1A] mb-6 text-center">
           Admin Login
         </h2>
 
@@ -55,7 +55,7 @@ const AdminLoginForm = ({ onSubmit }: Props) => {
 
         <button
           type="submit"
-          className="w-full bg-[#E80F1A] cursor-pointer text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
+          className="w-full bg-[#E80F1A] lato  cursor-pointer text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
         >
           Login
         </button>

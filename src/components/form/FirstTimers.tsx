@@ -1,120 +1,268 @@
-
 import FormRow from "../common/FormRow";
 import { motion } from "framer-motion";
 import Input from "../common/Input";
 import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import FormHero from "../common/FormHero";
+import { useForm } from "react-hook-form";
 
 export const FirstTimers = () => {
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+
+  const onSubmit = async (data: any) => {
+
+    try {
+
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/first-timer`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("Details submitted successfully!");
+        reset();
+      } else {
+        alert("Error - " + result.message);
+      }
+
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("Something went wrong. Please try again.");
+    }
+
+  };
+
+
   return (
-      <section>
-          <FormHero img={"/firstTimerHeader1.jpeg"} className="h-[120px] md:h-[290px] " text="Welcome to True Worshippers Church"/>  
-            
-    <div className="min-h-screen lato  flex justify-center py-10 px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="w-full max-w-2xl"
-      >
-        <h2 className="text-center text-blue-900 font-semibold text-lg mb-8">
-          Please provide your details
-        </h2>
+    <section>
 
-        {/* NAME */}
-        <FormRow label="Name" required>
-          <div className="grid grid-cols-2 gap-4">
-            <Input placeholder="" />
-            <Input placeholder="" />
-          </div>
-          <SubLabelRow labels={["First Name", "Last Name"]} />
-        </FormRow>
+      <FormHero
+        img={"/firstTimerHeader1.jpeg"}
+        className="h-[120px] md:h-[290px]"
+        text="Welcome to True Worshippers Church"
+      />
 
-        {/* EMAIL + PHONE */}
-        <div className="grid md:grid-cols-2 md:gap-4">
-          <FormRow label="Email" required>
-            <Input />
+      <div className="min-h-screen lato flex justify-center py-10 px-4">
+
+        <motion.form
+          onSubmit={handleSubmit(onSubmit)}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="w-full max-w-2xl"
+        >
+
+          <h2 className="text-center text-blue-900 font-semibold text-lg mb-8">
+            Please provide your details
+          </h2>
+
+          {/* NAME */}
+
+          <FormRow label="Name" required>
+
+            <div className="grid grid-cols-2 gap-4">
+
+              <FormRow label= ""error={errors.firstName?.message}>
+                <Input
+                  {...register("firstName", {
+                    required: "First name is required",
+                  })}
+                />
+              </FormRow>
+
+              <FormRow label = "" error={errors.lastName?.message}>
+                <Input
+                  {...register("lastName", {
+                    required: "Last name is required",
+                  })}
+                />
+              </FormRow>
+
+            </div>
+
+            <SubLabelRow labels={["First Name", "Last Name"]} />
+
           </FormRow>
 
-          <FormRow label="Phone" required>
-            <Input placeholder="605-245-5499" />
+
+          {/* EMAIL + PHONE */}
+
+          <div className="grid md:grid-cols-2 md:gap-4">
+
+            <FormRow label="Email" required error={errors.email?.message}>
+              <Input
+                type="email"
+                {...register("email", {
+                  required: "Email is required",
+                })}
+              />
+            </FormRow>
+
+            <FormRow label="Phone" required error={errors.phone?.message}>
+              <Input
+                {...register("phone", {
+                  required: "Phone number is required",
+                })}
+              />
+            </FormRow>
+
+          </div>
+
+
+          {/* MEMBERSHIP */}
+
+          <FormRow
+            label="Have you completed Membership Class?"
+            required
+            error={errors.membershipClass?.message}
+          >
+            <RadioGroup
+              options={["Yes", "No"]}
+              name="membershipClass"
+              register={register}
+              style="flex"
+            />
           </FormRow>
-        </div>
 
-         {/* MEMBERSHIP */}
-        <FormRow
-          label="Have you completed Membership Class?"
-          required
-        >
-          <RadioGroup options={["Yes", "No"]} style="flex" />
-        </FormRow>
 
-        {/* GENDER */}
-        <FormRow label="Gender" required>
-          <RadioGroup options={["Male", "Female"]} style="flex-col"/>
-        </FormRow>
+          {/* GENDER */}
 
-        {/* ADDRESS */}
-        <FormRow label="Address" required>
-          <div className=" gap-4">
-            <Input placeholder="" />
-        
+          <FormRow
+            label="Gender"
+            required
+            error={errors.gender?.message}
+          >
+            <RadioGroup
+              options={["Male", "Female"]}
+              name="gender"
+              register={register}
+              style="flex-col"
+            />
+          </FormRow>
+
+
+          {/* ADDRESS */}
+
+          <FormRow label="Address" required>
+
+            <FormRow  label="" error={errors.street?.message}>
+              <Input
+                {...register("street", {
+                  required: "Street address is required",
+                })}
+              />
+            </FormRow>
+
+            <SubLabelRow labels={["Street Address"]} />
+
+            <div className="grid grid-cols-2 mt-2 gap-4">
+
+              <FormRow label="" error={errors.state?.message}>
+                <Input
+                  {...register("state", {
+                    required: "State is required",
+                  })}
+                />
+              </FormRow>
+
+              <FormRow  label=""error={errors.country?.message}>
+                <Input
+                  {...register("country", {
+                    required: "Country is required",
+                  })}
+                />
+              </FormRow>
+
+            </div>
+
+            <SubLabelRow labels={["State / Province / Region", "Country"]} />
+
+          </FormRow>
+
+
+          {/* OTHERS */}
+
+          <div className="grid md:grid-cols-2 gap-4">
+
+            <FormRow
+              label="Are you born again?"
+              required
+              error={errors.bornAgain?.message}
+            >
+              <RadioGroup
+                options={["Yes", "No", "Not Sure"]}
+                name="bornAgain"
+                register={register}
+                style="flex-col"
+              />
+            </FormRow>
+
+            <FormRow
+              label="How did you hear about us?"
+              required
+              error={errors.hearAboutUs?.message}
+            >
+              <RadioGroup
+                options={["Friend / Family", "Online Search", "Others"]}
+                name="hearAboutUs"
+                register={register}
+                style="flex-col"
+              />
+            </FormRow>
+
           </div>
-          <SubLabelRow labels={["Street Address"]} />
-       
-          <div className="grid grid-cols-2 mt-2 gap-4">
-            <Input placeholder="" />
-            <Input placeholder="" />
-          </div>
-          <SubLabelRow labels={["State / Province / Region", "Country"]} />
-        </FormRow>
 
 
- {/* Others*/}
-        <div className="grid md:grid-cols-2 gap-4">
+          {/* CONTACT */}
 
-        <FormRow label="Are you born again?" required >
-          <RadioGroup options={["Yes", "No","Not Sure"]} style="flex-col"/>
-        </FormRow>
-        <FormRow label="How did you Hear About us" required >
-          <RadioGroup options={["Friend / Family", "Online Search","Others"]} style="flex-col"/>
-        </FormRow>
-        </div>
+          <FormRow
+            label="Would you like someone to contact you?"
+            required
+            error={errors.contact?.message}
+          >
+            <RadioGroup
+              options={["Yes", "No"]}
+              name="contact"
+              register={register}
+              style="flex-col"
+            />
+          </FormRow>
 
- {/* WOULD YOU LIKE SOMEONE TO CONTACT YOU */}
-        <FormRow label="Would you Like Someone to Contact you?" required >
-          <RadioGroup options={["Yes", "No"]} style="flex-col"/>
-        </FormRow>
 
-       
+          {/* SUBMIT */}
 
-          
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="
+              w-full mt-8 py-3
+              bg-red-600 text-white font-semibold
+              rounded-md
+              shadow-sm
+              transition-all duration-200
+              hover:bg-red-700
+              cursor-pointer
+            "
+          >
+            SUBMIT
+          </motion.button>
 
-        
+        </motion.form>
 
-       
-
-       
-
-        {/* SUBMIT */}
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="
-            w-full mt-8 py-3
-            bg-red-600 text-white font-semibold
-            rounded-md
-            shadow-sm
-            transition-all duration-200
-            hover:bg-red-700
-            cursor-pointer
-          "
-        >
-          SUBMIT
-        </motion.button>
-      </motion.div>
-    </div>
+      </div>
     </section>
   );
 };

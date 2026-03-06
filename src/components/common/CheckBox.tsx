@@ -1,12 +1,15 @@
-interface RadioGroupProps {
+import type { UseFormRegister } from "react-hook-form";
+
+interface CheckBoxProps {
   options: string[];
-  name?: string;
-  style:string;
+  name: string;
+  style: string;
+  register: UseFormRegister<any>;
 }
 
-const CheckBox = ({ options, style, name = "radio-group" }: RadioGroupProps) => {
+const CheckBox = ({ options, style, name, register }: CheckBoxProps) => {
   return (
-    <div className={`${style} flex  gap-3 mt-2`}>
+    <div className={`${style} flex gap-3 mt-2`}>
       {options.map((option) => (
         <label
           key={option}
@@ -14,8 +17,8 @@ const CheckBox = ({ options, style, name = "radio-group" }: RadioGroupProps) => 
         >
           <input
             type="checkbox"
-            name={name}
             value={option}
+            {...register(name)}
             className="accent-blue-600"
           />
           {option}
