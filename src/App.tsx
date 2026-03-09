@@ -21,6 +21,7 @@ import AddSermonPage from "./admin/pages/Sermon";
 import { Dashboard } from "./admin/pages/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PastoralTeam from "./pages/PastoralTeam";
 function App() {
   return (
     <AudioProvider>
@@ -39,6 +40,8 @@ function App() {
             <Route element={<OnlineCommunity />} path="onlinecommunity" />
             <Route element={<CelebrationRequest />} path="celebration" />
             <Route element={<Rna />} path="rna" />
+            <Route element={<PastoralTeam />} path="pastoralteam" />
+
           </Route>
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route

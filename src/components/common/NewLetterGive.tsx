@@ -1,7 +1,27 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { useForm } from "react-hook-form";
+import useSubmitForm from "../../hooks/useSubmitForm";
 
+interface NewsletterForm {
+  email: string;
+  message:string
+}
 const NewLetterGive = () => {
+   const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors },
+    } = useForm<NewsletterForm>();
+  const { submitForm, loading } = useSubmitForm();
+  const onSubmit = (data: NewsletterForm) => {
+    submitForm(data, reset, {
+      endpoint: "/newsletter",
+      successMessage: data.message,
+
+    });
+  };
   return (
     <div className="w-full lato ">
       <motion.div
@@ -11,23 +31,42 @@ const NewLetterGive = () => {
         viewport={{ once: true }}
         className="flex justify-center px-4 py-22 w-full"
       >
-        <div className="w-full lato flex flex-col items-center">
+        <form  onSubmit={handleSubmit(onSubmit)} className="w-full lato flex flex-col items-center">
           <h1 className="viga md:text-3xl text-2xl text-center">
             GET INSPIRATIONAL CONTENT AND UPDATES
           </h1>
 
           <div className="w-full flex justify-center">
+            <div>
             <input
-              type="email"
-              placeholder="user@example.com"
+
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^\S+@\S+$/i,
+                message: "Invalid email address",
+              },
+            })}
+                              type="email"
+              placeholder="johnpeters@example.com"
               className="w-90 rounded-full py-2 my-[12px] border border-gray-300 px-4 transition duration-500 focus:outline-none focus:ring-2 focus:ring-[#E80F1A]"
             />
+              {errors.email && (
+          <p className="text-red-500 text-sm mb-1 text-center">{errors.email.message}</p>
+        )}
+            </div>
+          
+
+
           </div>
 
           <button className="bg-[#E80F1A] hover:bg-white text-white hover:text-black hover:border hover:border-[#E80F1A] cursor-pointer md:w-70  px-2 w-60 rounded-full py-2 transition duration-500">
-            Subscribe to our Newsletter
+            {
+              loading? "Subscribing...":"Subscribe to our Newsletter"
+            }
           </button>
-        </div>
+        </form>
+
       </motion.div>
 
       {/* Give */}

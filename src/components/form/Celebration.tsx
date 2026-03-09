@@ -20,7 +20,7 @@ export const Celebration = () => {
   const onSubmit = (data: any) => {
     submitForm(data, reset, {
       endpoint: "/celebration",
-      successMessage: "Details submitted successfully!",
+      successMessage: data.message,
     });
   };
 

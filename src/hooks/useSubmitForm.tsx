@@ -7,6 +7,7 @@ interface SubmitOptions {
   successMessage?: string;
 }
 
+
 const useSubmitForm = () => {
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +28,9 @@ const useSubmitForm = () => {
           },
           body: JSON.stringify(data),
         }
+        
       );
+      
 
       const result = await response.json();
 
