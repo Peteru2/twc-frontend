@@ -1,6 +1,6 @@
 
 import AddSermonForm from "../form/Sermon";
-import  uploadFile  from "../utils/uploadFile";
+import uploadFile from "../utils/UploadFile";
 import type { SermonFormInputs } from "../form/Sermon";
 import useApi from "../hooks/useApi";
 import { addSermon } from "../services/sermonService";
