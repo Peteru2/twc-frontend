@@ -29,12 +29,20 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<SermonFormInputs>();
 
   const submitHandler: SubmitHandler<SermonFormInputs> = async (data) => {
+   try {
     await onSubmit(data);
-    console.log( "Submitted data:", data)
+
+    reset();
+    setImageName("");
+    setAudioName("");
+    
+  } catch (error) {}
+    
   };
 const imageRegister = register("image", { required: "Image is required" });
 const audioRegister = register("audio", { required: "Audio is required" });
