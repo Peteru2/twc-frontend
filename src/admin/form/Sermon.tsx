@@ -14,7 +14,7 @@ export interface SermonFormInputs {
   duration: number;
   image: FileList;
   audio: FileList;
-  placeholder:string
+  placeholder: string;
 }
 
 interface Props {
@@ -25,6 +25,7 @@ interface Props {
 const AddSermonForm = ({ onSubmit, loading }: Props) => {
   const [imageName, setImageName] = useState("");
   const [audioName, setAudioName] = useState("");
+  console.log(loading)
   const {
     register,
     handleSubmit,
@@ -33,8 +34,10 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
 
   const submitHandler: SubmitHandler<SermonFormInputs> = async (data) => {
     await onSubmit(data);
+    console.log( "Submitted data:", data)
   };
-
+const imageRegister = register("image", { required: "Image is required" });
+const audioRegister = register("audio", { required: "Audio is required" });
   return (
     <div className="flex justify-center items-start min-h-screen p-4">
       <form
@@ -44,41 +47,33 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
         <h2 className="text-2xl font-bold text-red-600 mb-6 text-center">
           Add Sermon
         </h2>
-         <Input
-                  placeholder="Title"
-                          {...register("title", {
-                            required: "Title is required",
-                          
-                          })} />
+        <Input
+          placeholder="Title"
+          {...register("title", {
+            required: "Title is required",
+          })}
+        />
         {errors.title && <p className="text-red-500">{errors.title.message}</p>}
 
-
         <Input
-           placeholder="Scripture"
-            {...register("scripture", {
+          placeholder="Scripture"
+          {...register("scripture", {
             required: "Scripture is required",
-                          
-                          })} />
+          })}
+        />
         {errors.scripture && (
           <p className="text-red-500">{errors.scripture.message}</p>
         )}
 
-
-<Input
-           placeholder="Preacher"
-            {...register("preacher", {
+        <Input
+          placeholder="Preacher"
+          {...register("preacher", {
             required: "Preacher is required",
-                          
-                          })} />
-       {errors.preacher && (
+          })}
+        />
+        {errors.preacher && (
           <p className="text-red-500">{errors.preacher.message}</p>
         )}
-
-        
-    
-
-       
-        
 
         <select
           {...register("category", { required: "Category is required" })}
@@ -98,12 +93,9 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
           <option value="Other">Other</option>
         </select>
 
-
-
         <Input
           {...register("date", { required: "Date is required" })}
           type="date"
-        
         />
         {errors.date && <p className="text-red-500">{errors.date.message}</p>}
 
@@ -120,7 +112,9 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
         )}
 
         <div>
-          <label className="block mb-2 font-medium text-gray-500">Upload Image</label>
+          <label className="block mb-2 font-medium text-gray-500">
+            Upload Image
+          </label>
 
           <label className="flex items-center justify-center w-full p-4 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
             <span className="flex items-center justify-center gap-2 text-gray-600">
@@ -128,23 +122,27 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
               {imageName || "Click to upload image"}
             </span>
 
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              {...register("image", { required: "Image is required" })}
-              onChange={(e) => {
-                setImageName(e.target.files?.[0]?.name || "");
-              }}
-            />
-          </label>
+            
 
+ <input
+    type="file"
+    accept="image/*"
+    className="hidden"
+    {...imageRegister}
+    onChange={(e) => {
+      imageRegister.onChange(e);
+      setImageName(e.target.files?.[0]?.name || "");
+    }}
+  />
+</label>
           {errors.image && (
             <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
           )}
         </div>
 
-        <label className="block mb-2 font-medium mt-4 text-gray-500">Upload Audio</label>
+        <label className="block mb-2 font-medium mt-4 text-gray-500">
+          Upload Audio
+        </label>
 
         <label className="flex items-center justify-center w-full p-4 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
           <span className="flex items-center justify-center gap-2 text-gray-600">
@@ -152,15 +150,19 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
             {audioName || "Click to upload audio"}
           </span>
 
+
+
+
           <input
-            type="file"
-            accept="audio/*"
-            className="hidden"
-            {...register("audio", { required: "Audio is required" })}
-            onChange={(e) => {
-              setAudioName(e.target.files?.[0]?.name || "");
-            }}
-          />
+    type="file"
+    accept="audio/*"
+    className="hidden"
+    {...audioRegister}
+    onChange={(e) => {
+      audioRegister.onChange(e);
+      setAudioName(e.target.files?.[0]?.name || "");
+    }}
+  />
         </label>
 
         {errors.audio && (

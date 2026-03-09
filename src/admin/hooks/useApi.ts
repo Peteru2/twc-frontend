@@ -7,12 +7,12 @@ const useApi = () => {
   const request = async (apiCall: () => Promise<any>, successMessage?: string) => {
     try {
       setLoading(true);
-
       const res = await apiCall();
 
       if (successMessage) {
         toast.success(successMessage);
       }
+    
 
       return res.data;
     } catch (error: any) {

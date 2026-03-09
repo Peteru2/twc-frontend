@@ -1,5 +1,3 @@
-// types/admin.ts
-
 export type AdminRole = "admin" | "superadmin";
 
 export interface Admin {
