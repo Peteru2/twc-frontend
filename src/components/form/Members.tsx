@@ -6,6 +6,8 @@ import SubLabelRow from "../common/SubLevelRow";
 import Select from "../common/Select";
 import FormHero from "../common/FormHero";
 import { useForm } from "react-hook-form";
+import useSubmitForm from "../../hooks/useSubmitForm";
+
 
 export const Members = () => {
   const {
@@ -14,28 +16,17 @@ export const Members = () => {
     reset,
     formState: { errors },
   } = useForm();
+  
 
-  const onSubmit = async (data: any) => {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/members`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const result = await response.json();
-      if (response.ok) {
-        alert("Member registered successfully!");
-        reset()
-      } else {
-        alert("Error- " + result.message);
-      }
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("Something went wrong. Please try again.");
-    }
+  const { submitForm, loading } = useSubmitForm();
+  const onSubmit = (data: any) => {
+    submitForm(data, reset, {
+      endpoint: "/members",
+      successMessage: "Member registered successfully!",
+    });
   };
+
+  
 
   return (
     <section>
@@ -208,10 +199,11 @@ export const Members = () => {
 
           {/* SUBMIT */}
 
-          <motion.button
+                <motion.button
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            disabled={loading}
             className="
               w-full mt-8 py-3
               bg-red-600 text-white font-semibold
@@ -222,7 +214,8 @@ export const Members = () => {
               cursor-pointer
             "
           >
-            SUBMIT
+           
+             {loading ? "Submitting..." : " SUBMIT"}
           </motion.button>
         </motion.form>
       </div>

@@ -1,34 +1,16 @@
 import AdminRegisterForm from "../form/Register"
-
+import useApi from "../hooks/useApi";
+import { registerAdmin } from "../services/authServices";
 const AdminRegisterPage = () => {
-  const handleRegister = async (data:any) => {
-    try {
-      const token = localStorage.getItem("token");
+  const { request, loading } = useApi();
 
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      });
+const handleRegister = async (data: any) => {
+  await request(() => registerAdmin(data), "Admin registered successfully!");
+};
 
-      const result = await res.json();
 
-      if (!res.ok) {
-        alert(result.message || "Registration failed");
-        return;
-      }
 
-      alert("Admin registered successfully!");
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
-    }
-  };
-
-  return <AdminRegisterForm onSubmit={handleRegister} />;
+  return <AdminRegisterForm onSubmit={handleRegister} loading={loading} />;
 };
 
 export default AdminRegisterPage;

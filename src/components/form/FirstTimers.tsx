@@ -5,6 +5,8 @@ import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import FormHero from "../common/FormHero";
 import { useForm } from "react-hook-form";
+import useSubmitForm from "../../hooks/useSubmitForm";
+
 
 export const FirstTimers = () => {
 
@@ -15,35 +17,15 @@ export const FirstTimers = () => {
     formState: { errors },
   } = useForm();
 
-
-  const onSubmit = async (data: any) => {
-
-    try {
-
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/first-timer`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert("Details submitted successfully!");
-        reset();
-      } else {
-        alert("Error - " + result.message);
-      }
-
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("Something went wrong. Please try again.");
-    }
-
+  const { submitForm, loading } = useSubmitForm();
+  const onSubmit = (data: any) => {
+    submitForm(data, reset, {
+      endpoint: "/first-timer",
+      successMessage: "Details submitted successfully!",
+    });
   };
 
+  
 
   return (
     <section>
@@ -243,10 +225,11 @@ export const FirstTimers = () => {
 
           {/* SUBMIT */}
 
-          <motion.button
+               <motion.button
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            disabled={loading}
             className="
               w-full mt-8 py-3
               bg-red-600 text-white font-semibold
@@ -257,7 +240,8 @@ export const FirstTimers = () => {
               cursor-pointer
             "
           >
-            SUBMIT
+           
+             {loading ? "Submitting..." : " SUBMIT"}
           </motion.button>
 
         </motion.form>

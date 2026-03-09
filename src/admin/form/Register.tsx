@@ -1,5 +1,6 @@
 import { useForm,  } from "react-hook-form";
 import type {SubmitHandler} from "react-hook-form";
+import { LoaderCircle } from 'lucide-react';
 
 interface RegisterFormInputs {
   name: string;
@@ -9,9 +10,10 @@ interface RegisterFormInputs {
 
 interface Props {
   onSubmit: (data: RegisterFormInputs) => void;
+  loading: boolean
 }
 
-const AdminRegisterForm = ({ onSubmit }: Props) => {
+const AdminRegisterForm = ({ onSubmit, loading }: Props) => {
   const {
     register,
     handleSubmit,
@@ -69,7 +71,18 @@ const AdminRegisterForm = ({ onSubmit }: Props) => {
           type="submit"
           className="w-full lato cursor-pointer lato bg-[#E80F1A] text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
         >
-          Register
+
+          
+           {loading?
+        (
+            <>
+            <h2 className="flex text-center w-full items-center justify-center">Registering  <LoaderCircle size="18" className="ml-2 animate-spin h-6 w-6"/></h2></>
+          ) :(
+            <>
+             Register
+            </>
+          ) 
+        }
         </button>
       </form>
     </div>

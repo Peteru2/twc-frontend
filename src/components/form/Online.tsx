@@ -7,6 +7,8 @@ import CheckBox from "../common/CheckBox";
 import FormHero from "../common/FormHero";
 import TextArea from "../common/TextArea";
 import { useForm } from "react-hook-form";
+import useSubmitForm from "../../hooks/useSubmitForm";
+
 
 export const Online = () => {
 
@@ -17,33 +19,14 @@ export const Online = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data: any) => {
-
-    try {
-
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/community`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert("Submitted successfully!");
-        reset();
-      } else {
-        alert("Error - " + result.message);
-      }
-
-    } catch (error) {
-      console.error("Network error:", error);
-      alert("Something went wrong.");
-    }
-
+  const { submitForm, loading } = useSubmitForm();
+  const onSubmit = (data: any) => {
+    submitForm(data, reset, {
+      endpoint: "/community",
+      successMessage: "Details submitted successfully!",
+    });
   };
+
 
   return (
     <section>
@@ -237,10 +220,11 @@ export const Online = () => {
 
           {/* SUBMIT */}
 
-          <motion.button
+               <motion.button
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            disabled={loading}
             className="
               w-full mt-8 py-3
               bg-red-600 text-white font-semibold
@@ -251,7 +235,8 @@ export const Online = () => {
               cursor-pointer
             "
           >
-            SUBMIT
+           
+             {loading ? "Submitting..." : " SUBMIT"}
           </motion.button>
 
         </motion.form>

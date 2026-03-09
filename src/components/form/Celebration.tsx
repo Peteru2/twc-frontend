@@ -5,6 +5,7 @@ import RadioGroup from "../common/Radio";
 import SubLabelRow from "../common/SubLevelRow";
 import FormHero from "../common/FormHero";
 import { useForm } from "react-hook-form";
+import useSubmitForm from "../../hooks/useSubmitForm";
 
 export const Celebration = () => {
 
@@ -15,32 +16,12 @@ export const Celebration = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data: any) => {
-
-    try {
-
-      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/celebration`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        alert("Celebration request submitted successfully!");
-        reset();
-      } else {
-        alert("Error - " + result.message);
-      }
-
-    } catch (error) {
-      console.error(error);
-      alert("Network error");
-    }
-
+    const { submitForm, loading } = useSubmitForm();
+  const onSubmit = (data: any) => {
+    submitForm(data, reset, {
+      endpoint: "/celebration",
+      successMessage: "Details submitted successfully!",
+    });
   };
 
   return (
@@ -286,6 +267,7 @@ export const Celebration = () => {
             type="submit"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            disabled={loading}
             className="
               w-full mt-8 py-3
               bg-red-600 text-white font-semibold
@@ -296,7 +278,8 @@ export const Celebration = () => {
               cursor-pointer
             "
           >
-            SUBMIT
+           
+             {loading ? "Submitting..." : " SUBMIT"}
           </motion.button>
 
         </motion.form>

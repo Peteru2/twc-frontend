@@ -29,13 +29,13 @@ export interface BasicLink {
   link?: string;
 }
 export type Sermon = {
-  id: number
+  _id: string
   title: string
-  text: string
-  category: string
+  scripture: string
   preacher: string
+  category: string
   date: string
-  duration: string
-  image: string
-  audio: string
+  duration: number
+  imageUrl: string
+  audioUrl: string
 }

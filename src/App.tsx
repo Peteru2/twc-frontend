@@ -19,6 +19,8 @@ import AdminLoginPage from "./admin/pages/Login";
 import ProtectedRoute from "./admin/ProtectedRoutes";
 import AddSermonPage from "./admin/pages/Sermon";
 import { Dashboard } from "./admin/pages/Dashboard";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <AudioProvider>
@@ -65,6 +67,7 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+       <ToastContainer position="top-right" autoClose={3000} />
     </AudioProvider>
   );
 }

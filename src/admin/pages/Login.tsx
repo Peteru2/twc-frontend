@@ -1,39 +1,22 @@
 import AdminLoginForm from "../form/Login";
 import { useNavigate } from "react-router-dom";
+import useApi from "../hooks/useApi";
+import { loginAdmin } from "../services/authServices";
 
 const AdminLoginPage = () => {
   const navigate = useNavigate();
 
-  const handleLogin = async (data: any) => {
-    try {
-      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+  const { request, loading } = useApi();
 
-      const result = await res.json();
+const handleLogin = async (data: any) => {
+  const res = await request(() => loginAdmin(data), "Login successful!");
 
-      if (!res.ok) {
-        alert(result.message || "Login failed");
-        return;
-      }
+  localStorage.setItem("token", res.token);
 
-      
-      localStorage.setItem("token", result.token);
+  navigate("/admin/dashboard");
+};
 
-      alert("Login successful!");
-
-      navigate("/admin/dashboard");
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong");
-    }
-  };
-
-  return <AdminLoginForm onSubmit={handleLogin} />;
+  return <AdminLoginForm onSubmit={handleLogin} loading={loading} />;
 };
 
 export default AdminLoginPage;

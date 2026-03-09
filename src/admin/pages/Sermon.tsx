@@ -1,50 +1,40 @@
-import axios from "axios";
+
 import AddSermonForm from "../form/Sermon";
+import  uploadFile  from "../utils/uploadFile";
 import type { SermonFormInputs } from "../form/Sermon";
+import useApi from "../hooks/useApi";
+import { addSermon } from "../services/sermonService";
+
 
 const AddSermonPage = () => {
-  const handleAddSermon = async (data: SermonFormInputs) => {
-    try {
-      const token = localStorage.getItem("token");
+    const { request, loading } = useApi();
 
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("scripture", data.scripture);
-      formData.append("preacher", data.preacher);
-      formData.append("category", data.category);
-      formData.append("date", data.date);
-      formData.append("duration", data.duration.toString());
-      if (data.image && data.image[0]) {
-        formData.append("image", data.image[0]);
-        // console.log("It is fine here")
-        }
-        console.log( data.title)
-        console.log( data.scripture)
-        console.log( data.preacher)
-        console.log( data.category)
-        console.log( data.date)
-        console.log( data.image[0])
-      
+const handleAddSermon = async (data: SermonFormInputs) => {
+  const [imageUrl, audioUrl] = await Promise.all([
+    data.image?.[0] ? uploadFile(data.image[0], "image") : "",
+    data.audio?.[0] ? uploadFile(data.audio[0], "audio") : "",
+  ]);
 
-    //   formData.append("image", data.image[0]);
-    //   formData.append("audio", data.audio[0]);
+  await request(
+    () =>
+      addSermon({
+        title: data.title,
+        scripture: data.scripture,
+        preacher: data.preacher,
+        category: data.category,
+        date: data.date,
+        duration: Number(data.duration),
+        imageUrl,
+        audioUrl,
+      }),
+    "Sermon added successfully!"
+  );
+};
 
-      await axios.post(`${import.meta.env.VITE_BASE_URL}/admin/addsermon`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
 
-      alert("Sermon added successfully!");
-    } catch (error: any) {
-      console.dir(error);
-      alert(error.response?.data?.message || "An error occured");
-      console.error("FULL ERROR:", error.response?.data.message); // Check the browser console!
-    alert(JSON.stringify(error.response?.data) || "Connection error");
-    }
-  };
 
-  return <AddSermonForm onSubmit={handleAddSermon} />;
+
+  return <AddSermonForm onSubmit={handleAddSermon} loading={loading} />;
 };
 
 export default AddSermonPage;

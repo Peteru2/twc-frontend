@@ -1,7 +1,7 @@
-
-
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
+import { LoaderCircle } from 'lucide-react';
+
 
 interface LoginFormInputs {
   email: string;
@@ -10,9 +10,11 @@ interface LoginFormInputs {
 
 interface Props {
   onSubmit: (data: LoginFormInputs) => void;
+  loading: boolean
+
 }
 
-const AdminLoginForm = ({ onSubmit }: Props) => {
+const AdminLoginForm = ({ onSubmit, loading }: Props) => {
   const {
     register,
     handleSubmit,
@@ -57,7 +59,18 @@ const AdminLoginForm = ({ onSubmit }: Props) => {
           type="submit"
           className="w-full bg-[#E80F1A] lato  cursor-pointer text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
         >
-          Login
+
+           {loading?
+        (
+            <>
+            <h2 className="flex text-center w-full items-center justify-center">Login in   <LoaderCircle size="18" className="ml-2 animate-spin h-6 w-6"/></h2></>
+          ) :(
+            <>
+             Login
+            </>
+          ) 
+        }
+         
         </button>
       </form>
     </div>
