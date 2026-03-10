@@ -17,11 +17,15 @@ import { AudioProvider } from "./context/AudioContext";
 import AdminRegisterPage from "./admin/pages/Register";
 import AdminLoginPage from "./admin/pages/Login";
 import ProtectedRoute from "./admin/ProtectedRoutes";
-import AddSermonPage from "./admin/pages/Sermon";
-import { Dashboard } from "./admin/pages/Dashboard";
+import AddSermonPage from "./admin/pages/AddSermon";
+import Dashboard  from "./admin/pages/Dashboard";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PastoralTeam from "./pages/PastoralTeam";
+import AdminLayout from "./admin/layout/AdminLayout";
+import ViewAllSermons from "./admin/pages/ViewAllSermons";
+import AdminCelebrations from "./admin/pages/AdminCelebration";
+import AdminFirstTimers from "./admin/pages/AdminFirstTimer";
 function App() {
   return (
     <AudioProvider>
@@ -29,7 +33,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route element={<MainLayout />}>
-            <Route element={<Home />} path="/" />n
+            <Route element={<Home />} path="/" />
             <Route element={<About />} path="about" />
             <Route element={<Event />} path="event" />
             <Route element={<Sermons />} path="sermons" />
@@ -44,22 +48,54 @@ function App() {
 
           </Route>
           <Route path="/admin/login" element={<AdminLoginPage />} />
+
+
           <Route
             path="/admin/register"
             element={
-              <ProtectedRoute allowedRoles={["superadmin"]}>
+              <ProtectedRoute allowedRoles={"superadmin"}>
                 <AdminRegisterPage />
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/admin/dashboard"
-            element={
-              <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+
+           <Route element={<AdminLayout />}>
+                <Route
+                  path="/admin/dashboard"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                  />
+                  
+                   <Route
+                  path="/admin/sermons"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <ViewAllSermons />
+                    </ProtectedRoute>
+                  }
+                  />
+                  <Route
+                  path="/admin/celebrations"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <AdminCelebrations />
+                    </ProtectedRoute>
+                  }
+                  />
+
+                  <Route
+                  path="/admin/firsttimer"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <AdminFirstTimers />
+                    </ProtectedRoute>
+                  }
+                  />
+          </Route>
+        
          <Route
             path="/admin/addsermon"
             element={
