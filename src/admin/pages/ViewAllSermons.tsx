@@ -28,7 +28,7 @@ const ViewAllSermons = () => {
 
   return (
     <div className="">
-      <div className="flex w-full">
+      <div className="flex w-full mb-4">
         <h1 className="text-xl font-semibold mb-6">Sermons</h1>
         <Link
           to={"/admin/addsermon"}
