@@ -5,7 +5,7 @@ import type { Sermon } from "../types"
 
 interface Props {
   sermon: Sermon
-  formatDuration: (mins: number) => string
+  formatDuration: (seconds: number) => string
 }
 
 const SermonCard: React.FC<Props> = ({ sermon, formatDuration }) => {

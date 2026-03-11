@@ -10,7 +10,7 @@ const FormRow = ({ label, required, children, className, error }: FormRowProps) 
   <div className={`mb-4 ${className || ""}`}>
     
     <div className="flex">
-      <label className="text-sm font-medium mb-2 text-gray-700">
+      <label className="text-sm font-bold  text-gray-700">
         {label}{" "}
         {required && <span className="text-red-500">(Required)</span>}
       </label>

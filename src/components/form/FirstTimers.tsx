@@ -93,11 +93,21 @@ export const FirstTimers = () => {
             </FormRow>
 
             <FormRow label="Phone" required error={errors.phone?.message}>
-              <Input
-                {...register("phone", {
-                  required: "Phone number is required",
-                })}
-              />
+                  <Input
+                  placeholder="08155678639"
+                    {...register("phone", {
+                      required: "Phone number is required",
+                      pattern: {
+                        value: /^[0-9+]+$/, 
+                        message: "Please enter a valid phone number",
+                      },
+                      minLength: {
+                        value: 10,
+                        message: "Phone number is too short",
+                      },
+                    })}
+                    type="tel" 
+                  />
             </FormRow>
 
           </div>

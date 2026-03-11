@@ -94,11 +94,21 @@ export const Online = () => {
             </FormRow>
 
             <FormRow label="Phone" required error={errors.phone?.message}>
-              <Input
-                {...register("phone", {
-                  required: "Phone number is required",
-                })}
-              />
+             <Input
+                placeholder="08155678637"
+                  {...register("phone", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[0-9+]+$/, 
+                      message: "Please enter a valid phone number",
+                    },
+                    minLength: {
+                      value: 10,
+                      message: "Phone number is too short",
+                    },
+                  })}
+                  type="tel" 
+                />
             </FormRow>
 
           </div>
@@ -143,20 +153,11 @@ export const Online = () => {
           </FormRow>
 
 
-          {/* BIRTHDAY */}
-
-          <FormRow label="Birthday" required error={errors.birthday?.message}>
-            <Input
-              type="date"
-              {...register("birthday", {
-                required: "Birthday is required",
-              })}
-            />
-          </FormRow>
+         
 
 
           {/* FIRST TIME */}
-
+                    <div className="grid md:grid-cols-2 gap-4">
           <FormRow
             label="Was this your first time attending TWC?"
             required
@@ -170,10 +171,9 @@ export const Online = () => {
             />
           </FormRow>
 
+           {/* HEAR ABOUT */}
 
-          {/* HEAR ABOUT */}
-
-          <FormRow
+<FormRow
             label="How did you hear about us?"
             required
             error={errors.hearAboutUs?.message}
@@ -191,10 +191,17 @@ export const Online = () => {
             />
           </FormRow>
 
+          </div>
+
+
+         
+
+          
 
           {/* PRAYER REQUEST */}
+          
 
-          <FormRow label="Did you have any prayer request?">
+          <FormRow label="How do you usually connect with us?">
             <CheckBox
               options={[
                 "Live Stream",
@@ -211,9 +218,9 @@ export const Online = () => {
 
           {/* TEXT AREA */}
 
-          <FormRow label="How do you usually connect with us?">
+          <FormRow label="Did you have any prayer request?">
             <TextArea
-              {...register("message")}
+              {...register("prayerRequest")}
             />
           </FormRow>
 

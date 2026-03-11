@@ -56,13 +56,14 @@ const SermonsSection: React.FC = () => {
     fetchSermons()
   }, [])
 
-  const formatDuration = (mins: number) => {
-    const h = Math.floor(mins / 60 / 60)
+const formatDuration = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const h = Math.floor(mins / 60)
     const m = mins % 60
 
-    if (h === 0) return `${m} mins`
-    return `${h}Hr ${m}Min`
-  }
+    if (h === 0) return `${m}m`
+    return `${h}h ${m}m`
+}
 
   const filteredSermons = useMemo(() => {
     return sermons.filter((sermon) => {

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCelebrations} from "../services/others";
+import { getMembers} from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 
 
-const AdminCelebrations = () => {
+const AdminMembers = () => {
  const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const res = await getCelebrations();
+    const res = await getMembers();
     setData(res.data.data);
   };
 
@@ -23,7 +23,6 @@ const AdminCelebrations = () => {
     },
     { label: "Email", key: "email" },
     { label: "Phone", key: "phone" },
-    { label: "Country", key: "country" },
     {
       label: "Date",
       key: "createdAt",
@@ -32,19 +31,23 @@ const AdminCelebrations = () => {
     }
   ];
 
-  const fields = [
+    const fields = [
     { label: "First Name", key: "firstName" },
     { label: "Last Name", key: "lastName" },
     { label: "Email", key: "email" },
     { label: "Phone", key: "phone" },
-    { label: "Country", key: "country" },
+    { label: "City", key: "city" },
     { label: "State", key: "state" },
-    { label: "Celebration Type", key: "celebrationType" },
-    { label: "Day of Celebration ", key: "celebrationDay" },
-    { label: "Membership Class", key: "membershipClass" },
-    { label: "Born Again", key: "bornAgain" },
-    { label: "Hear About Us", key: "hearAboutUs" },
-    { label: "Contact Preference", key: "contact" }
+    { label: "Birth Day", key: "birthday" },
+    { label: "Gender", key: "gender" },
+    { label: "Age Range", key: "ageRange" },
+    { label: "Marital Status", key: "maritalStatus" },
+    { label: "Employment Status", key: "employmentStatus" },
+    { label: "Have you completed your Membership Class?", key: "membershipClass" },
+    
+    
+
+
   ];
 
   return (
@@ -57,4 +60,4 @@ const AdminCelebrations = () => {
   );
 };
 
-export default AdminCelebrations;
+export default AdminMembers;

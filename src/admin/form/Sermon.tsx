@@ -98,7 +98,13 @@ const audioRegister = register("audio", { required: "Audio is required" });
           <option value="Prayer">Prayer</option>
           <option value="Salvation">Salvation</option>
           <option value="Worship">Worship</option>
+          <option value="Healing">Healing</option>
+          <option value="New Life">New Life</option>
+          <option value="Mercy">Mercy</option>
+          <option value="Hope">Hope</option>
+          <option value="Eternal Life">Eternal Life</option>
           <option value="Other">Other</option>
+
         </select>
 
         <Input

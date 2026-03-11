@@ -26,6 +26,9 @@ import AdminLayout from "./admin/layout/AdminLayout";
 import ViewAllSermons from "./admin/pages/ViewAllSermons";
 import AdminCelebrations from "./admin/pages/AdminCelebration";
 import AdminFirstTimers from "./admin/pages/AdminFirstTimer";
+import AdminCommunity from "./admin/pages/AdminCommunity";
+import AdminPrayer from "./admin/pages/AdminPrayer";
+import AdminMembers from "./admin/pages/AdminMembers";
 function App() {
   return (
     <AudioProvider>
@@ -85,12 +88,37 @@ function App() {
                     </ProtectedRoute>
                   }
                   />
+                   <Route
+                  path="/admin/community"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <AdminCommunity />
+                    </ProtectedRoute>
+                  }
+                  />
 
                   <Route
                   path="/admin/firsttimer"
                   element={
                     <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
                       <AdminFirstTimers />
+                    </ProtectedRoute>
+                  }
+                  />
+
+                  <Route
+                  path="/admin/prayer"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <AdminPrayer />
+                    </ProtectedRoute>
+                  }
+                  />
+                  <Route
+                  path="/admin/members"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <AdminMembers />
                     </ProtectedRoute>
                   }
                   />

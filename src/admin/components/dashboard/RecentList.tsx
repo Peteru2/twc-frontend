@@ -1,18 +1,21 @@
+import { Link } from "react-router";
+
 interface Props {
   title: string;
+  link:string;
   items: any[];
   renderItem: (item: any) => React.ReactNode;
 }
 
-const RecentList = ({ title, items, renderItem }: Props) => {
+const RecentList = ({ title, link, items, renderItem }: Props) => {
   return (
     <div className="bg-white rounded-xl shadow-sm p-6">
 
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-700">{title}</h3>
-        <button className="text-red-500 text-sm font-medium hover:underline">
+        <Link to={link} className="text-red-500 text-sm font-medium cursor-pointer hover:underline">
           View All →
-        </button>
+        </Link>
       </div>
 
       <div className="space-y-4">

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCelebrations} from "../services/others";
+import { getCommunity} from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 
 
-const AdminCelebrations = () => {
+const AdminCommunity = () => {
  const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const res = await getCelebrations();
+    const res = await getCommunity();
     setData(res.data.data);
   };
 
@@ -39,17 +39,14 @@ const AdminCelebrations = () => {
     { label: "Phone", key: "phone" },
     { label: "Country", key: "country" },
     { label: "State", key: "state" },
-    { label: "Celebration Type", key: "celebrationType" },
-    { label: "Day of Celebration ", key: "celebrationDay" },
-    { label: "Membership Class", key: "membershipClass" },
-    { label: "Born Again", key: "bornAgain" },
-    { label: "Hear About Us", key: "hearAboutUs" },
-    { label: "Contact Preference", key: "contact" }
+    { label: "Connection Method", key: "connectionMethod" },
+    { label: "First Time Attending Twc?", key: "firstTime" },
+    { label: "Prayer Request", key: "prayerRequest" }
   ];
 
   return (
     <AdminTable
-      title="Celebrations"
+      title="Online Community"
       data={data}
       columns={columns}
       modalFields={fields}
@@ -57,4 +54,4 @@ const AdminCelebrations = () => {
   );
 };
 
-export default AdminCelebrations;
+export default AdminCommunity;

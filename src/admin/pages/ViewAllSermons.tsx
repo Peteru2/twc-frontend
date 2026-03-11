@@ -55,13 +55,13 @@ const ViewAllSermons = () => {
             </p>
 
             <div className="flex gap-3">
-              <button className="bg-blue-500 text-white px-3 py-1 rounded">
+              <button className="bg-blue-500 cursor-pointer text-white px-3 py-1 rounded">
                 Edit
               </button>
 
               <button
                 onClick={() => handleDelete(sermon._id)}
-                className="bg-red-500 text-white px-3 py-1 rounded"
+                className="bg-red-500 cursor-pointer  text-white px-3 py-1 rounded"
               >
                 Delete
               </button>

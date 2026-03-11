@@ -4,17 +4,22 @@ import {
   Users,
   HeartHandshake,
   Globe,
-  Cake
+  Cake,
+ BookOpenText,
+ UserPlus
 } from "lucide-react";
 import { useLocation, Link } from "react-router-dom"
 import useDashboard from "../hooks/useDashboard";
+import { logout } from "../utils/logout";
+import { LogOut } from "lucide-react";
+
 
 const Sidebar = () => {
     const location = useLocation(); 
     const {data} = useDashboard()
   return (
-    <aside className="w-64 bg-[#243a5e] text-white p-5 rounded-br-2xl">
-
+    <aside className="w-64 bg-[#243a5e] text-white  rounded-br-2xl">
+        <div className="p-5">
      <h2 className="text-2xl font-semibold">
         Welcome 
       </h2>
@@ -41,10 +46,32 @@ const Sidebar = () => {
 
         <SidebarItem icon={Cake} text="Celebrations" link="/admin/celebrations"    active={location.pathname === "/admin/celebrations"} />
 
-        <SidebarItem icon={Cake} text="Sermons" link="/admin/sermons"    active={location.pathname === "/admin/sermons"} />
+        <SidebarItem icon={BookOpenText} text="Sermons" link="/admin/sermons"    active={location.pathname === "/admin/sermons"} />
+        
+        
+        {data?.admin?.role ==="superadmin"?
+
+
+        <SidebarItem icon={UserPlus} text="Register an Admin" link="/admin/register"    active={location.pathname === "/admin/register"} />:
+        <></>
+        }
+
 
 
       </nav>
+</div>
+  
+          <div className="  bottom-0 absolute   border-t-[1px] border-gray-100 py-4 w-64 bg-white ">
+
+            <button
+              onClick={logout}
+              className="w-full text-left text-red-500  flex cursor-pointer px-8 items-center  "
+            >
+             <span><LogOut size="16" className="mr-2"/></span> Logout
+            </button>
+
+          </div>
+        
     </aside>
   );
 };
@@ -56,7 +83,7 @@ const SidebarItem = ({
   link
 }: any) => (
   <Link to={link}
-    className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer ${
+    className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer ${
       active ? "bg-white text-black" : "hover:bg-white/20"
     }`}
   >

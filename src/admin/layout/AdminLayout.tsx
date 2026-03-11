@@ -8,11 +8,17 @@ interface AdminLayoutProps {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
-    <div className="flex bg-gray-100 min-h-screen">
+    <div className="flex bg-gray-100 h-screen overflow-hidden">
+      
+      {/* 2. Sidebar stays fixed on the left */}
       <Sidebar />
-      <div className="flex-1 flex flex-col">
+
+      <div className="flex-1 flex flex-col h-full">
+        {/* 3. Topbar stays at the top of this column */}
         <Topbar />
-        <main className="p-6">
+
+        {/* 4. Only this main area scrolls up and down */}
+        <main className="p-6 flex-1 overflow-y-auto">
           <Outlet /> 
           {children}
         </main>

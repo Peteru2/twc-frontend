@@ -91,10 +91,20 @@ export const Celebration = () => {
 
             <FormRow label="Phone" required error={errors.phone?.message}>
               <Input
-                {...register("phone", {
-                  required: "Phone number is required",
-                })}
-              />
+                placeholder="08155678635"
+                  {...register("phone", {
+                    required: "Phone number is required",
+                    pattern: {
+                      value: /^[0-9+]+$/, 
+                      message: "Please enter a valid phone number",
+                    },
+                    minLength: {
+                      value: 10,
+                      message: "Phone number is too short",
+                    },
+                  })}
+                  type="tel" 
+                />
             </FormRow>
 
           </div>
@@ -149,6 +159,8 @@ export const Celebration = () => {
 
 
           {/* CELEBRATION TYPE */}
+          <div className="grid md:grid-cols-2 gap-4">
+
 
           <FormRow
             label="Select Celebration Type"
@@ -167,6 +179,18 @@ export const Celebration = () => {
               style="flex-col"
             />
           </FormRow>
+
+              {/* {Celebration Day} */}
+
+              <FormRow label="Celebration Day" required error={errors.birthday?.message}>
+              <Input
+                type="date"
+                {...register("celebrationDay", {
+                  required: "Celebration Day is required",
+                })}
+              />
+            </FormRow>
+          </div>
 
 
           {/* ADDRESS */}

@@ -59,6 +59,7 @@ const Dashboard = () => {
         <RecentList
           title="Recent Prayer Requests"
           items={recent.prayerRequests}
+          link="/admin/prayer"
           renderItem={(item) => (
             <div className="flex items-center gap-3">
 
@@ -90,6 +91,7 @@ const Dashboard = () => {
 
         <RecentList
           title="Upcoming Celebrations"
+          link="/admin/celebrations"
           items={recent.celebrations}
           renderItem={(item) => (
             <div className="flex items-center gap-3">
@@ -126,6 +128,7 @@ const Dashboard = () => {
       <RecentList
                 title="First Time Visitor Form Submissions"
                 items={recent.firstTimers}
+                link="/admin/firsttimer"  
                 renderItem={(item) => (
                     <div className="flex items-center gap-3">
 

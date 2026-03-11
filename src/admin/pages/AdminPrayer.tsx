@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCelebrations} from "../services/others";
+import { getPrayer} from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 
 
-const AdminCelebrations = () => {
+const AdminPrayer = () => {
  const [data, setData] = useState([]);
 
   const fetchData = async () => {
-    const res = await getCelebrations();
+    const res = await getPrayer();
     setData(res.data.data);
   };
 
@@ -23,7 +23,6 @@ const AdminCelebrations = () => {
     },
     { label: "Email", key: "email" },
     { label: "Phone", key: "phone" },
-    { label: "Country", key: "country" },
     {
       label: "Date",
       key: "createdAt",
@@ -37,14 +36,12 @@ const AdminCelebrations = () => {
     { label: "Last Name", key: "lastName" },
     { label: "Email", key: "email" },
     { label: "Phone", key: "phone" },
-    { label: "Country", key: "country" },
-    { label: "State", key: "state" },
-    { label: "Celebration Type", key: "celebrationType" },
-    { label: "Day of Celebration ", key: "celebrationDay" },
+    { label: "Prayer Type ", key: "prayerType" },
+    { label: "Prayer Request ", key: "prayerRequest" },
+    { label: "Contact Method", key: "contactMethod" },
     { label: "Membership Class", key: "membershipClass" },
-    { label: "Born Again", key: "bornAgain" },
-    { label: "Hear About Us", key: "hearAboutUs" },
-    { label: "Contact Preference", key: "contact" }
+    { label: "Should this be confidential", key: "confidential" },
+    
   ];
 
   return (
@@ -57,4 +54,4 @@ const AdminCelebrations = () => {
   );
 };
 
-export default AdminCelebrations;
+export default AdminPrayer;
