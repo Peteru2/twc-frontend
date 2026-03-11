@@ -32,7 +32,7 @@ const SermonCard: React.FC<Props> = ({ sermon, formatDuration }) => {
         <img
           src={sermon.imageUrl}
           alt={sermon.title}
-          className="w-full h-56 object-cover"
+          className="w-full md:h-56 object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
