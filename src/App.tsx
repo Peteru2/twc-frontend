@@ -29,6 +29,8 @@ import AdminFirstTimers from "./admin/pages/AdminFirstTimer";
 import AdminCommunity from "./admin/pages/AdminCommunity";
 import AdminPrayer from "./admin/pages/AdminPrayer";
 import AdminMembers from "./admin/pages/AdminMembers";
+import EditSermonPage from "./admin/pages/EditSermon";
+import AddEventForm from "./admin/form/Event";
 function App() {
   return (
     <AudioProvider>
@@ -53,7 +55,10 @@ function App() {
           <Route path="/admin/login" element={<AdminLoginPage />} />
 
 
-          <Route
+          
+
+           <Route element={<AdminLayout />}>
+           <Route
             path="/admin/register"
             element={
               <ProtectedRoute allowedRoles={"superadmin"}>
@@ -61,8 +66,6 @@ function App() {
               </ProtectedRoute>
             }
           />
-
-           <Route element={<AdminLayout />}>
                 <Route
                   path="/admin/dashboard"
                   element={
@@ -122,9 +125,15 @@ function App() {
                     </ProtectedRoute>
                   }
                   />
-          </Route>
-        
-         <Route
+                  <Route
+                  path="/admin/edit-sermon/:id"
+                  element={
+                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                      <EditSermonPage />
+                    </ProtectedRoute>
+                  }
+                  />
+                  <Route
             path="/admin/addsermon"
             element={
               <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
@@ -132,7 +141,19 @@ function App() {
               </ProtectedRoute>
             }
           />
+           <Route
+            path="/admin/addevent"
+            element={
+              <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+                <AddEventForm />
+              </ProtectedRoute>
+            }
+          />
+          </Route>
+        
+         
         </Routes>
+        
       </BrowserRouter>
        <ToastContainer position="top-right" autoClose={3000} />
     </AudioProvider>

@@ -6,7 +6,8 @@ import {
   Globe,
   Cake,
  BookOpenText,
- UserPlus
+ UserPlus,
+ CalendarPlus
 } from "lucide-react";
 import { useLocation, Link } from "react-router-dom"
 import useDashboard from "../hooks/useDashboard";
@@ -47,6 +48,7 @@ const Sidebar = () => {
         <SidebarItem icon={Cake} text="Celebrations" link="/admin/celebrations"    active={location.pathname === "/admin/celebrations"} />
 
         <SidebarItem icon={BookOpenText} text="Sermons" link="/admin/sermons"    active={location.pathname === "/admin/sermons"} />
+        <SidebarItem icon={CalendarPlus} text="Add Event" link="/admin/addevent"    active={location.pathname === "/admin/addevent"} />
         
         
         {data?.admin?.role ==="superadmin"?

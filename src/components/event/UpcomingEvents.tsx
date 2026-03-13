@@ -1,8 +1,31 @@
-import { events } from "../../data/upcomingEvent";
+
 import { motion } from "framer-motion";
 import { Calendar, MapPin } from "lucide-react";
+import { getEvents } from "../../admin/services/others";
+import { useEffect, useState } from "react";
+
+interface EventItem {
+  _id: string;
+  flier: string[];
+  title: string;
+  dateISO?: string;
+  dateDisplay: string;
+  location: string;
+}
+
 
 const UpcomingEvents = () => {
+const [events, setEvents] = useState<EventItem[]>([]);
+
+ useEffect(() => {
+    const fetchEvents = async () => {
+      const res = await getEvents();
+      setEvents(res.data.data);
+      console.log("Events seen", res.data.data);
+    };
+
+    fetchEvents();
+  }, []);
   return (
     <div className="pt-10 bg-red px-4 lg:px-40 ">
       <h2 className="md:text-2xl text-xl font-bold text-center viga tracking-wide">
@@ -17,7 +40,7 @@ const UpcomingEvents = () => {
         <div className="grid md:grid-cols-2 gap-6">
         {events.map((events, index) => (
           <motion.div
-            key={events.id}
+            key={events._id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -27,7 +50,7 @@ const UpcomingEvents = () => {
           >
             <div className="flex justify-center ">
             <motion.img
-              src={events.flier[1]}
+              src={events.flier[0]}
               alt={events.title}
               className=" h-[500px]  w-full md:object-cover"
               transition={{ duration: 0.6, ease: "easeOut" }}

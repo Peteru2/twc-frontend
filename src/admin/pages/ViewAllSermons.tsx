@@ -26,6 +26,8 @@ const ViewAllSermons = () => {
     fetchSermons();
   }, []);
 
+
+
   return (
     <div className="">
       <div className="flex w-full mb-4">
@@ -55,9 +57,12 @@ const ViewAllSermons = () => {
             </p>
 
             <div className="flex gap-3">
-              <button className="bg-blue-500 cursor-pointer text-white px-3 py-1 rounded">
-                Edit
-              </button>
+             <Link
+                  to={`/admin/edit-sermon/${sermon._id}`}
+                  className="bg-blue-500 text-white px-3 py-1 rounded"
+                >
+                  Edit
+                </Link>
 
               <button
                 onClick={() => handleDelete(sermon._id)}

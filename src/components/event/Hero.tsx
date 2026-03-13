@@ -3,12 +3,30 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState, useRef } from "react"
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
-import type { TimeLeft } from "../../data/upcomingEvent"
-import { events } from "../../data/upcomingEvent"
+import { getEvents } from "../../admin/services/others"
+
+interface EventItem {
+  _id: string
+  flier: string[]
+  title: string
+  dateISO?: string
+  dateDisplay: string
+  location: string
+}
+
+interface TimeLeft {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+}
 
 export default function EventCarousel() {
+
   const [[index, direction], setIndex] =
     useState<[number, number]>([0, 0])
+
+  const [events, setEvents] = useState<EventItem[]>([])
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
@@ -18,51 +36,61 @@ export default function EventCarousel() {
   })
 
   const autoRef = useRef<number | null>(null)
+
   const event = events[index]
-  const hasCountdown = Boolean(event.dateISO)
- 
+
+  const hasCountdown = Boolean(event?.dateISO)
+
   useEffect(() => {
-    if (event.dateISO ==="") return
-    console.log(event.dateISO)
+    const fetchEvents = async () => {
+      const res = await getEvents()
+      setEvents(res.data.data)
+    }
+
+    fetchEvents()
+  }, [])
+
+  useEffect(() => {
+    if (!event?.dateISO) return
+
     const interval = setInterval(() => {
       const diff =
-        new Date(event.dateISO).getTime() - Date.now()
+        new Date(event.dateISO!).getTime() - Date.now()
 
       if (diff <= 0) return
 
       setTimeLeft({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor(
-          (diff / (1000 * 60 * 60)) % 24
-        ),
-        minutes: Math.floor(
-          (diff / 1000 / 60) % 60
-        ),
-        seconds: Math.floor(
-          (diff / 1000) % 60
-        ),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / 1000 / 60) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
       })
     }, 1000)
 
     return () => clearInterval(interval)
+
   }, [event])
 
- 
   useEffect(() => {
-    autoRef.current = setTimeout(() => {
+
+    if (events.length === 0) return
+
+    autoRef.current = window.setTimeout(() => {
       paginate(1)
     }, 7000)
 
     return () => {
-      if (autoRef.current)
-        clearTimeout(autoRef.current)
+      if (autoRef.current) clearTimeout(autoRef.current)
     }
-  }, [index])
+
+  }, [index, events])
 
   const paginate = (dir: number) => {
+
+    if (events.length === 0) return
+
     setIndex(([prev]) => [
-      (prev + dir + events.length) %
-        events.length,
+      (prev + dir + events.length) % events.length,
       dir,
     ])
   }
@@ -79,24 +107,24 @@ export default function EventCarousel() {
     }),
   }
 
-  return (
-    <section className="relative   w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
+  if (!event) return null
 
-   
+  return (
+    <section className="relative w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
+
       <img
-        src="./eventHero.jpg"
+        src="/eventHero.jpg"
         className="absolute inset-0 w-full h-full object-cover scale-110 blur-sm"
       />
 
-     
       <div className="absolute inset-0 bg-red-800/80" />
 
-      
       <div className="relative z-10 w-full max-w-6xl px-6">
 
         <AnimatePresence custom={direction} mode="wait">
+
           <motion.div
-            key={event.id}
+            key={event._id}
             custom={direction}
             variants={variants}
             initial="enter"
@@ -109,16 +137,13 @@ export default function EventCarousel() {
             className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/70"
           >
 
-          
             <img
-              src={event.flier[0]}
+              src={event.flier?.[0]}
               className="w-full h-[500px] md:h-[550px] object-cover"
             />
 
-            {/* Overlay on flier */}
             <div className="absolute inset-0 bg-black/60" />
 
-            
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-white">
 
               <span className="bg-red-600 px-4 lato py-1 rounded-full text-sm mb-4">
@@ -133,37 +158,36 @@ export default function EventCarousel() {
                 {event.dateDisplay}
               </p>
 
-              <p className="text-[16px] flex  lato md:text-base text-white/80">
+              <p className="text-[16px] flex gap-2 lato md:text-base text-white/80">
                 <MapPin /> {event.location}
               </p>
 
-{hasCountdown && (
-    <>
-              <p className="mt-6 lato text-white/70 text-sm">
-                Event starts in:
-              </p>
+              {hasCountdown && (
+                <>
+                  <p className="mt-6 lato text-white/70 text-sm">
+                    Event starts in:
+                  </p>
 
-           
-              <div className="mt-4 flex lato flex-wrap justify-center gap-4">
-                {Object.entries(timeLeft).map(
-                  ([unit, value]) => (
-                    <TimerBox
-                      key={unit}
-                      value={value}
-                      label={unit}
-                    />
-                  )
-                )}
-                
-              </div>
-              </>
+                  <div className="mt-4 flex lato flex-wrap justify-center gap-4">
+                    {Object.entries(timeLeft).map(
+                      ([unit, value]) => (
+                        <TimerBox
+                          key={unit}
+                          value={value}
+                          label={unit}
+                        />
+                      )
+                    )}
+                  </div>
+                </>
               )}
+
             </div>
           </motion.div>
+
         </AnimatePresence>
       </div>
 
-     
       <button
         onClick={() => paginate(-1)}
         className="absolute left-6 top-1/2 z-10 -translate-y-1/2 bg-white p-3 rounded-full shadow-md"
@@ -177,6 +201,7 @@ export default function EventCarousel() {
       >
         <ChevronRight />
       </button>
+
     </section>
   )
 }
@@ -193,11 +218,12 @@ function TimerBox({
       key={value}
       initial={{ y: -8, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="bg-red-600/10 backdrop-blur-md border border-red-600 px-5 py-4 rounded-lg text-center min-w-[85px]">
+      className="bg-red-600/10 backdrop-blur-md border border-red-600 px-5 py-4 rounded-lg text-center min-w-[85px]"
+    >
       <div className="text-xl lato md:text-2xl font-bold">
         {String(value).padStart(2, "0")}
-        
       </div>
+
       <div className="text-xs text-white/70 capitalize">
         {label}
       </div>

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { LoaderCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Upload } from "lucide-react";
 import Input from "../SermonInput";
 
@@ -20,18 +20,20 @@ export interface SermonFormInputs {
 interface Props {
   onSubmit: (data: SermonFormInputs) => Promise<void>;
   loading: boolean;
+  defaultValues?: Partial<SermonFormInputs>;
 }
 
-const AddSermonForm = ({ onSubmit, loading }: Props) => {
+const AddSermonForm = ({ onSubmit, loading, defaultValues }: Props) => {
   const [imageName, setImageName] = useState("");
   const [audioName, setAudioName] = useState("");
-  console.log(loading)
-  const {
+    const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SermonFormInputs>();
+  } = useForm<SermonFormInputs>({
+    defaultValues,
+  });
 
   const submitHandler: SubmitHandler<SermonFormInputs> = async (data) => {
    try {
@@ -44,6 +46,11 @@ const AddSermonForm = ({ onSubmit, loading }: Props) => {
   } catch (error) {}
     
   };
+  useEffect(() => {
+  if (defaultValues) {
+    reset(defaultValues);
+  }
+}, [defaultValues, reset]);
 const imageRegister = register("image", { required: "Image is required" });
 const audioRegister = register("audio", { required: "Audio is required" });
   return (

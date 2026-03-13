@@ -1,4 +1,4 @@
-import apiClient from "../api/apiClients";
+  import apiClient from "../api/apiClients";
 
 export const loginAdmin = (data: any) => {
   return apiClient.post("/admin/login", data);

@@ -16,3 +16,11 @@ export const getPrayer = () => {
 export const getMembers = () => {
   return apiClient.get("/admin/members");
 };
+
+export const createEvent = (data: any) => {
+  return apiClient.post("/admin/event", data);
+};
+
+export const getEvents = () => {
+  return apiClient.get("/events");
+};

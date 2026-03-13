@@ -17,7 +17,7 @@ export type TimeLeft = {
 const events: EventItem[] = [
   {
     id: 1,
-    flier: ["/anni.jpg", "/80days.jpg"],
+    flier: ["/anni.jpg",],
     title: "10TH ANNIVERSARY",
     dateISO: "2026-05-01T00:00:00",
     dateDisplay: "1ST MAY – 7TH MAY, 2026",
@@ -27,7 +27,7 @@ const events: EventItem[] = [
   },
   {
     id: 2,
-    flier: ["/fadurayinmi.jpg","/fadurayinmi.jpg"],
+    flier: ["/fadurayinmi.jpg",],
     title: "FADURAYIMIN",
     dateISO: "",
     dateDisplay: "15TH JULY, 2026",
@@ -35,7 +35,7 @@ const events: EventItem[] = [
   },
  {
     id: 3,
-    flier: ["/diaspora.jpg","/diaspora.jpg"],
+    flier: ["/diaspora.jpg",],
     title: "DIASPORA BRETHREN",
     dateISO: "",
     dateDisplay: "22ND FEBRUARY, 2026",
