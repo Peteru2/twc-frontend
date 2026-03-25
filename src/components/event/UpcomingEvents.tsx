@@ -21,7 +21,6 @@ const [events, setEvents] = useState<EventItem[]>([]);
     const fetchEvents = async () => {
       const res = await getEvents();
       setEvents(res.data.data);
-      console.log("Events seen", res.data.data);
     };
 
     fetchEvents();

@@ -11,13 +11,14 @@ import {
 } from "lucide-react";
 import { useLocation, Link } from "react-router-dom"
 import useDashboard from "../hooks/useDashboard";
-import { logout } from "../utils/logout";
+import { useLogout} from "../utils/logout";
 import { LogOut } from "lucide-react";
 
 
 const Sidebar = () => {
     const location = useLocation(); 
     const {data} = useDashboard()
+    const logout = useLogout();
   return (
     <aside className="w-64 bg-[#243a5e] text-white  rounded-br-2xl">
         <div className="p-5">

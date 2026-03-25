@@ -9,10 +9,7 @@ const AdminLoginPage = () => {
   const { request, loading } = useApi();
 
 const handleLogin = async (data: any) => {
-  const res = await request(() => loginAdmin(data), "Login successful!");
-
-  localStorage.setItem("token", res.token);
-
+   await request(() => loginAdmin(data), "Login successful!");
   navigate("/admin/dashboard");
 };
 

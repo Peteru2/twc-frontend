@@ -25,7 +25,7 @@ const AdminRegisterForm = ({ onSubmit, loading }: Props) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen  p-4">
+    <div className="flex justify-center items-center   p-4">
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="bg-white shadow-4xl rounded-2xl shadow-lg p-4 w-full max-w-md"

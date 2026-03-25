@@ -57,100 +57,34 @@ function App() {
 
           
 
-           <Route element={<AdminLayout />}>
            <Route
-            path="/admin/register"
-            element={
-              <ProtectedRoute allowedRoles={"superadmin"}>
-                <AdminRegisterPage />
-              </ProtectedRoute>
-            }
-          />
-                <Route
-                  path="/admin/dashboard"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  }
-                  />
-                  
-                   <Route
-                  path="/admin/sermons"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <ViewAllSermons />
-                    </ProtectedRoute>
-                  }
-                  />
-                  <Route
-                  path="/admin/celebrations"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <AdminCelebrations />
-                    </ProtectedRoute>
-                  }
-                  />
-                   <Route
-                  path="/admin/community"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <AdminCommunity />
-                    </ProtectedRoute>
-                  }
-                  />
+  element={
+    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
+      <AdminLayout />
+    </ProtectedRoute>
+  }
+>
+  <Route path="/admin/dashboard" element={<Dashboard />} />
+  <Route path="/admin/sermons" element={<ViewAllSermons />} />
+  <Route path="/admin/celebrations" element={<AdminCelebrations />} />
+  <Route path="/admin/community" element={<AdminCommunity />} />
+  <Route path="/admin/firsttimer" element={<AdminFirstTimers />} />
+  <Route path="/admin/prayer" element={<AdminPrayer />} />
+  <Route path="/admin/members" element={<AdminMembers />} />
+  <Route path="/admin/edit-sermon/:id" element={<EditSermonPage />} />
+  <Route path="/admin/addsermon" element={<AddSermonPage />} />
+  <Route path="/admin/addevent" element={<AddEventForm />} />
+</Route>
 
-                  <Route
-                  path="/admin/firsttimer"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <AdminFirstTimers />
-                    </ProtectedRoute>
-                  }
-                  />
 
-                  <Route
-                  path="/admin/prayer"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <AdminPrayer />
-                    </ProtectedRoute>
-                  }
-                  />
-                  <Route
-                  path="/admin/members"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <AdminMembers />
-                    </ProtectedRoute>
-                  }
-                  />
-                  <Route
-                  path="/admin/edit-sermon/:id"
-                  element={
-                    <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                      <EditSermonPage />
-                    </ProtectedRoute>
-                  }
-                  />
-                  <Route
-            path="/admin/addsermon"
-            element={
-              <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                <AddSermonPage />
-              </ProtectedRoute>
-            }
-          />
-           <Route
-            path="/admin/addevent"
-            element={
-              <ProtectedRoute allowedRoles={["admin", "superadmin"]}>
-                <AddEventForm />
-              </ProtectedRoute>
-            }
-          />
-          </Route>
-        
+<Route
+  path="/admin/register"
+  element={
+    <ProtectedRoute allowedRoles="superadmin">
+      <AdminRegisterPage />
+    </ProtectedRoute>
+  }
+/>
          
         </Routes>
         

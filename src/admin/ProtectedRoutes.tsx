@@ -1,35 +1,44 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import useApi from "./hooks/useApi";
+import apiClient from "./api/apiClients";
 
 interface Props {
   children: React.ReactNode;
-  // We rename the prop to 'allowedRoles' and accept either a string or an array
-  allowedRoles?: string | string[]; 
+  allowedRoles?: string | string[];
 }
 
 const ProtectedRoute = ({ children, allowedRoles }: Props) => {
-  const token = localStorage.getItem("token");
+  const [authorized, setAuthorized] = useState<boolean | null>(null);
+  const { request } = useApi();
 
-  if (!token) return <Navigate to="/" replace />;
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        
+        const res = await request(() => apiClient.get("/admin/me"));
 
-  try {
-    const decoded: any = jwtDecode(token);
-    const role = decoded.role;
+        if (allowedRoles) {
+          const rolesArray = Array.isArray(allowedRoles) ? allowedRoles : [allowedRoles];
+          if (!rolesArray.includes(res.role)) {
+            setAuthorized(false);
+            return;
+          }
+        }
 
-    if (allowedRoles) {
-      // Normalize allowedRoles to an array so we can always use .includes()
-      const rolesArray = Array.isArray(allowedRoles) ? allowedRoles : [allowedRoles];
-      
-      if (!rolesArray.includes(role)) {
-        return <Navigate to="/" replace />;
+        setAuthorized(true); 
+      } catch (err) {
+        setAuthorized(false);
       }
-    }
+    };
 
-    return <>{children}</>;
-  } catch (error) {
-    localStorage.removeItem("token");
-    return <Navigate to="/" replace />;
-  }
+    checkAuth();
+  }, []);
+
+  if (authorized === null) return <div>Loading...</div>; 
+  if (!authorized) return <Navigate to="/" replace />; 
+
+  return <>{children}</>;
 };
 
 export default ProtectedRoute;

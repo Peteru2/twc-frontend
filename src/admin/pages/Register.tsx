@@ -7,9 +7,6 @@ const AdminRegisterPage = () => {
 const handleRegister = async (data: any) => {
   await request(() => registerAdmin(data), "Admin registered successfully!");
 };
-
-
-
   return <AdminRegisterForm onSubmit={handleRegister} loading={loading} />;
 };
 
