@@ -76,7 +76,7 @@ function App() {
   <Route path="/admin/addevent" element={<AddEventForm />} />
 </Route>
 
-
+         <Route element={<AdminLayout />}>
 <Route
   path="/admin/register"
   element={
@@ -85,7 +85,7 @@ function App() {
     </ProtectedRoute>
   }
 />
-         
+      </Route>
         </Routes>
         
       </BrowserRouter>
