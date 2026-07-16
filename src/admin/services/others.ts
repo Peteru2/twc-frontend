@@ -17,6 +17,10 @@ export const getMembers = () => {
   return apiClient.get("/admin/members");
 };
 
+export const getNewsLetter = () => {
+  return apiClient.get("/admin/newsletter");
+};
+
 export const createEvent = (data: any) => {
   return apiClient.post("/admin/event", data);
 };

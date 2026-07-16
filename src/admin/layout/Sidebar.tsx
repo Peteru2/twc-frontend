@@ -1,5 +1,6 @@
 import {
   LayoutDashboard,
+  Newspaper,
   User,
   Users,
   HeartHandshake,
@@ -34,33 +35,20 @@ const Sidebar = () => {
         
       </p>
 
-      <nav className="space-y-3">
-
+      <nav className="space-y-2">
         <SidebarItem icon={LayoutDashboard} text="Dashboard" link="/admin/dashboard"  active={location.pathname === "/admin/dashboard"}  />
-
+        <SidebarItem icon={Newspaper} text="News Letter" link="/admin/newsletter"    active={location.pathname === "/admin/newsletter"} />
         <SidebarItem icon={User} text="Registered Member" link="/admin/members"    active={location.pathname === "/admin/members"} />
-
         <SidebarItem icon={HeartHandshake} text="Prayer Requests" link="/admin/prayer"    active={location.pathname === "/admin/prayer"} />
-
         <SidebarItem icon={Users} text="First Timers" link="/admin/firsttimer"    active={location.pathname === "/admin/firsttimer"} />
-
         <SidebarItem icon={Globe} text="Online Community" link="/admin/community"    active={location.pathname === "/admin/community"} />
-
         <SidebarItem icon={Cake} text="Celebrations" link="/admin/celebrations"    active={location.pathname === "/admin/celebrations"} />
-
         <SidebarItem icon={BookOpenText} text="Sermons" link="/admin/sermons"    active={location.pathname === "/admin/sermons"} />
         <SidebarItem icon={CalendarPlus} text="Add Event" link="/admin/addevent"    active={location.pathname === "/admin/addevent"} />
-        
-        
         {data?.admin?.role ==="superadmin"?
-
-
         <SidebarItem icon={UserPlus} text="Register an Admin" link="/admin/register"    active={location.pathname === "/admin/register"} />:
         <></>
         }
-
-
-
       </nav>
 </div>
   

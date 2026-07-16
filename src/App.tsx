@@ -31,6 +31,7 @@ import AdminPrayer from "./admin/pages/AdminPrayer";
 import AdminMembers from "./admin/pages/AdminMembers";
 import EditSermonPage from "./admin/pages/EditSermon";
 import AddEventForm from "./admin/form/Event";
+import AdminNewsLetter from "./admin/pages/Newsletter";
 function App() {
   return (
     <AudioProvider>
@@ -65,6 +66,7 @@ function App() {
   }
 >
   <Route path="/admin/dashboard" element={<Dashboard />} />
+  <Route path="/admin/newsletter" element={<AdminNewsLetter />} />
   <Route path="/admin/sermons" element={<ViewAllSermons />} />
   <Route path="/admin/celebrations" element={<AdminCelebrations />} />
   <Route path="/admin/community" element={<AdminCommunity />} />
@@ -87,7 +89,6 @@ function App() {
 />
       </Route>
         </Routes>
-        
       </BrowserRouter>
        <ToastContainer position="top-right" autoClose={3000} />
     </AudioProvider>
