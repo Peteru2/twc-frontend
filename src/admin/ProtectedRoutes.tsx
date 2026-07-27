@@ -47,7 +47,8 @@ const ProtectedRoute = ({ children, allowedRoles }: Props) => {
     </div>
   );
 } 
-  if (!authorized) return <Navigate to="/" replace />; 
+  if(!authorized)
+ return <Navigate to="/admin/login" replace />;
 
   return <>{children}</>;
 };

@@ -9,7 +9,7 @@ import type { Admin } from "./types/admin";
 interface AdminAuthContextType {
   admin: Admin | null;
   login: (data: Admin) => void;
-  logout: () => void;
+
 }
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(
@@ -30,13 +30,9 @@ export const AdminAuthProvider = ({
     setAdmin(data);
   };
 
-  const logout = () => {
-    localStorage.removeItem("admin");
-    setAdmin(null);
-  };
 
   return (
-    <AdminAuthContext.Provider value={{ admin, login, logout }}>
+    <AdminAuthContext.Provider value={{ admin, login }}>
       {children}
     </AdminAuthContext.Provider>
   );
