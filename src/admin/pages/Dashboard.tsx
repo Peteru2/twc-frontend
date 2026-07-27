@@ -1,33 +1,63 @@
+import { Users, HandHelping, UserPlus, Globe, Calendar } from "lucide-react";
+
+import { motion } from "framer-motion";
+
 import StatCard from "../components/dashboard/StatCard";
 import RecentList from "../components/dashboard/RecentList";
-import useDashboard from "../hooks/useDashboard";
+import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
 
-import {
-  Users,
-  HandHelping,
-  UserPlus,
-  Globe
-} from "lucide-react";
+import useDashboard from "../hooks/useDashboard";
 
 const Dashboard = () => {
   const { data, loading } = useDashboard();
 
-  if (loading) return <p className="p-10">Loading dashboard...</p>;
-  if (!data) return <p>Error loading dashboard</p>;
+  if (loading) {
+    return <DashboardSkeleton />;
+  }
 
-  const { stats, recent } = data;
+  if (!data) {
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-bold">Unable to load dashboard</h2>
+
+          <p className="text-gray-500 mt-2">
+            Please check your connection and try again.
+          </p>
+
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-5 bg-red-500 text-white px-5 py-2 rounded-lg"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const { stats, admin, recent } = data;
 
   return (
-    <div className="p-8 space-y-8 bg-gray-100 min-h-screen">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="p-8 space-y-8 bg-gray-100 min-h-screen"
+    >
+      <div className="bg-white rounded-xl shadow-sm p-6">
+        <h1 className="text-2xl font-bold">Welcome back, {admin.name}</h1>
 
-      {/* Stats */}
+        <p className="text-gray-500 mt-2">
+          Here is what is happening in your church community today.
+        </p>
+      </div>
+
       <div className="grid md:grid-cols-4 gap-6">
-
         <StatCard
           title="Members"
           value={stats.members}
           icon={Users}
-          color=" bg-red-500 text-white"
+          color="bg-red-500 text-white"
         />
 
         <StatCard
@@ -38,53 +68,35 @@ const Dashboard = () => {
         />
 
         <StatCard
-          title="First Time Visitors"
+          title="First Timers"
           value={stats.firstTimers}
           icon={UserPlus}
-          color="bg-white shadow-xl text-black"
+          color="bg-white text-black"
         />
 
         <StatCard
-          title="Online Members"
+          title="Online Community"
           value={stats.onlineCommunity}
           icon={Globe}
           color="bg-gradient-to-r from-indigo-500 to-blue-500 text-white"
         />
-
       </div>
 
-      {/* Prayer Requests + Celebrations */}
       <div className="grid md:grid-cols-2 gap-6">
-
         <RecentList
           title="Recent Prayer Requests"
-          items={recent.prayerRequests}
           link="/admin/prayer"
+          items={recent.prayerRequests}
+          emptyMessage="No prayer requests submitted yet."
           renderItem={(item) => (
-            <div className="flex items-center gap-3">
+            <div>
+              <p className="font-semibold">{item.firstName} {" "}{item.lastName}</p>
 
-             <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center">
-                                <span className="text-violet-900 font-bold uppercase">
+              <p className="text-[17px] text-gray-500">{item.prayerRequest}</p>
 
-                    {item.firstName?.charAt(0)}
-                    {item.lastName?.charAt(0)}
-
-                </span>
-                </div>
-
-              <div>
-                <p className="font-semibold text-sm">
-                  {item.firstName} {" "}{item.last}
-                </p> 
-                <p className="text-sm text-gray-500">
-                  {item.request}
-                </p>
-              </div>
-
-              <span className="ml-auto text-xs text-gray-400">
-                {new Date(item.createdAt).toLocaleTimeString()}
-              </span>
-
+              <p className="text-xs text-gray-400 mt-2">
+                {new Date(item.createdAt).toLocaleDateString()}
+              </p>
             </div>
           )}
         />
@@ -93,87 +105,39 @@ const Dashboard = () => {
           title="Upcoming Celebrations"
           link="/admin/celebrations"
           items={recent.celebrations}
+          emptyMessage="No upcoming celebrations."
           renderItem={(item) => (
             <div className="flex items-center gap-3">
-
-              <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center">
-                                                                <span className="text-violet-900 font-bold uppercase">
-
-
-                    {item.firstName?.charAt(0)}
-                    {item.lastName?.charAt(0)}
-
-                </span>
-                </div>
+              <Calendar className="text-red-500" />
 
               <div>
-                <p className="font-semibold text-sm">
-                  {item.celebrationType}
+                <p className="font-semibold">{item.celebrationType}</p>
+
+                <p className="text-sm text-gray-500">
+                  {new Date(item.createdAt).toLocaleDateString()}
                 </p>
               </div>
-
-              <span className="ml-auto text-sm text-gray-500">
-                {item.duration}
-              </span>
-
             </div>
           )}
         />
-
-       
-
       </div>
 
-      {/* First Timers */}
       <RecentList
-                title="First Time Visitor Form Submissions"
-                items={recent.firstTimers}
-                link="/admin/firsttimer"  
-                renderItem={(item) => (
-                    <div className="flex items-center gap-3">
+        title="First Time Visitors"
+        link="/admin/firsttimer"
+        items={recent.firstTimers}
+        emptyMessage="No first-time visitors yet."
+        renderItem={(item) => (
+          <div>
+            <p className="font-semibold">{item.firstName} {" "} {item.lastName}</p>
 
-                    <div className="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center">
-                                              <span className="text-violet-900 font-bold uppercase">
-
-                    {item.firstName?.charAt(0)}
-                    {item.lastName?.charAt(0)}
-
-                </span>
-                </div>
-
-                    <span className="text-sm font-medium">
-                        {item.firstName} {" "} 
-                        {item.lastName}
-
-                    </span>
-
-                    <span className="ml-auto text-xs text-gray-400">
-                        {new Date(item.createdAt).toDateString()}
-                    </span>
-
-    </div>
-  )}
-/>
- <div className="grid md:grid-cols-4 gap-4">
-
-  <button className="bg-red-500 text-white p-3 rounded-lg shadow">
-    + Add New Member
-  </button>
-
-  <button className="bg-pink-500 text-white p-3 rounded-lg shadow">
-    + Review Prayer Requests
-  </button>
-
-  <button className="bg-teal-500 text-white p-3 rounded-lg shadow">
-    + Register First Timer
-  </button>
-
-  <button className="bg-indigo-500 text-white p-3 rounded-lg shadow">
-    + Manage Community
-  </button>
-
-</div>
-    </div>
+            <p className="text-xs text-gray-400">
+              {new Date(item.createdAt).toDateString()}
+            </p>
+          </div>
+        )}
+      />
+    </motion.div>
   );
 };
 

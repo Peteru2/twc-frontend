@@ -35,7 +35,18 @@ const ProtectedRoute = ({ children, allowedRoles }: Props) => {
     checkAuth();
   }, []);
 
-  if (authorized === null) return <div>Loading...</div>; 
+  if (authorized === null) {
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+        <p className="text-gray-600">
+          Verifying your session...
+        </p>
+      </div>
+    </div>
+  );
+} 
   if (!authorized) return <Navigate to="/" replace />; 
 
   return <>{children}</>;

@@ -37,7 +37,7 @@ const Sidebar = () => {
 
       <nav className="space-y-2">
         <SidebarItem icon={LayoutDashboard} text="Dashboard" link="/admin/dashboard"  active={location.pathname === "/admin/dashboard"}  />
-        <SidebarItem icon={Newspaper} text="News Letter" link="/admin/newsletter"    active={location.pathname === "/admin/newsletter"} />
+        <SidebarItem icon={Newspaper} text="Newsletter" link="/admin/newsletter"    active={location.pathname === "/admin/newsletter"} />
         <SidebarItem icon={User} text="Registered Member" link="/admin/members"    active={location.pathname === "/admin/members"} />
         <SidebarItem icon={HeartHandshake} text="Prayer Requests" link="/admin/prayer"    active={location.pathname === "/admin/prayer"} />
         <SidebarItem icon={Users} text="First Timers" link="/admin/firsttimer"    active={location.pathname === "/admin/firsttimer"} />

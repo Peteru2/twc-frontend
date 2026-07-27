@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import useApi from "../hooks/useApi";
+// import useApi from "../hooks/useApi";
 
 interface AdminLayoutProps {
   children?: React.ReactNode; 
@@ -9,8 +9,7 @@ interface AdminLayoutProps {
 }
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const {loading} = useApi()
-  if (loading) return <p className="p-10">Loading....</p>;
+
 
   return (
 
