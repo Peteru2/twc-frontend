@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { getCommunity } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
+import useAdminFetch from "../hooks/useAdminFetch";
 import { Globe, RefreshCcw } from "lucide-react";
 
 interface CommunityMember {
@@ -16,29 +16,9 @@ interface CommunityMember {
 }
 
 const AdminCommunity = () => {
-  const [data, setData] = useState<CommunityMember[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { data, loading, error, retry } = useAdminFetch(getCommunity);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(false);
-
-      const res = await getCommunity();
-
-      setData(res.data.data);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   const columns = [
     {
@@ -177,7 +157,7 @@ const AdminCommunity = () => {
           </p>
 
           <button
-            onClick={fetchData}
+            onClick={retry}
             className="
               mt-5
               flex

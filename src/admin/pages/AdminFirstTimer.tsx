@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+
 import AdminTable from "../components/modal/AdminTable";
 import { getFirstTimers } from "../services/others";
 import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
+import useAdminFetch from "../hooks/useAdminFetch";
 import { RefreshCcw, UserPlus } from "lucide-react";
 
 interface FirstTimer {
@@ -16,29 +17,7 @@ interface FirstTimer {
 }
 
 const AdminFirstTimers = () => {
-  const [data, setData] = useState<FirstTimer[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(false);
-
-      const res = await getFirstTimers();
-
-      setData(res.data.data);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data, loading, error, retry } = useAdminFetch(getFirstTimers);
 
   const columns = [
     {
@@ -145,7 +124,7 @@ const AdminFirstTimers = () => {
           </p>
 
           <button
-            onClick={fetchData}
+            onClick={retry}
             className="
               mt-5
               flex

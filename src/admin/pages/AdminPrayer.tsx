@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { getPrayer } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
+import useAdminFetch from "../hooks/useAdminFetch";
 import { HandHelping, RefreshCcw } from "lucide-react";
 
 interface PrayerRequest {
@@ -15,29 +15,8 @@ interface PrayerRequest {
 }
 
 const AdminPrayer = () => {
-  const [data, setData] = useState<PrayerRequest[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(false);
-
-      const res = await getPrayer();
-
-      setData(res.data.data);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data, loading, error, retry } = useAdminFetch(getPrayer);
+  
 
   const columns = [
     {
@@ -171,7 +150,7 @@ const AdminPrayer = () => {
           </p>
 
           <button
-            onClick={fetchData}
+            onClick={retry}
             className="
               mt-5
               flex

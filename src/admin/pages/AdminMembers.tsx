@@ -103,7 +103,7 @@ const AdminMembers = () => {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 space-y-6">
       <AdminPageHeader
         title="Members"
         description="Manage church members and their information"

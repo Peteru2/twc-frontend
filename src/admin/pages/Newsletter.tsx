@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { getNewsLetter } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
+import useAdminFetch from "../hooks/useAdminFetch";
 import { Mail, RefreshCcw } from "lucide-react";
 
 interface NewsletterSubscriber {
@@ -12,30 +12,9 @@ interface NewsletterSubscriber {
 }
 
 const AdminNewsLetter = () => {
-  const [data, setData] = useState<NewsletterSubscriber[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const { data, loading, error, retry } = useAdminFetch(getNewsLetter);
 
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(false);
-
-      const res = await getNewsLetter();
-
-      setData(res.data.data);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  
   const columns = [
     {
       label: "Email",
@@ -114,7 +93,7 @@ const AdminNewsLetter = () => {
           </p>
 
           <button
-            onClick={fetchData}
+            onClick={retry}
             className="
               mt-5
               flex

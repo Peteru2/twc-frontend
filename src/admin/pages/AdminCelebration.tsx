@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import { getCelebrations } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 import SkeletonLoader from "../components/SkeletonLoader";
+import useAdminFetch from "../hooks/useAdminFetch";
+
 import AdminPageHeader from "../components/AdminPageHeader";
 import { PartyPopper, RefreshCcw } from "lucide-react";
 
@@ -16,29 +17,8 @@ interface Celebration {
 }
 
 const AdminCelebrations = () => {
-  const [data, setData] = useState<Celebration[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      setError(false);
-
-      const res = await getCelebrations();
-
-      setData(res.data.data);
-    } catch (err) {
-      console.error(err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data, loading, error, retry } = useAdminFetch(getCelebrations);
+  
 
   const columns = [
     {
@@ -192,7 +172,7 @@ const AdminCelebrations = () => {
           </p>
 
           <button
-            onClick={fetchData}
+            onClick={retry}
             className="
               mt-5
               flex
