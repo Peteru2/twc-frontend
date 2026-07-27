@@ -1,7 +1,7 @@
 import { getMembers } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
 import { RefreshCcw, Users } from "lucide-react";
-import SkeletonLoader from "../components/skeletonLoader";
+import SkeletonLoader from "../components/SkeletonLoader";
 import useAdminFetch from "../hooks/useAdminFetch";
 import AdminPageHeader from "../components/AdminPageHeader";
 

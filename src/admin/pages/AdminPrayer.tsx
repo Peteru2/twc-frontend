@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPrayer } from "../services/others";
 import AdminTable from "../components/modal/AdminTable";
-import SkeletonLoader from "../components/skeletonLoader";
+import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
 import { HandHelping, RefreshCcw } from "lucide-react";
 

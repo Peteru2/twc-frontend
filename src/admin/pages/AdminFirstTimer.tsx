@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminTable from "../components/modal/AdminTable";
 import { getFirstTimers } from "../services/others";
-import SkeletonLoader from "../components/skeletonLoader";
+import SkeletonLoader from "../components/SkeletonLoader";
 import AdminPageHeader from "../components/AdminPageHeader";
 import { RefreshCcw, UserPlus } from "lucide-react";
 
