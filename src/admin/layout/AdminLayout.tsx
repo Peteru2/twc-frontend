@@ -1,6 +1,5 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
@@ -11,7 +10,7 @@ interface AdminLayoutProps {
 
 const AdminLayout = ({ children }: AdminLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const location = useLocation();
+
 
   // Close sidebar when route changes
   const handleSidebarClose = () => {
