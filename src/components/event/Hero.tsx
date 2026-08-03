@@ -141,21 +141,6 @@ export default function EventCarousel() {
                 {hero.title}
               </motion.h1>
 
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: 1,
-                }}
-                transition={{
-                  delay: 0.35,
-                }}
-                className="max-w-3xl mt-6 text-lg text-white/85 lato"
-              >
-                {hero.description}
-              </motion.p>
-
               <div className="mt-8 space-y-2">
                 <p className="text-white/80 lato">{hero.dateDisplay}</p>
 
