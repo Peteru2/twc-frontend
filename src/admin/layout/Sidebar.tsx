@@ -6,81 +6,107 @@ import {
   HeartHandshake,
   Globe,
   Cake,
- BookOpenText,
- UserPlus,
- CalendarPlus
+  BookOpenText,
+  UserPlus,
+  CalendarPlus,
+  X,
 } from "lucide-react";
-import { useLocation, Link } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom";
 import useDashboard from "../hooks/useDashboard";
-import { useLogout} from "../utils/logout";
+import { useLogout } from "../utils/logout";
 import { LogOut } from "lucide-react";
 
+interface SidebarProps {
+  onClose?: () => void;
+}
 
-const Sidebar = () => {
-    const location = useLocation(); 
-    const {data} = useDashboard()
-    const logout = useLogout();
+const Sidebar = ({ onClose }: SidebarProps) => {
+  const location = useLocation();
+  const { data } = useDashboard();
+  const logout = useLogout();
+
+  const menuItems = [
+    { icon: LayoutDashboard, text: "Dashboard", link: "/admin/dashboard" },
+    { icon: Newspaper, text: "Newsletter", link: "/admin/newsletter" },
+    { icon: User, text: "Registered Member", link: "/admin/members" },
+    { icon: HeartHandshake, text: "Prayer Requests", link: "/admin/prayer" },
+    { icon: Users, text: "First Timers", link: "/admin/firsttimer" },
+    { icon: Globe, text: "Online Community", link: "/admin/community" },
+    { icon: Cake, text: "Celebrations", link: "/admin/celebrations" },
+    { icon: BookOpenText, text: "Sermons", link: "/admin/sermons" },
+    { icon: CalendarPlus, text: "Events", link: "/admin/events" },
+  ];
+
   return (
-    <aside className="w-64 bg-[#243a5e] text-white  rounded-br-2xl">
-        <div className="p-5">
-     <h2 className="text-2xl font-semibold">
-        Welcome 
-      </h2>
-       <h2 className="text-lg font-semibold ">
-         {data?.admin?.name}
-      </h2>
+    <aside className="w-64 bg-[#243a5e] text-white rounded-br-2xl h-screen flex flex-col">
+      {/* Close Button - Mobile Only */}
+      <button
+        onClick={onClose}
+        className="md:hidden absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg z-40"
+      >
+        <X size={24} />
+      </button>
 
-      <p className="text-sm text-gray-300 mb-6">
-        Role: {data?.admin?.role}
-        
-      </p>
+      {/* Sidebar Header */}
+      <div className="p-5 border-b border-white/10">
+        <h2 className="text-2xl font-semibold">Welcome</h2>
+        <h2 className="text-lg font-semibold mt-2">{data?.admin?.name || "Admin"}</h2>
+        <p className="text-sm text-gray-300 mt-2">Role: {data?.admin?.role || "User"}</p>
+      </div>
 
-      <nav className="space-y-2">
-        <SidebarItem icon={LayoutDashboard} text="Dashboard" link="/admin/dashboard"  active={location.pathname === "/admin/dashboard"}  />
-        <SidebarItem icon={Newspaper} text="Newsletter" link="/admin/newsletter"    active={location.pathname === "/admin/newsletter"} />
-        <SidebarItem icon={User} text="Registered Member" link="/admin/members"    active={location.pathname === "/admin/members"} />
-        <SidebarItem icon={HeartHandshake} text="Prayer Requests" link="/admin/prayer"    active={location.pathname === "/admin/prayer"} />
-        <SidebarItem icon={Users} text="First Timers" link="/admin/firsttimer"    active={location.pathname === "/admin/firsttimer"} />
-        <SidebarItem icon={Globe} text="Online Community" link="/admin/community"    active={location.pathname === "/admin/community"} />
-        <SidebarItem icon={Cake} text="Celebrations" link="/admin/celebrations"    active={location.pathname === "/admin/celebrations"} />
-        <SidebarItem icon={BookOpenText} text="Sermons" link="/admin/sermons"    active={location.pathname === "/admin/sermons"} />
-        <SidebarItem icon={CalendarPlus} text="Add Event" link="/admin/addevent"    active={location.pathname === "/admin/addevent"} />
-        {data?.admin?.role ==="superadmin"?
-        <SidebarItem icon={UserPlus} text="Register an Admin" link="/admin/register"    active={location.pathname === "/admin/register"} />:
-        <></>
-        }
-      </nav>
-</div>
-  
-          <div className="  bottom-0 absolute   border-t-[1px] border-gray-100 py-4 w-64 bg-white ">
+      {/* Navigation */}
+      <nav className="flex-1 overflow-y-auto p-3 space-y-1">
+        {menuItems.map((item) => {
+          const isActive =
+            location.pathname === item.link ||
+            (item.link === "/admin/events" && location.pathname === "/admin/event");
 
-            <button
-              onClick={logout}
-              className="w-full text-left text-red-500  flex cursor-pointer px-8 items-center  "
+          return (
+            <Link
+              key={item.link}
+              to={item.link}
+              onClick={onClose}
+              className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive
+                  ? "bg-white text-[#243a5e] font-medium"
+                  : "text-white hover:bg-white/10"
+              }`}
             >
-             <span><LogOut size="16" className="mr-2"/></span> Logout
-            </button>
+              <item.icon size={20} />
+              <span className="text-sm md:text-base">{item.text}</span>
+            </Link>
+          );
+        })}
 
-          </div>
-        
+        {/* Conditional Admin Register Link */}
+        {data?.admin?.role === "superadmin" && (
+          <Link
+            to="/admin/register"
+            onClick={onClose}
+            className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+              location.pathname === "/admin/register"
+                ? "bg-white text-[#243a5e] font-medium"
+                : "text-white hover:bg-white/10"
+            }`}
+          >
+            <UserPlus size={20} />
+            <span className="text-sm md:text-base">Register Admin</span>
+          </Link>
+        )}
+      </nav>
+
+      {/* Logout Button */}
+      <div className="border-t border-white/10 p-3">
+        <button
+          onClick={logout}
+          className="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors text-sm md:text-base"
+        >
+          <LogOut size={20} />
+          <span>Logout</span>
+        </button>
+      </div>
     </aside>
   );
 };
-
-const SidebarItem = ({
-  icon: Icon,
-  text,
-  active,
-  link
-}: any) => (
-  <Link to={link}
-    className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-pointer ${
-      active ? "bg-white text-black" : "hover:bg-white/20"
-    }`}
-  >
-    <Icon size={18} /><span>{text}</span>
-    
-  </Link>
-);
 
 export default Sidebar;

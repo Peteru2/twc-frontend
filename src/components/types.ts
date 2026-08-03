@@ -27,6 +27,7 @@ export interface BasicLink {
   text?: string; 
   path?: string;
   link?: string;
+  target?: string;
 }
 export type Sermon = {
   _id: string

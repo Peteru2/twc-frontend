@@ -32,6 +32,9 @@ import AdminMembers from "./admin/pages/AdminMembers";
 import EditSermonPage from "./admin/pages/EditSermon";
 import AddEventForm from "./admin/form/Event";
 import AdminNewsLetter from "./admin/pages/Newsletter";
+import EventDetails from "./pages/EventDetails";
+import AdminEvents from "./admin/pages/AdminEvent";
+
 function App() {
   return (
     <AudioProvider>
@@ -51,6 +54,7 @@ function App() {
             <Route element={<CelebrationRequest />} path="celebration" />
             <Route element={<Rna />} path="rna" />
             <Route element={<PastoralTeam />} path="pastoralteam" />
+            <Route path="/events/:id" element={<EventDetails />} />
 
           </Route>
           <Route path="/admin/login" element={<AdminLoginPage />} />
@@ -76,6 +80,8 @@ function App() {
   <Route path="/admin/edit-sermon/:id" element={<EditSermonPage />} />
   <Route path="/admin/addsermon" element={<AddSermonPage />} />
   <Route path="/admin/addevent" element={<AddEventForm />} />
+  <Route path="/admin/events" element={<AdminEvents />} />
+
 </Route>
 
          <Route element={<AdminLayout />}>

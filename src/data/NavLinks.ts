@@ -8,7 +8,7 @@ import {
 
 export const navLinks: NavLink[] = [
   { name: "ABOUT", path: "/about", icon: Info },
-  { name: "EVENT", path: "/event", icon: Calendar },
+  { name: "EVENTS", path: "/event", icon: Calendar },
   { name: "SERMONS", path: "/sermons", icon: Mic },
   { name: "PASTORAL TEAM", path: "/pastoralteam", icon: Users },
   { name: "GIVE", path: "/give", icon: Heart },
@@ -28,8 +28,8 @@ export const footerLinks: BasicLink[] = [
 ];
 
 export const media: BasicLink[] = [
-  { text: "Watch Online", link: "https://www.youtube.com/@TrueWorshippersChurch" },
-  { text: "Sermons", link: "/sermons" },
+  { text: "Watch Online", link: "https://www.youtube.com/@TrueWorshippersChurch", target:"_blank" },
+  { text: "Sermons", link: "/sermons", target:""},
 ];
 
 export const socialMedia: SocialLink[] = [

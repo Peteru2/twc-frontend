@@ -30,7 +30,9 @@ const AdminRegisterForm = ({ onSubmit, loading }: Props) => {
         onSubmit={handleSubmit(submitHandler)}
         className="bg-white shadow-4xl rounded-2xl shadow-lg p-4 w-full max-w-md"
       >
-        <h2 className="text-2xl viga font-bold text-[#E80F1A] mb-6 text-center">
+        <h2 className="text-2xl
+font-bold
+text-gray-800 font-bold  mb-6 text-center">
           Register Admin
         </h2>
 

@@ -1,232 +1,212 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState, useRef } from "react"
-import { ChevronLeft, ChevronRight, MapPin } from "lucide-react"
-import { getEvents } from "../../admin/services/others"
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { MapPin } from "lucide-react";
+import useEvents from "../../hooks/useEvent";
 
-interface EventItem {
-  _id: string
-  flier: string[]
-  title: string
-  dateISO?: string
-  dateDisplay: string
-  location: string
-}
+// import type { EventItem } from "../types";
 
 interface TimeLeft {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 
 export default function EventCarousel() {
-
-  const [[index, direction], setIndex] =
-    useState<[number, number]>([0, 0])
-
-  const [events, setEvents] = useState<EventItem[]>([])
+  const { hero, ongoing, upcoming, loading } = useEvents();
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
-  })
-
-  const autoRef = useRef<number | null>(null)
-
-  const event = events[index]
-
-  const hasCountdown = Boolean(event?.dateISO)
+  });
 
   useEffect(() => {
-    const fetchEvents = async () => {
-      const res = await getEvents()
-      setEvents(res.data.data)
-    }
+    if (!hero) return;
 
-    fetchEvents()
-  }, [])
+    if (ongoing.length > 0) return;
 
-  useEffect(() => {
-    if (!event?.dateISO) return
+    if (!hero.startDate) return;
 
     const interval = setInterval(() => {
-      const diff =
-        new Date(event.dateISO!).getTime() - Date.now()
+      const difference = new Date(hero.startDate).getTime() - Date.now();
 
-      if (diff <= 0) return
+      if (difference <= 0) {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+
+        clearInterval(interval);
+        return;
+      }
 
       setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / 1000 / 60) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      })
-    }, 1000)
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      });
+    }, 1000);
 
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
+  }, [hero, ongoing]);
 
-  }, [event])
-
-  useEffect(() => {
-
-    if (events.length === 0) return
-
-    autoRef.current = window.setTimeout(() => {
-      paginate(1)
-    }, 7000)
-
-    return () => {
-      if (autoRef.current) clearTimeout(autoRef.current)
-    }
-
-  }, [index, events])
-
-  const paginate = (dir: number) => {
-
-    if (events.length === 0) return
-
-    setIndex(([prev]) => [
-      (prev + dir + events.length) % events.length,
-      dir,
-    ])
+  if (loading) {
+    return <section className="relative h-[650px] bg-gray-200 animate-pulse" />;
   }
 
-  const variants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 300 : -300,
-      opacity: 0,
-    }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({
-      x: dir > 0 ? -300 : 300,
-      opacity: 0,
-    }),
-  }
+  if (!hero) return null;
 
-  if (!event) return null
+  const badge =
+    ongoing.length > 0
+      ? {
+          text: "LIVE NOW",
+          color: "bg-green-600",
+        }
+      : upcoming.length > 0
+        ? {
+            text: "UPCOMING EVENT",
+            color: "bg-red-600",
+          }
+        : {
+            text: "RECENT EVENT",
+            color: "bg-gray-700",
+          };
 
   return (
-    <section className="relative w-full md:min-h-[650px] min-h-[620px] overflow-hidden flex items-center justify-center">
-
+    <section className="relative w-full min-h-[650px] overflow-hidden flex items-center justify-center">
       <img
         src="/eventHero.jpg"
+        alt=""
         className="absolute inset-0 w-full h-full object-cover scale-110 blur-sm"
       />
 
-      <div className="absolute inset-0 bg-red-800/80" />
+      <div className="absolute inset-0 bg-red-900/80" />
 
-      <div className="relative z-10 w-full max-w-6xl px-6">
-
-        <AnimatePresence custom={direction} mode="wait">
-
+      <div className="relative z-20 w-full max-w-7xl px-6">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={event._id}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 120, damping: 20 },
-              opacity: { duration: 0.3 },
+            key={hero._id}
+            initial={{
+              opacity: 0,
+              scale: 0.98,
             }}
-            className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/70"
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            className="relative overflow-hidden rounded-3xl shadow-2xl"
           >
-
             <img
-              src={event.flier?.[0]}
-              className="w-full h-[500px] md:h-[550px] object-cover"
+              src={hero.flier[0]}
+              alt={hero.title}
+              className="h-[550px] w-full object-cover"
             />
 
             <div className="absolute inset-0 bg-black/60" />
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 text-white">
-
-              <span className="bg-red-600 px-4 lato py-1 rounded-full text-sm mb-4">
-                Upcoming Event
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-8 text-white">
+              <span
+                className={`${badge.color} px-5 py-2 rounded-full text-sm font-semibold tracking-wide`}
+              >
+                {badge.text}
               </span>
 
-              <h2 className="md:text-3xl text-2xl viga md:text-5xl font-bold">
-                {event.title}
-              </h2>
+              <motion.h1
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                }}
+                className="mt-6 text-3xl md:text-6xl font-bold viga"
+              >
+                {hero.title}
+              </motion.h1>
 
-              <p className="mt-4 text-[15px] lato md:text-base text-white/80">
-                {event.dateDisplay}
-              </p>
+              <motion.p
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                }}
+                transition={{
+                  delay: 0.35,
+                }}
+                className="max-w-3xl mt-6 text-lg text-white/85 lato"
+              >
+                {hero.description}
+              </motion.p>
 
-              <p className="text-[16px] flex gap-2 lato md:text-base text-white/80">
-                <MapPin /> {event.location}
-              </p>
+              <div className="mt-8 space-y-2">
+                <p className="text-white/80 lato">{hero.dateDisplay}</p>
 
-              {hasCountdown && (
+                <p className="flex items-center justify-center gap-2 text-white/80 lato">
+                  <MapPin size={18} />
+                  {hero.location}
+                </p>
+              </div>
+
+              {ongoing.length === 0 && upcoming.length > 0 && (
                 <>
-                  <p className="mt-6 lato text-white/70 text-sm">
-                    Event starts in:
-                  </p>
+                  <p className="mt-10 text-white/80 lato">Event starts in</p>
 
-                  <div className="mt-4 flex lato flex-wrap justify-center gap-4">
-                    {Object.entries(timeLeft).map(
-                      ([unit, value]) => (
-                        <TimerBox
-                          key={unit}
-                          value={value}
-                          label={unit}
-                        />
-                      )
-                    )}
+                  <div className="mt-5 flex flex-wrap justify-center gap-5">
+                    <TimerBox value={timeLeft.days} label="Days" />
+
+                    <TimerBox value={timeLeft.hours} label="Hours" />
+
+                    <TimerBox value={timeLeft.minutes} label="Minutes" />
+
+                    <TimerBox value={timeLeft.seconds} label="Seconds" />
                   </div>
                 </>
               )}
-
             </div>
           </motion.div>
-
         </AnimatePresence>
       </div>
-
-      <button
-        onClick={() => paginate(-1)}
-        className="absolute left-6 top-1/2 z-10 -translate-y-1/2 bg-white p-3 rounded-full shadow-md"
-      >
-        <ChevronLeft />
-      </button>
-
-      <button
-        onClick={() => paginate(1)}
-        className="absolute right-6 top-1/2 z-10 -translate-y-1/2 bg-white p-3 rounded-full shadow-md"
-      >
-        <ChevronRight />
-      </button>
-
     </section>
-  )
+  );
 }
 
-function TimerBox({
-  value,
-  label,
-}: {
-  value: number
-  label: string
-}) {
+function TimerBox({ value, label }: { value: number; label: string }) {
   return (
     <motion.div
       key={value}
-      initial={{ y: -8, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      className="bg-red-600/10 backdrop-blur-md border border-red-600 px-5 py-4 rounded-lg text-center min-w-[85px]"
+      initial={{
+        opacity: 0,
+        y: -10,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      className="min-w-[90px] rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 p-5"
     >
-      <div className="text-xl lato md:text-2xl font-bold">
-        {String(value).padStart(2, "0")}
-      </div>
+      <h2 className="text-3xl font-bold">{String(value).padStart(2, "0")}</h2>
 
-      <div className="text-xs text-white/70 capitalize">
+      <p className="mt-1 text-sm text-white/70 uppercase tracking-wide">
         {label}
-      </div>
+      </p>
     </motion.div>
-  )
+  );
 }

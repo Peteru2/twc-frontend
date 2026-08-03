@@ -49,7 +49,7 @@ export default function Footer() {
               <h3 className="text-gray-400 mb-4 font-medium">Media</h3>
               <ul className="space-y-3 text-sm">
                 {media.map((item, index) => (
-                  <Link to={`${item.link}`} target="_blank">
+                  <Link to={`${item.link}`} target={item.target}>
                     <li
                       key={index}
                       className="hover:text-white mb-2 transition duration-300 cursor-pointer"
