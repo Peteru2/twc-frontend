@@ -34,9 +34,14 @@ import AddEventForm from "./admin/form/Event";
 import AdminNewsLetter from "./admin/pages/Newsletter";
 import EventDetails from "./pages/EventDetails";
 import AdminEvents from "./admin/pages/AdminEvent";
+import { HelmetProvider } from "react-helmet-async";
+
+
 
 function App() {
   return (
+<HelmetProvider>
+
     <AudioProvider>
       <BrowserRouter>
         <ScrollToTop />
@@ -98,6 +103,8 @@ function App() {
       </BrowserRouter>
        <ToastContainer position="top-right" autoClose={3000} />
     </AudioProvider>
+</HelmetProvider>
+
   );
 }
 
